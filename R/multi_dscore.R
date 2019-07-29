@@ -42,7 +42,7 @@
 #'   multiple_scores$graph
 multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
   if (is.na(class(data)[2]) | class(data)[2] != "iat_clean"){
-    stop('use the clean_iat function to prepare the dataset for the computeD
+    stop('use the clean_iat function to prepare the dataset for the multi_dscore
          function')
   }
   ds <- match.arg(ds)
@@ -60,7 +60,7 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
   }
 
   dscores <- data.frame(participant = scores[[1]]$participant)
-  #
+
   for (i in 1:length(scores)){
     name_col <- gsub("d", "dscore_d", label_d)
     dscores[, name_col[i]] <- scores[[i]][, name_col[[i]]]
@@ -71,9 +71,10 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
                               2:max(ncol(dscores)))
   mg <- ggplot(scoreslong,
                aes(y = scoreslong$dscore, x = scoreslong$type)) +
-    geom_violin(trim = F, draw_quantiles = TRUE) + stat_summary(fun.data=mean_sdl,
-                                                                geom="pointrange",
-                                                                color="black") + theme_minimal()
+    geom_violin(trim = F, draw_quantiles = TRUE) +
+    stat_summary(fun.data=mean_sdl,
+                  geom="pointrange",
+                  color="black") + theme_minimal()
   mg <- mg + theme(axis.title.x = element_blank()) + ylab("D-scores")
   mulitple_dscores <- list(dscores = dscores,
                            graph = mg)
