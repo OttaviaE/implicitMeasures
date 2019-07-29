@@ -36,10 +36,14 @@ Dataframe with class \code{"dscore"}. The number of rows of the
  \item{\code{accuracy.MappingB}}{Proportion of correct responses in Mapping B.}
  \item{\code{RT_mean.MappingA}}{Mean response time in Mapping A.}
  \item{\code{RT_mean.MappingB}}{Mean response time in Mapping B.}
- \item{\code{mean_practice_MappingA}}{Mean response time in practice block of Mapping A.}
- \item{\code{mean_practice_MappingB}}{Mean response time in practice block of Mapping B.}
- \item{\code{mean_test_MappingA}}{Mean response time in test block of Mapping A.}
- \item{\code{mean_test_MappingB}}{Mean response time in test block of Mapping B.}
+ \item{\code{mean_practice_MappingA}}{Mean response time in practice block of
+      Mapping A.}
+ \item{\code{mean_practice_MappingB}}{Mean response time in practice block of
+      Mapping B.}
+ \item{\code{mean_test_MappingA}}{Mean response time in test block of
+      Mapping A.}
+ \item{\code{mean_test_MappingB}}{Mean response time in test block of
+      Mapping B.}
  \item{\code{d_practice_dX}}{\emph{D-score}s computed on the practice blocks.
      The X stands for the selected \emph{D-score} procedure.}
  \item{\code{d_test_dX}}{\emph{D-score}s computed on the test blocks. The X
