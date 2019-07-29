@@ -1,6 +1,6 @@
 ###### clean_iat test ###########
 test_that("clean_iat produces one dataframe with iat_clean class", {
-  data("raw_data") # load data
+  data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                              block_id = "blockcode",
                              mapA_practice = "practice.iat.Milkbad",
@@ -18,7 +18,7 @@ test_that("clean_iat produces one dataframe with iat_clean class", {
 })
 
 test_that("clea_iat produces the right list when demo is specified", {
-  data("raw_data") # load data
+  data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                              block_id = "blockcode",
                              mapA_practice = "practice.iat.Milkbad",
@@ -35,7 +35,7 @@ test_that("clea_iat produces the right list when demo is specified", {
 })
 
 test_that("clean_iat produces the right list when demo is not specified", {
-  data("raw_data") # load data
+  data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                              block_id = "blockcode",
                              mapA_practice = "practice.iat.Milkbad",
@@ -50,7 +50,7 @@ test_that("clean_iat produces the right list when demo is not specified", {
 })
 
 test_that("clean_iat stops when trial_id is specified but no trials are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_iat(raw_data, sbj_id = "Participant",
                           block_id = "blockcode",
                           mapA_practice = "practice.iat.Milkbad",
@@ -63,7 +63,7 @@ test_that("clean_iat stops when trial_id is specified but no trials are passed",
 })
 
 test_that("clean_iat stops when trial_elimiante is specified but not trial_id", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_iat(raw_data, sbj_id = "Participant",
                           block_id = "blockcode",
                           mapA_practice = "practice.iat.Milkbad",
@@ -77,7 +77,7 @@ test_that("clean_iat stops when trial_elimiante is specified but not trial_id", 
 
 
 test_that("clean_iat stops when demo_id is specified but no trials are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_iat(raw_data, sbj_id = "Participant",
                           block_id = "blockcode",
                           mapA_practice = "practice.iat.Milkbad",
@@ -92,7 +92,7 @@ test_that("clean_iat stops when demo_id is specified but no trials are passed", 
 })
 
 test_that("clean_iat stops when trial_elimiante is specified but not trial_id", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_iat(raw_data, sbj_id = "Participant",
                           block_id = "blockcode",
                           mapA_practice = "practice.iat.Milkbad",
@@ -107,7 +107,7 @@ test_that("clean_iat stops when trial_elimiante is specified but not trial_id", 
 })
 
 test_that("clean_iat stops when wrong column names are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error(clean_iat(raw_data, sbj_id = "Participant",
                          block_id = "block",
                          mapA_practice = "practice.iat.Milkbad",
@@ -119,7 +119,7 @@ test_that("clean_iat stops when wrong column names are passed", {
 })
 
 test_that("clean_iat stops when wrong block labels are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error(clean_iat(raw_data, sbj_id = "Participant",
                          block_id = "blockcode",
                          mapA_practice = "practice.Milkbad",
@@ -131,7 +131,7 @@ test_that("clean_iat stops when wrong block labels are passed", {
 })
 
 test_that("clean_iat stops when the same block label is passed more than once", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error(clean_iat(raw_data, sbj_id = "Participant",
                          block_id = "blockcode",
                          mapA_practice = "practice.iat.Milkbad",
@@ -143,7 +143,7 @@ test_that("clean_iat stops when the same block label is passed more than once", 
 })
 
 test_that("clean_iat produces dataframes for data and demographic with the same number of sbjs", {
-  data("raw_data") # load data
+  data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                              block_id = "blockcode",
                              mapA_practice = "practice.iat.Milkbad",

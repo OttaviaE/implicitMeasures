@@ -1,4 +1,3 @@
-
 # clean_sciat test  #######
 test_that("clean_sciat produces a List of one object of class sciat_clean" , {
   data("raw_data")
@@ -74,7 +73,7 @@ test_that("clean_sciat produces a list with three objects, two with class sciat_
 })
 
 test_that("clean_sciat stops when wrong column names are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error(clean_sciat(raw_data, sbj_id = "Participant",
                            block_id = "bckcode",
                            latency_id = "latency",
@@ -85,7 +84,7 @@ test_that("clean_sciat stops when wrong column names are passed", {
 })
 
 test_that("clean_sciat stops when trial_id is specified but no trials are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -100,7 +99,7 @@ test_that("clean_sciat stops when trial_id is specified but no trials are passed
 })
 
 test_that("clean_sciat stops when trial_elimanate are passed but no trial_id is specified", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -117,7 +116,7 @@ test_that("clean_sciat stops when trial_elimanate are passed but no trial_id is 
 })
 
 test_that("clean_sciat stops when demo_id is specified but no trials are passed", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -133,7 +132,7 @@ test_that("clean_sciat stops when demo_id is specified but no trials are passed"
 })
 
 test_that("clean_sciat stops when trial_demo are passed but no demo_id is specified", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -149,7 +148,7 @@ test_that("clean_sciat stops when trial_demo are passed but no demo_id is specif
 })
 
 test_that("clean_sciat stops when block labels for sciat1 are not in the data", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -163,7 +162,7 @@ test_that("clean_sciat stops when block labels for sciat1 are not in the data", 
 })
 
 test_that("clean_sciat stops when block labels for sciat2 are not in the data", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -179,7 +178,7 @@ test_that("clean_sciat stops when block labels for sciat2 are not in the data", 
 })
 
 test_that("clean_sciat stops when block labels for both sciats are not in the data", {
-  data("raw_data") # load data
+  data("raw_data")
   expect_error( clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
@@ -195,7 +194,7 @@ test_that("clean_sciat stops when block labels for both sciats are not in the da
 })
 
 test_that("clean_sciat produces dataframes for sciat1 and demographic with the same number of sbjs", {
-  data("raw_data") # load data
+  data("raw_data")
   sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                             block_id = "blockcode",
                             latency_id = "latency",
