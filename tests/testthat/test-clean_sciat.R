@@ -1,3 +1,4 @@
+
 # clean_sciat test  #######
 test_that("clean_sciat produces a List of one object of class sciat_clean" , {
   data("raw_data")
