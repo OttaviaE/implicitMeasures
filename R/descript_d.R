@@ -73,7 +73,7 @@ descript_d <- function(data, latex = FALSE){
                    grep("RT_mean.mappingB", colnames(data)))
       names_table <- c("D-Sciat", "RT.MappingA", "RT.MappingB")
     }
-
+    # select variables from the original dataset
     data <- data[ , sel_var]
 
     mean_all <- c(mean(data[,1]), mean(data[,2]), mean(data[,3]))
