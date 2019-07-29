@@ -45,7 +45,7 @@
                        \item demo. Demographic questionnaire.
                       }
    \item response. Character registering the type of response for the
-                    demographic questionnaire
+                    demographic .
  }}
 \usage{
 data(raw_data)
