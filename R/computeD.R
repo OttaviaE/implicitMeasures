@@ -29,10 +29,14 @@
 #'  \item{\code{accuracy.MappingB}}{Proportion of correct responses in Mapping B.}
 #'  \item{\code{RT_mean.MappingA}}{Mean response time in Mapping A.}
 #'  \item{\code{RT_mean.MappingB}}{Mean response time in Mapping B.}
-#'  \item{\code{mean_practice_MappingA}}{Mean response time in practice block of Mapping A.}
-#'  \item{\code{mean_practice_MappingB}}{Mean response time in practice block of Mapping B.}
-#'  \item{\code{mean_test_MappingA}}{Mean response time in test block of Mapping A.}
-#'  \item{\code{mean_test_MappingB}}{Mean response time in test block of Mapping B.}
+#'  \item{\code{mean_practice_MappingA}}{Mean response time in practice block of
+#'       Mapping A.}
+#'  \item{\code{mean_practice_MappingB}}{Mean response time in practice block of
+#'       Mapping B.}
+#'  \item{\code{mean_test_MappingA}}{Mean response time in test block of
+#'       Mapping A.}
+#'  \item{\code{mean_test_MappingB}}{Mean response time in test block of
+#'       Mapping B.}
 #'  \item{\code{d_practice_dX}}{\emph{D-score}s computed on the practice blocks.
 #'      The X stands for the selected \emph{D-score} procedure.}
 #'  \item{\code{d_test_dX}}{\emph{D-score}s computed on the test blocks. The X
@@ -174,7 +178,6 @@ computeD <- function(data,
     d_data <- data1
     d <- "d1"
   }
-
   else if (Dscore == "d2"){
     # built in, lower treatment < 400ms
     data2 <- data[data$fast400 %in% "keep", ]
@@ -182,7 +185,6 @@ computeD <- function(data,
     d_data <- data2
     d <- "d2"
   }
-
   else if(Dscore == "d3"){
     # no built in, no lower treatment, error = mean + 2sd
     data3 <- data
@@ -209,7 +211,6 @@ computeD <- function(data,
     d_data <- data3
     d <- "d3"
   }
-
   else if(Dscore == "d4"){
     # no built in, no lower treatment, error = mean + 600 ms
     data4 <- data
@@ -229,7 +230,6 @@ computeD <- function(data,
     d_data <- data4
     d <- "d4"
   }
-
   else if(Dscore == "d5"){
     # no built in, lower treatment < 400ms, error = mean + 2sd
     data5 <- data[data$fast400 %in% "keep", ]
@@ -256,7 +256,6 @@ computeD <- function(data,
     d_data <- data5
     d <- "d5"
   }
-
   else if(Dscore == "d6"){
     # no built in, lower treatment < 400ms, error = mean + 600ms
     data6 <- data[data$fast400 %in% "keep", ]
@@ -277,8 +276,6 @@ computeD <- function(data,
     d_data <- data6
     d <- "d6"
   }
-
-
   descript_data <- data.frame(participant = unique(d_data$participant))
   descript_data <- merge(descript_data, n_trial)
 
