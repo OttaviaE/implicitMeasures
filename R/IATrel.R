@@ -40,8 +40,10 @@ IATrel <- function(data){
     stop("data is not an object of class dscore")
   }
 
-  IATreliability <- list(rel =round(cor(data[, c(grep("d_practice", colnames(data)),
-                                                 grep("d_test", colnames(data)))])[2,1],2),
+  IATreliability <- list(rel =round(cor(data[, c(grep("d_practice",
+                                                      colnames(data)),
+                                                 grep("d_test",
+                                                      colnames(data)))])[2,1],2),
                          number = round(nrow(data)))
   names(IATreliability) <- c("Test-pratice Reliability",
                              "Number of participants")
