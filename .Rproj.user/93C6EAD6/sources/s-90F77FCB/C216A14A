@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564405941138.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C216A14A",
+    "lastKnownWriteTime" : 1564405955,
+    "last_content_update" : 1564405955925,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/d_distr.R",
+    "project_path" : "R/d_distr.R",
+    "properties" : {
+        "cursorPosition" : "154,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

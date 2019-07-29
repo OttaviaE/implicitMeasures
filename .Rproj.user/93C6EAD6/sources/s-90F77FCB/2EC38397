@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564405762298.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2EC38397",
+    "lastKnownWriteTime" : 1564405784,
+    "last_content_update" : 1564405784411,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/computeD.R",
+    "project_path" : "R/computeD.R",
+    "properties" : {
+        "cursorPosition" : "50,2",
+        "scrollLine" : "36"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

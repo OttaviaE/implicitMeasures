@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564403773766.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3243670144",
+    "id" : "740E2594",
+    "lastKnownWriteTime" : 1564403786,
+    "last_content_update" : 1564403786985,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/raw_data.R",
+    "project_path" : "R/raw_data.R",
+    "properties" : {
+        "cursorPosition" : "54,0",
+        "scrollLine" : "22"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

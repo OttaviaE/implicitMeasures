@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564405837934.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E241EA3B",
+    "lastKnownWriteTime" : 1564405873,
+    "last_content_update" : 1564405873430,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/Dsciat.R",
+    "project_path" : "R/Dsciat.R",
+    "properties" : {
+        "cursorPosition" : "49,2",
+        "scrollLine" : "28"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

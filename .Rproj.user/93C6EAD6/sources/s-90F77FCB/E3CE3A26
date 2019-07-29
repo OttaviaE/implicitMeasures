@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564406227466.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E3CE3A26",
+    "lastKnownWriteTime" : 1564406267,
+    "last_content_update" : 1564406267439,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/multi_dscore.R",
+    "project_path" : "R/multi_dscore.R",
+    "properties" : {
+        "cursorPosition" : "42,12",
+        "scrollLine" : "12"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

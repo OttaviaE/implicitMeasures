@@ -1,0 +1,30 @@
+Package: implicitMeasures
+Type: Package
+Title: Computes the Scores for Different Implicit Measures
+Version: 0.1.0
+Author: Ottavia M. Epifania
+Maintainer: Ottavia M. Epifania <otta.epifania@gmail.com>
+Contributor: Pasquale Anselmi, Egidio Robusto
+Description: The scores for the Implicit Association Test (IAT; Greenwald et al., 
+    1998) and the Single Category - IAT (SC-IAT; Karpinski & Steinman,
+    2006) are computed. For the computation of the IAT D-score, the algorithms in 
+    Greenwald et al. (2003) are used. For computing the SC-IAT D, 
+    the procedure in Karpinski & Steinman (2006) is 
+    used. Several functions for preparing the data (both for the IAT
+    and the SC-IAT), plotting the results, and obtaining a table with the
+    scores of implicit measures descriptive statistics are provided. 
+Depends: R (>= 3.5.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    dplyr,
+    ggplot2,
+    methods,
+    plyr,
+    qpdf,
+    tidyr,
+    xtable
+Suggests: 
+    testthat (>= 2.1.0)

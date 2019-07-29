@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564404093895.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "211E8C87",
+    "lastKnownWriteTime" : 1564404939,
+    "last_content_update" : 1564404939534,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/R/clean_iat.R",
+    "project_path" : "R/clean_iat.R",
+    "properties" : {
+        "cursorPosition" : "51,3",
+        "scrollLine" : "28"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

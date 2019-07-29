@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564407296699.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2870464911",
+    "id" : "1017A75E",
+    "lastKnownWriteTime" : 1564407483,
+    "last_content_update" : 1564407483389,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/tests/testthat/test-IATrel_descript_d.R",
+    "project_path" : "tests/testthat/test-IATrel_descript_d.R",
+    "properties" : {
+        "cursorPosition" : "9,54",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 19,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

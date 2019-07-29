@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564407256959.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "73B572F4",
+    "lastKnownWriteTime" : 1564407269,
+    "last_content_update" : 1564407269092,
+    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/tests/testthat/test-dscore.R",
+    "project_path" : "tests/testthat/test-dscore.R",
+    "properties" : {
+        "cursorPosition" : "80,0",
+        "scrollLine" : "48"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 18,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
