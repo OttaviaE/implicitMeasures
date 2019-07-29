@@ -1,0 +1,108 @@
+---
+title: "implicitMeasures"
+author: Ottavia M. Epifania
+date: "`r Sys.Date()`"
+bibliography: vignette.bib
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{implicitMeasures}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(implicitMeasures)
+```
+
+This vignette gives an overview of `implicitMeasures` package functioning. The structure of the Implicit Association Test [IAT; @Greenwald:1998] and the Single Category IAT [SC-IAT; @karp:2006] will be illustrated, as well as the algorithms used for the computation of their scores. A brief description of the data set `raw_data` is given as well. 
+
+## The Implicit Association Test
+
+The IAT measures the strength and direction of automatic associations between objects and attributes by means of the speed and accuracy with which respondents sort stimuli into their belonging category. The IAT (Table 1) is usually composed of seven blocks. Three blocks (B1, B2 and B5 in Table 1) are pure practice blocks in which either object stimuli or attribute stimuli are sorted in their reference categories. The remaining blocks are the associative blocks that constitute the two IAT mappings conditions (e.g., Mapping A and Mapping B). Usually, the practice and associative practice blocks are composed of 20 trials each, while the associative test blocks are composed of 40 trials each. The two mapping conditions result in 60 trials each.  
+
+```{r, echo = FALSE, warning=FALSE, message=NA}
+library(tableHTML)
+library(data.table)
+iat <- data.table(Block = 1:7, Function = c(rep("Practice", 2), "Associative Practice Mapping A", "Associative Test Mapping A", "Practice", "Associative Practice Mapping B", "Associative Test Mapping B"), "Left response key" = c("Object 1", "Positive", "Object 1 + Positive", "Object 1 + Positive",  "Object 2", "Object 2 + Positive", "Object 2 + Positive"), "Right response key" = c("Object 2", "Negative", "Object 2 + Negative", "Object 2 + Negative", "Object 1", "Object 1 + Negative", "Object 1 + Negative") )
+
+tableHTML(iat, rownames = FALSE, widths = c(20, c(rep(310, 3))), 
+          caption = "Table 1: IAT structure.") %>%
+  add_theme(theme = "scientific") %>%
+  add_css_caption(css = list(c("font-weight", "text-align"), c("bold", "left")))
+
+```
+
+During IAT administration, respondents might be given a feedback. In case a stimulus is sorted into the incorrect category, a red cross appears on the screen and the response must be corrected to proceed with the experiment. If a feedback strategy is not included, the error response is not signaled to participants, and they can go on with the experiment. 
+
+The *IAT effect* is given by the difference between respondents' performance in the two associative conditions, under the assumption that the categorization task is easier (i.e., lower response times and higher response accuracy) in the associative condition consistent with respondents' automatic association. The strength and direction of the IAT effect is usually assessed by means of *D-score* [@Greenwald:2003], for which different algorithms are available (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same. 
+
+```{r, echo = FALSE}
+data.table(Dscore = paste0(rep("D", 6), 1:6), 
+                      "Error treatment" = c(rep("Built-in", 2), "Mean + 2sd", "Mean + 600ms", 
+                                            "Mean +2 sd", "Mean + 600ms"), 
+                      "Lower tail treatment" = c("No", "< 400ms", "No", "No", "< 400ms", "<4 00ms")) %>%
+  tableHTML(rownames = F, widths = c(20, 210, 210), caption = "Table 2: D-score algorithm") %>%
+  add_theme(theme = "scientific") %>%
+  add_css_caption(css = list(c("font-weight", "text-align"), c("bold", "left")))
+
+```
+
+Irrespective of the algorithm, trials with a response latency exceeding 10,000ms must be excluded. When participants are given a feedback for their responses, the algorithms using a built-in correction (*D1* and *D2*) must be used, according to which error responses are replaced by the time at the incorrect response increased by the time needed to correct it. All the other algorithms (*D3* to *D6*) are used when IAT administration does not include a feedback. The error responses are replaced by the average response time of the block in which the error occurred increased by a standard penalty (i.e., either 600ms or twice the standard deviation of the block). The other feature distinguishing the algorithms regards the decision to include responses faster than 300ms or not. 
+
+Once the algorithm has been chosen and the error and fast responses have been treated accordingly, it is possible to compute the *D-score* following a 3-step procedure: 
+
+1. Compute the *D-score* for the associative practice block (i.e., $D_{practice}$) as the difference between the average response time in the two contrasting associative practice blocks. This difference is divided by the standard deviation of the pooled blocks trials.
+
+2. Compute the *D-score* for the associative test blocks (i.e., $D_{test}$) as the difference between the average response time in the two contrasting associative test blocks. This difference is divided by the standard deviation of the pooled blocks trials.
+
+3. Compute the actual *D-score* as the mean of $D_{practice}$ and $D_{test}$. 
+
+`implicitMeasures` also includes a function (`IATrel()`) for computing IAT reliability as the correaltion between the *D-score*s computed on practice and on test blocks [@gaw2017]. 
+
+## The Single Category Implicit Association Test
+
+The SC-IAT [Table 3; @karp:2006] has been proposed as an alternative to the IAT when the aim is to obtain a measure of the strength of the automatic association that is not dependent to the contrasted object. It results from a modification of the IAT procedure itself in which one of the object categories is dropped. The associative practice blocks are usually composed of 24 trials, while the associative test blocks are composed of 72 trials.
+
+```{r, echo = F}
+data.table(Block = 1:4, 
+           Function = paste(rep(c("Associative practice", "Associative test"), 2), 
+                            rep(c("Mapping A", "Mapping B"), c(2,2))),
+           "Left response Key" = c(rep("Object 1 + Positive", 2), rep("Positive", 2)), 
+           "Right response Key" = c(rep("Negative", 2), rep("Object 1 + Negative", 2))) %>%
+  tableHTML(rownames = F, widths = c(20, 210, 210, 210), caption = "Table 3: SC-IAT structure") %>%
+  add_theme(theme = "scientific") %>%
+  add_css_caption(css = list(c("font-weight", "text-align"), c("bold", "left")))
+  
+```
+
+During the SC-IAT administration, respondents' usually receive a feedback signalling whether the response was correct (a green "O") or incorrect (a red "X"). A response time window (RTW) at 1,500ms is usually included in the administration, after which the stimulus on the screen disappears. Responses exceeding the RTW are considered non-response. 
+
+As in the IAT, the *SC-IAT effect* results from the difference in respondents' performance between the two associative conditions, under the assumption that the task will be easier in the condition consistent with the automatically activated association. A modification of the *D-score* has been proposed to interpret the SC-IAT effect, the *D* [@karp:2006]. Only the two associative test blocks are considered for the computation of the *D*. Fast responses (responses under 350ms) are discarded, as well as non-responses (responses exceeding the rtw). Error responses are replaced by the average response time of the block increased by a standard penalty of 400ms. The difference between the average response time in the two contrasting conditions is then divided by the standard deviation of the correct trials in both conditions. 
+
+
+## The `raw_data` data set
+
+The `raw_data` contains the data from `r length(unique(raw_data$Participant))` respondents that completed a Chocolate IAT, one Milk Chocolate SC-IAT and one Dark Chocolate SC-IAT, along with their demographic information. Data will be published in @epifania2019.
+
+The IAT administration did not include a feedback strategy, hence only the *D-score* algorithms not including a built-in correction should be computed. 
+
+```{r}
+# upload the data set
+data(raw_data)
+
+# explore the dataset
+head(raw_data)
+
+str(raw_data)
+```
+
+The data set contains respondents IDs (`Partcipant`), the response times in milliseconds for each trial (`latency`), the response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), the trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of the implicit measures or of the demographic information).
+
+# References
