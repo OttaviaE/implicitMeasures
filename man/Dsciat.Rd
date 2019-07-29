@@ -2,7 +2,7 @@
 % Please edit documentation in R/Dsciat.R
 \name{Dsciat}
 \alias{Dsciat}
-\title{Compute D for the SC-IAT.}
+\title{Compute D for the SC-IAT}
 \usage{
 Dsciat(data, mappingA = "mappingA", mappingB = "mappingB",
   non_response = NULL)

@@ -1,4 +1,4 @@
-#' Compute D for the SC-IAT.
+#' Compute D for the SC-IAT
 #'
 #' Compute D for the SC-IAT.
 #'
