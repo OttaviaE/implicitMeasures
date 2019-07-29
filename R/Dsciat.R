@@ -98,7 +98,8 @@ Dsciat <- function(data,
   }
 
   data <- mutate(data,
-                 condition = ifelse(data[, "block"] == options_label[1],
+                 condition = ifelse(
+                   data[, "block"] == options_label[1],
                                     "mappingA", "mappingB"))
   data[,"participant"] <- as.character(data[, "participant"])
   # create order of presentation variable
@@ -144,21 +145,24 @@ Dsciat <- function(data,
 
   # filter for slow responses (10000ms)
   data <- mutate(data,
-                 slow10000 = ifelse(data$latency > 10000,
+                 slow10000 = ifelse(
+                   data$latency > 10000,
                                     "out", "keep"))
   # create the table for slow participants
   table_slow <- table(data$slow1000, data$participant)
 
   # filter for fast responses (400ms)
   data <- mutate(data,
-                 fast400 = ifelse(data$latency < 400,
+                 fast400 = ifelse(
+                   data$latency < 400,
                                   "out", "keep"))
   # create teh table for fast 400
   table_400 <- table(data$fast400, data$participant)
 
   # filter for fast responses (300ms)
   data <- mutate(data,
-                 fast350 = ifelse(data$latency < 350,
+                 fast350 = ifelse(
+                   data$latency < 350,
                                   "out", "keep"))
   # create the table for fast 400
   table_350 <- table(data$fast350, data$participant)
@@ -171,12 +175,17 @@ Dsciat <- function(data,
                             idvar = "participant",
                             timevar = "condition",
                             direction = "wide")
-  acc_clean_wide$out_accuracy <- ifelse(acc_clean_wide$correct.mappingA < .75 |
-                                          acc_clean_wide$correct.mappingB < .75,
+  acc_clean_wide$out_accuracy <- ifelse(
+                                    acc_clean_wide$correct.mappingA < .75 |
+                                    acc_clean_wide$correct.mappingB < .75,
                                         "out", "keep")
-  data <- merge(data, acc_clean_wide, by = "participant")
+  data <- merge(data,
+                acc_clean_wide,
+                by = "participant")
   descript_data <- data.frame(participant = acc_clean_wide$participant)
-  descript_data <- merge(descript_data, n_trial, by = "participant")
+  descript_data <- merge(descript_data,
+                         n_trial,
+                         by = "participant")
   descript_data <- merge(descript_data, n_resp)
 
   # number of slow trials > 10000ms
