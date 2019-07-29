@@ -50,13 +50,13 @@
 #'  multi_dsciat(d_sciat1, d_sciat2) # plot the D of two SC-IATs with default
 #'                                     # settings
 multi_dsciat <- function(sciat1, sciat2,
-                   graph = c("density", "violin", "point"),
-                   x_values = TRUE,
-                   gcolors = c("dark", "greens", "blues", "pinks"),
-                   label_sc1 = "SC-IAT1",
-                   label_sc2  = "SC-IAT2",
-                   label_y = "SC-IAT scores",
-                   dens_mean = T){
+                         graph = c("density", "violin", "point"),
+                         x_values = TRUE,
+                         gcolors = c("dark", "greens", "blues", "pinks"),
+                         label_sc1 = "SC-IAT1",
+                         label_sc2  = "SC-IAT2",
+                         label_y = "SC-IAT scores",
+                         dens_mean = T){
   graph <- match.arg(graph)
   gcolors <- match.arg(gcolors)
 
