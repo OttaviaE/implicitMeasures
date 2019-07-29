@@ -99,11 +99,14 @@ clean_sciat <- function(data, sbj_id = "participant",
   # create a vector for checking whether the variable names were correctly specified
   if (is.null(trial_id) & is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id)
-  } else if (!is.null(trial_id) & is.null(demo_id)){
+  }
+  else if (!is.null(trial_id) & is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id)
-  } else if (is.null(trial_id) & !is.null(demo_id)){
+  }
+  else if (is.null(trial_id) & !is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, demo_id)
-  } else if (!is.null(trial_id) & !is.null(demo_id)){
+  }
+  else if (!is.null(trial_id) & !is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id, demo_id)
   }
 
