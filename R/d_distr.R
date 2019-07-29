@@ -110,7 +110,6 @@ d_distr <- function(data,
                                       linetype = "dotted")
     }
   }
-
   else if (graph == "density"){
     d_graph <- ggplot(data,
                       aes(x = data$d)) +
@@ -129,7 +128,8 @@ d_distr <- function(data,
                                                       2*sd(data$d)),
                                       linetype = "dotted")
     }
-  } else if (graph == "violin"){
+  }
+  else if (graph == "violin"){
     d_graph <- ggplot(data,
                       aes(y = data$d,
                           x = data$variable)) +

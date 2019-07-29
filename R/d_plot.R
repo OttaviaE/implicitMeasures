@@ -121,7 +121,8 @@ d_plot <- function(data, point_size = 1,
       ylab(x_lab)
 
 
-  } else if (order_sbj == "D-decreasing"){
+  }
+  else if (order_sbj == "D-decreasing"){
     data <- data[order(data$d, decreasing = T), ]
     data$d_cres <- 1:nrow(data)
     data$d_cres <- factor(data$d_cres)
@@ -157,6 +158,5 @@ d_plot <- function(data, point_size = 1,
   } else {
     d_graph <- d_graph + theme(axis.text.x = element_blank())
   }
-
   return(d_graph)
 }
