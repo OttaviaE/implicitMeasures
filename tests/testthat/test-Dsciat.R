@@ -1,7 +1,7 @@
 # Test Dsciat function ####
 
 test_that("Dsciat recognizes the class of the object", {
-  data("raw_data") # load data
+  data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                              block_id = "blockcode",
                              mapA_practice = "practice.iat.Milkbad",
@@ -33,7 +33,7 @@ test_that("Dsciat recognizes the labels for Mapping A and Mapping B", {
                             trial_id  = "trialcode",
                             trial_eliminate = c("reminder",
                                                 "reminder1"))
-  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
+  sciat1 <- sciat_data[[1]]
   expect_error(Dsciat(sciat1,
                       mappingA = ".sc_dark.Darkbad",
                       mappingB = "test.sc_dark.Darkgood",
@@ -65,7 +65,7 @@ test_that("Dsciat returns the right object", {
                             trial_id  = "trialcode",
                             trial_eliminate = c("reminder",
                                                 "reminder1"))
-  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
+  sciat1 <- sciat_data[[1]]
   sciat_score <- Dsciat(sciat1,
                         mappingA = "test.sc_dark.Darkbad",
                         mappingB = "test.sc_dark.Darkgood",

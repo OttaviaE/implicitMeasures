@@ -32,7 +32,7 @@ test_that("computeD stops if Dscore is not specified", {
   expect_error(computeD(iat_cleandata[[1]]))
 })
 
-test_that("computeD produce a dataframe of class dscore for all", {
+test_that("computeD produce a dataframe of class dscore (all scores)", {
   skip_on_cran()
   data("raw_data")
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
