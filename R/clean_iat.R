@@ -160,14 +160,14 @@ clean_iat <- function(data, sbj_id = "participant",
   data$data_keep <- mutate(data$data_keep,
                            condition = ifelse(
                              data$data_keep[, "block_original"] == options_label[1] |
-                             data$data_keep[, "block_original"] == options_label[2],
-                                              "MappingA", "MappingB"))
+                               data$data_keep[, "block_original"] == options_label[2],
+                             "MappingA", "MappingB"))
   # create the block pool (practice vs test)
   data$data_keep <- mutate(data$data_keep,
                            block_pool = ifelse(
                              data$data_keep[, "block_original"] == options_label[1] |
-                             data$data_keep[,"block_original"] == options_label[3],
-                                               "practice", "test"))
+                               data$data_keep[,"block_original"] == options_label[3],
+                             "practice", "test"))
   # create the block
   data$data_keep <- mutate(data$data_keep,
                            block = paste(data$data_keep$block_pool,
