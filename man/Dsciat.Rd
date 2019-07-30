@@ -58,6 +58,7 @@ A dataframe with class \code{dsciat}. The number of rows of the
 Compute D for the SC-IAT.
 }
 \examples{
+\dontrun{
 # calculate D for the SCIAT
   data("raw_data") # load data
 sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -73,16 +74,17 @@ sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                                              "reminder1"))
  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
  d_sciat1 <- Dsciat(sciat1,
-                  mappingA = "test.sc_dark.Darkbad",
-                  mappingB = "test.sc_dark.Darkgood",
-                  non_response = "alert")
+                    mappingA = "test.sc_dark.Darkbad",
+                    mappingB = "test.sc_dark.Darkgood",
+                    non_response = "alert")
  head(d_sciat1) # dataframe containing the SC-IAT D of the of the
                 # first SC-IAT
 
  sciat2 <- sciat_data[[2]] # Compute D for the second SC-IAT
  d_sciat2 <- Dsciat(sciat2,
-                  mappingA = "test.sc_milk.Milkbad",
-                  mappingB = "test.sc_milk.Milkgood",
-                  non_response = "alert")
+                    mappingA = "test.sc_milk.Milkbad",
+                    mappingB = "test.sc_milk.Milkgood",
+                    non_response = "alert")
  head(d_sciat2)
+ }
 }

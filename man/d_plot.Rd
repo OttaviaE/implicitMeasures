@@ -37,6 +37,7 @@ A ggplot object
 Plot the indivisual \emph{D-score} or SC-IAT \emph{D}.
 }
 \examples{
+\dontrun{
 # Plotting the IAT D-score
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -59,7 +60,7 @@ Plot the indivisual \emph{D-score} or SC-IAT \emph{D}.
   d_plot(iat_dscore, order_sbj = "D-increasing") # D-score with increasing
                                                  # order
   d_plot(iat_dscore, order_sbj = "D-decreasing",
-      col_point = "salmon") # D-score with decreasing order changed color
+         col_point = "salmon") # D-score with decreasing order changed color
 # Plot the SC-IAT D for the first SC-IAT
   data("raw_data") # load data
   sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -81,4 +82,5 @@ Plot the indivisual \emph{D-score} or SC-IAT \emph{D}.
                   non_response = "alert")
   d_plot(d_sciat1, col_point = "salmon",
           include_stats = TRUE) # SC-IAT D with descriptive statistics
+          }
 }

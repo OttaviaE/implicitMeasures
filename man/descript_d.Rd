@@ -22,6 +22,7 @@ Dataframe, containing the mean, s.d., minimum and maximum of the IAT
 Descriptive statistics for the IAT \emph{D-score} or the SC-IAT \emph{D}.
 }
 \examples{
+\dontrun{
 # compute D-score 2 for the IAT data ###
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -39,7 +40,7 @@ Descriptive statistics for the IAT \emph{D-score} or the SC-IAT \emph{D}.
   iat_data <- iat_cleandata[[1]]
 # calculate D-score
   iat_dscore <- computeD(iat_data,
-                       Dscore =  "d2")
+                          Dscore =  "d2")
   descript_d(iat_dscore) # descriptive statistics for the IAT
 
  # calculate D for the SCIAT
@@ -58,10 +59,11 @@ sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
 
  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
  d_sciat1 <- Dsciat(sciat1,
-                  mappingA = "test.sc_dark.Darkbad",
-                  mappingB = "test.sc_dark.Darkgood",
-                  non_response = "alert")
+                    mappingA = "test.sc_dark.Darkbad",
+                    mappingB = "test.sc_dark.Darkgood",
+                    non_response = "alert")
   descript_d(d_sciat1,
-            latex = TRUE) # descriptive statistics for the SC-IAT in latex
+             latex = TRUE) # descriptive statistics for the SC-IAT in latex
                           # format
+                          }
 }

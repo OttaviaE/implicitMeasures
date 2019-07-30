@@ -69,6 +69,7 @@ Select the SC-IAT blocks, for either one or two SC-IATs. Eventually
 save demographic data.
 }
 \examples{
+\dontrun{
 data("raw_data")
 sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                          block_id = "blockcode",
@@ -83,4 +84,5 @@ sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                                              "reminder1"))
 sciat1 <- sciat_data[[1]]
 sciat2 <- sciat_data[[2]]
+}
 }

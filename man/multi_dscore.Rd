@@ -23,6 +23,7 @@ A list. The first object is a dataframe containing all the computed
 Compute and plot multiple \emph{D-score}s.
 }
 \examples{
+\dontrun{
  # Compute multiple IAT D-scores
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -48,4 +49,5 @@ Compute and plot multiple \emph{D-score}s.
 
   # plot the results
   multiple_scores$graph
+  }
 }

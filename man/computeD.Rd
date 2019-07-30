@@ -63,6 +63,7 @@ Dataframe with class \code{"dscore"}. The number of rows of the
 Compute \emph{D-score} for the IAT according to different algorithms.
 }
 \examples{
+\dontrun{
 # compute D-score 2 for the IAT data ###
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -80,5 +81,6 @@ Compute \emph{D-score} for the IAT according to different algorithms.
   iat_data <- iat_cleandata[[1]]
 # calculate D-score
   iat_dscore <- computeD(iat_data,
-                       Dscore =  "d2")
+                         Dscore =  "d2")
+                       }
 }

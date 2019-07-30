@@ -73,6 +73,7 @@ List of dataframe.
 Select IAT blocks for the \emph{D-score} computation and eventually save demographic data.
 }
 \examples{
+\dontrun{
 data("raw_data") # load data
 iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
                           block_id = "blockcode",
@@ -91,4 +92,5 @@ head(iat_data)
 demo_data <- iat_cleandata[[3]] # select the third element of the list
                             # (demographic data)
 head(demo_data)
+}
 }

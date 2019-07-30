@@ -34,6 +34,7 @@ A ggplot object.
 Plot the distribution of the IAT \emph{D-score} or the SC-IAT \emph{D}.
 }
 \examples{
+\dontrun{
   # Plotting the IAT D-score
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -54,7 +55,7 @@ Plot the distribution of the IAT \emph{D-score} or the SC-IAT \emph{D}.
                        Dscore =  "d2")
   d_distr(iat_dscore) # Default graph
   d_distr(iat_dscore, graph = "histogram",
-            n_bin = 30) # Histogram with a different number of bins
+          n_bin = 30) # Histogram with a different number of bins
   d_distr(iat_dscore, graph = "density") # IAT D-score density plot
   d_distr(iat_dscore, graph = "violin") # IAT D-score violin plot
 
@@ -78,6 +79,7 @@ Plot the distribution of the IAT \emph{D-score} or the SC-IAT \emph{D}.
                   mappingB = "test.sc_dark.Darkgood",
                   non_response = "alert")
   d_distr(d_sciat1, graph = "histogram",
-             include_stats = TRUE) # SC-IAT D histogram with descriptive
+          include_stats = TRUE) # SC-IAT D histogram with descriptive
                                    #  statistics
+                                   }
 }
