@@ -48,7 +48,7 @@ Dataframe with class \code{"dscore"}. The number of rows of the
      The X stands for the selected \emph{D-score} procedure.}
  \item{\code{d_test_dX}}{\emph{D-score}s computed on the test blocks. The X
      stands for the selected \emph{D-score} procedure.}
- \item{\code{dscore_dX}}{The average \emph{D-score} for the pratice and test
+ \item{\code{dscore_dX}}{The average \emph{D-score} for the practice and test
     \emph{D-score}s. The X stands for the selected \emph{D-score} procedure.}
  \item{\code{cond_ord}}{Indicates the order with which the associative
      conditions have been presented, either \code{"MappingA_First"} or

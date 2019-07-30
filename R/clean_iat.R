@@ -24,9 +24,9 @@
 #'                    response times (in millisecond). If the IAT had a
 #'                    built-in correction, latencies of the incorrect responses
 #'                    should be those inflated with the built-in correction.
-#' @param trial_id Character. Column identifying the trials. Specificy this only
+#' @param trial_id Character. Column identifying the trials. Specify this only
 #'                    if you want to delete some specific trials.
-#' @param trial_eliminate Character or character vector. Label(s) identifyng the trials
+#' @param trial_eliminate Character or character vector. Label(s) identifying the trials
 #'                    in \code{trial_id} to eliminate.
 #' @param demo_id Character. Column identifying demographic blocks. It can be the same as \code{block_id}.
 #' @param trial_demo Character or character vector identifying the name of the
@@ -35,7 +35,7 @@
 #' @return List of dataframe.
 #'  \describe{
 #'     \item{\code{data_keep}}{Dataframe with class \code{iat_clean}. The
-#'     dataframe contains the data of the blocks specificied in
+#'     dataframe contains the data of the blocks specified in
 #'     \code{mapA_practice}, \code{mapA_test}, \code{mapB_practice},
 #'     \code{mapB_test}. If you have specified the trials to eliminate through
 #'     \code{trial_eliminate}, \code{data_keep} will contain the already
@@ -130,19 +130,19 @@ clean_iat <- function(data, sbj_id = "participant",
 
   # check consistency between columns and labels --------------------------
   if (!is.null(trial_eliminate) & is.null(trial_id)) {
-    stop("You must specificy the trial_id variable to eliminate trials")
+    stop("You must specify the trial_id variable to eliminate trials")
   }
 
   if (is.null(trial_eliminate) & !is.null(trial_id)) {
-    stop("You must specificy the trial_elimate variable to eliminate trials")
+    stop("You must specify the trial_elimate variable to eliminate trials")
   }
 
   if (!is.null(trial_demo) & is.null(demo_id)) {
-    stop("You must specificy the demo_id variable to select demographic trials")
+    stop("You must specify the demo_id variable to select demographic trials")
   }
 
   if (is.null(trial_demo) & !is.null(demo_id)) {
-    stop("You must specificy the trial_demo variable to select demographic trials")
+    stop("You must specify the trial_demo variable to select demographic trials")
   }
 
   # select only useful columns --------------------------

@@ -1,7 +1,7 @@
 #' Dataset with one IAT and two SC-IATs
 #'
 #' A dataset containing the data from 152 participants who completed
-#'  one IAT and two SC-IATs. The object of both the implicit meausures
+#'  one IAT and two SC-IATs. The object of both the implicit measures
 #'  was chocolate, either Milk or Dark chocolate:
 #'
 #' @docType data
@@ -20,13 +20,13 @@
 #'            \itemize{
 #'               \item alert. Defines the SC-IAT trials beyond the response time
 #'                            window.
-#'               \item Reminder, Reminder1. Identifiy the instruction page.
+#'               \item Reminder, Reminder1. Identify the instruction page.
 #'             }
 #'    \item blockcode. Factor with 13 levels as follow:
 #'                      \itemize{
 #'                        \item practice.iat.Milkbad. IAT practice blocks,
 #'                                                     Mapping A.
-#'                        \item practice.iat.Milkbad. IAT pratice blocks,
+#'                        \item practice.iat.Milkbad. IAT practice blocks,
 #'                                                     Mapping B.
 #'                        \item practice.sc_dark.Darkbad. Dark SC-IAT practice
 #'                                                         blocks, Mapping A.

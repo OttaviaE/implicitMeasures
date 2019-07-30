@@ -18,7 +18,7 @@ the second SC-IAT.}
 
 \item{graph}{String. Type of graph to display. Default is \code{density}.}
 
-\item{x_values}{Logical. Shows the values for x-axis (deafult = \code{TRUE}).
+\item{x_values}{Logical. Shows the values for x-axis (default = \code{TRUE}).
 Only for the point graph.}
 
 \item{gcolors}{String. Colors palette for plotting the results. Default is \code{dark}.}
@@ -31,7 +31,7 @@ Default is \code{SC-IAT2}.}
 
 \item{label_y}{String. Label to plot on the y-axis.}
 
-\item{dens_mean}{Logical. Whether to include the mean in the denisity plot.
+\item{dens_mean}{Logical. Whether to include the mean in the density plot.
 Default is TRUE.}
 }
 \value{

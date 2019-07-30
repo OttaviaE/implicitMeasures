@@ -13,7 +13,7 @@ d_distr(data, graph = c("histogram", "density", "violin"), n_bin = 80,
 \item{graph}{String. Indicates the graphs to display. Default is
 \code{histogram}}
 
-\item{n_bin}{Numeric. Indicates the number of bins to diplay.}
+\item{n_bin}{Numeric. Indicates the number of bins to display.}
 
 \item{col_fill}{String. Indicates the color for filling the bars of the
 \code{histogram} or the curve of the \code{density}. Default

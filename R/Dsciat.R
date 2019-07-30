@@ -2,10 +2,10 @@
 #'
 #' Compute D for the SC-IAT.
 #'
-#' @param data Datframe with class \code{clean_sciat}.
-#' @param mappingA String. Label identifiying the mapping A of the SC-IAT in the
+#' @param data Dataframe with class \code{clean_sciat}.
+#' @param mappingA String. Label identifying the mapping A of the SC-IAT in the
 #'                    \code{block_id} variable.
-#' @param mappingB String. Label identifiying the mapping B of the SC-IAT in the
+#' @param mappingB String. Label identifying the mapping B of the SC-IAT in the
 #'                    \code{block_id} variable.
 #' @param non_response String. Labels of the trials identifying the
 #'                      non-responses, a.k.a responses beyond the response time
@@ -30,8 +30,8 @@
 #'                 or not (\code{"keep"}).}
 #'  \item{\code{nfast400}}{Number of fast trials (< 400 ms).}
 #'  \item{\code{nfast300}}{Number of fast trials (< 350 ms -- deleted).}
-#'  \item{\code{accuracy.mappingA}}{Proprotion of correct responses in Mapping A.}
-#'  \item{\code{accuracy.mappingB}}{Proprotion of correct responses in mapping B.}
+#'  \item{\code{accuracy.mappingA}}{Proportion of correct responses in Mapping A.}
+#'  \item{\code{accuracy.mappingB}}{Proportion of correct responses in mapping B.}
 #'  \item{\code{RT_mean.MappingA}}{Mean response time in Mapping A.}
 #'  \item{\code{RT_mean.MappingB}}{Mean response time in Mapping B.}
 #'  \item{\code{cond_ord}}{Indicates the order with which the associative

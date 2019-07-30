@@ -16,10 +16,10 @@ Default is 1.}
 
 \item{x_label}{Character. Label of the x-axis. Default is \code{Participant}.}
 
-\item{x_values}{Logical. Shows the values for x-axis (deafult = \code{TRUE}).}
+\item{x_values}{Logical. Shows the values for x-axis (default = \code{TRUE}).}
 
 \item{order_sbj}{Character. Defines the order with which the participants are
-displayed. Default is the deafult order of participants in
+displayed. Default is the default order of participants in
 the dataframe.}
 
 \item{col_point}{Character. Defines the color of the points. Default is
@@ -34,7 +34,7 @@ Default is \code{FALSE}.}
 A ggplot object
 }
 \description{
-Plot the indivisual \emph{D-score} or SC-IAT \emph{D}.
+Plot the individual \emph{D-score} or SC-IAT \emph{D}.
 }
 \examples{
 \dontrun{

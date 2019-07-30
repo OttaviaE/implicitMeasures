@@ -1,14 +1,14 @@
 #' Plot either IAT or SC-IAT scores (points)
 #'
-#' Plot the indivisual \emph{D-score} or SC-IAT \emph{D}.
+#' Plot the individual \emph{D-score} or SC-IAT \emph{D}.
 #'
 #' @param data Dataframe with either class \code{dscore} or \code{dsciat}.
 #' @param point_size Numeric. Indicates the size of the points in the graph.
 #'                    Default is 1.
 #' @param x_label Character. Label of the x-axis. Default is \code{Participant}.
-#' @param x_values Logical. Shows the values for x-axis (deafult = \code{TRUE}).
+#' @param x_values Logical. Shows the values for x-axis (default = \code{TRUE}).
 #' @param order_sbj Character. Defines the order with which the participants are
-#'                    displayed. Default is the deafult order of participants in
+#'                    displayed. Default is the default order of participants in
 #'                    the dataframe.
 #' @param col_point Character. Defines the color of the points. Default is
 #'                    \code{"springgreen4"}.

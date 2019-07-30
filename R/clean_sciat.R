@@ -1,4 +1,4 @@
-#' Preapre and clean SC-IAT data
+#' Prepare and clean SC-IAT data
 #'
 #' Select the SC-IAT blocks, for either one or two SC-IATs. Eventually
 #' save demographic data.
@@ -19,9 +19,9 @@
 #' blocks as they are named in the \code{block_id}.
 #' @param block_sciat_2 Character or character vector. Labels identifying the second (if present) SC-IAT
 #' blocks as they are named in the \code{block_id}.
-#' @param trial_id Character. Column identifying the trials. Specificy this only
+#' @param trial_id Character. Column identifying the trials. Specify this only
 #'      if you want to delete some specific trials. If a response window was used
-#'      for the SC-IAT administration the label of the non-reponse must be included in
+#'      for the SC-IAT administration the label of the non-response must be included in
 #'      this variable.
 #' @param trial_eliminate Character or character vector. Labels of the trials to
 #'       eliminate in the \code{trial_id} to eliminate (NOTE: don't use this command
@@ -35,14 +35,14 @@
 #'
 #'  \describe{
 #'     \item{\code{sciat1}}{Data frame with class \code{sciat_clean} containing
-#'     the data of the first SC-IAT as specificied thorugh \code{block_sciat_1}.
+#'     the data of the first SC-IAT as specified  \code{block_sciat_1}.
 #'     If any labels was specified in \code{trial_eliminate}, \code{data_keep}
 #'     will contain the already cleaned dataset.}
 #'     \item{\code{sciat2}}{Data frame with class \code{sciat_clean} containing
-#'     the data of the second (if any) SC-IAT as specificied thorugh \code{block_sciat_2}.
+#'     the data of the second (if any) SC-IAT as specified through \code{block_sciat_2}.
 #'     If any labels was specified in \code{trial_eliminate}, \code{data_keep}
 #'     will contain the already cleaned dataset.}
-#'     \item{\code{data_demo}}{Data farame. Present only when
+#'     \item{\code{data_demo}}{Data frame. Present only when
 #'     \code{variable_demo} and \code{trial_demo} arguments are specified.}
 #'     }
 #'
@@ -78,19 +78,19 @@ clean_sciat <- function(data, sbj_id = "participant",
   original <- data
   # check consistency between columns and labels --------------------------
   if (!is.null(trial_eliminate) & is.null(trial_id)){
-    stop("You must specificy the trial_eliminate variable to eliminate trials")
+    stop("You must specify the trial_eliminate variable to eliminate trials")
   }
 
   if (is.null(trial_eliminate) & !is.null(trial_id)){
-    stop("You must specificy the trial_id variable to eliminate trials")
+    stop("You must specify the trial_id variable to eliminate trials")
   }
 
   if (!is.null(trial_demo) & is.null(demo_id)){
-    stop("You must specificy the trial_demo variable to select demographic trials")
+    stop("You must specify the trial_demo variable to select demographic trials")
   }
 
   if (is.null(trial_demo) & !is.null(demo_id)){
-    stop("You must specificy the demo_id variable to select demographic trials")
+    stop("You must specify the demo_id variable to select demographic trials")
   }
 
   # save the colum names of the orginal dataset

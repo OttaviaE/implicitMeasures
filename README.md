@@ -13,7 +13,7 @@ status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](http
 The goal of implicitMeasures is to provide functions for cleaning data
 from different implicit measures, computing their scores, and plotting
 the results. So far, functions for the computing the scores for the
-Implicit Association Test (IAT) and the Single Category-IAT (SC-IAT) ara
+Implicit Association Test (IAT) and the Single Category-IAT (SC-IAT) are
 available:
 
   - `clean_iat()` cleans and prepares the data for computing the IAT
@@ -72,7 +72,7 @@ iat <- iat_data[[1]]
 dscore <- computeD(iat, D = "d3")
 ```
 
-`computeD()` reuslts in a data frame with class `dscore`, and it can be
+`computeD()` results in a data frame with class `dscore`, and it can be
 passe to other functions, for example for plotting the results, either
 at the individual
 level:
@@ -86,7 +86,7 @@ level:
 ## Bugs and problems
 
 If you find any bugs or encounter any problems in using this package,
-please post a minimal reproducibile example on
+please post a minimal reproducible example on
 [github](https://github.com/OttaviaE/implicitMeasures/issues). For
 questions and other discussion, you can contact the author and
 maintainer of the package at <otta.epifania@gmail.com>.

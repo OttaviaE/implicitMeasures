@@ -7,7 +7,7 @@
 #' @param sciat2 Dataframe with class \code{dsciat}. Contains the \emph{D} for
 #'                the second SC-IAT.
 #' @param graph String. Type of graph to display. Default is \code{density}.
-#' @param x_values Logical. Shows the values for x-axis (deafult = \code{TRUE}).
+#' @param x_values Logical. Shows the values for x-axis (default = \code{TRUE}).
 #'                          Only for the point graph.
 #' @param gcolors String. Colors palette for plotting the results. Default is \code{dark}.
 #' @param label_sc1 String. Label to display in the graph for the first SC-IAT.
@@ -15,7 +15,7 @@
 #' @param label_sc2 String. Label to display in the graph for the first SC-IAT.
 #'                   Default is \code{SC-IAT2}.
 #' @param label_y String. Label to plot on the y-axis.
-#' @param dens_mean Logical. Whether to include the mean in the denisity plot.
+#' @param dens_mean Logical. Whether to include the mean in the density plot.
 #'                   Default is TRUE.
 #'
 #' @return A ggplot object

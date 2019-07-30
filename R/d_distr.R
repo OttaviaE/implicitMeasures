@@ -5,7 +5,7 @@
 #' @param data Dataframe with either class \code{dscore} or \code{dsciat}.
 #' @param graph String. Indicates the graphs to display. Default is
 #'                \code{histogram}
-#' @param n_bin Numeric. Indicates the number of bins to diplay.
+#' @param n_bin Numeric. Indicates the number of bins to display.
 #' @param col_fill String. Indicates the color for filling the bars of the
 #'                  \code{histogram} or the curve of the \code{density}. Default
 #'                  is \code{royalblue}.

@@ -42,10 +42,10 @@ IAT accuracy responses. The \code{accuracy_id} variable
 should be a numeric variable identifying the correct
 responses (with 1) and the incorrect responses (with 0).}
 
-\item{trial_id}{Character. Column identifying the trials. Specificy this only
+\item{trial_id}{Character. Column identifying the trials. Specify this only
 if you want to delete some specific trials.}
 
-\item{trial_eliminate}{Character or character vector. Label(s) identifyng the trials
+\item{trial_eliminate}{Character or character vector. Label(s) identifying the trials
 in \code{trial_id} to eliminate.}
 
 \item{demo_id}{Character. Column identifying demographic blocks. It can be the same as \code{block_id}.}
@@ -57,7 +57,7 @@ blocks in \code{demo_id} containing the demographic information.}
 List of dataframe.
  \describe{
     \item{\code{data_keep}}{Dataframe with class \code{iat_clean}. The
-    dataframe contains the data of the blocks specificied in
+    dataframe contains the data of the blocks specified in
     \code{mapA_practice}, \code{mapA_test}, \code{mapB_practice},
     \code{mapB_test}. If you have specified the trials to eliminate through
     \code{trial_eliminate}, \code{data_keep} will contain the already

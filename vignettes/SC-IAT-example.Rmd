@@ -57,9 +57,9 @@ sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                          trial_demo = "demo")
 ```
 
-**DON'T USE THE `trial_eliminate` ARGUMENT TO ELIMINATE TRIALS EXCEEDDING THE RESPONSE TIME WINDOW (rtw).**
+**DON'T USE THE `trial_eliminate` ARGUMENT TO ELIMINATE TRIALS EXCEEDING THE RESPONSE TIME WINDOW (rtw).**
 
-The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the varibale identified by `trial_id`, but they have to be specified via the `non_response` in the `Dsciat()` function to actually be deleted.
+The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the variable identified by `trial_id`, but they have to be specified via the `non_response` in the `Dsciat()` function to actually be deleted.
 
 Since two SC-IATs and demographic data were specified, `clean_sciat()` results in a `List` of 3 elements: 
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_sciat.R
 \name{clean_sciat}
 \alias{clean_sciat}
-\title{Preapre and clean SC-IAT data}
+\title{Prepare and clean SC-IAT data}
 \usage{
 clean_sciat(data, sbj_id = "participant", block_id = "blockcode",
   accuracy_id = "correct", latency_id = "latency",
@@ -33,9 +33,9 @@ blocks as they are named in the \code{block_id}.}
 \item{block_sciat_2}{Character or character vector. Labels identifying the second (if present) SC-IAT
 blocks as they are named in the \code{block_id}.}
 
-\item{trial_id}{Character. Column identifying the trials. Specificy this only
+\item{trial_id}{Character. Column identifying the trials. Specify this only
 if you want to delete some specific trials. If a response window was used
-for the SC-IAT administration the label of the non-reponse must be included in
+for the SC-IAT administration the label of the non-response must be included in
 this variable.}
 
 \item{trial_eliminate}{Character or character vector. Labels of the trials to
@@ -53,14 +53,14 @@ List of dataframe.
 
  \describe{
     \item{\code{sciat1}}{Data frame with class \code{sciat_clean} containing
-    the data of the first SC-IAT as specificied thorugh \code{block_sciat_1}.
+    the data of the first SC-IAT as specified  \code{block_sciat_1}.
     If any labels was specified in \code{trial_eliminate}, \code{data_keep}
     will contain the already cleaned dataset.}
     \item{\code{sciat2}}{Data frame with class \code{sciat_clean} containing
-    the data of the second (if any) SC-IAT as specificied thorugh \code{block_sciat_2}.
+    the data of the second (if any) SC-IAT as specified through \code{block_sciat_2}.
     If any labels was specified in \code{trial_eliminate}, \code{data_keep}
     will contain the already cleaned dataset.}
-    \item{\code{data_demo}}{Data farame. Present only when
+    \item{\code{data_demo}}{Data frame. Present only when
     \code{variable_demo} and \code{trial_demo} arguments are specified.}
     }
 }

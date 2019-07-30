@@ -64,7 +64,7 @@ Once the algorithm has been chosen and the error and fast responses have been tr
 
 3. Compute the actual *D-score* as the mean of $D_{practice}$ and $D_{test}$. 
 
-`implicitMeasures` also includes a function (`IATrel()`) for computing IAT reliability as the correaltion between the *D-score*s computed on practice and on test blocks [@gaw2017]. 
+`implicitMeasures` also includes a function (`IATrel()`) for computing IAT reliability as the correlation between the *D-score*s computed on practice and on test blocks [@gaw2017]. 
 
 ## The Single Category Implicit Association Test
 
@@ -82,7 +82,7 @@ data.table(Block = 1:4,
   
 ```
 
-During the SC-IAT administration, respondents' usually receive a feedback signalling whether the response was correct (a green "O") or incorrect (a red "X"). A response time window (RTW) at 1,500ms is usually included in the administration, after which the stimulus on the screen disappears. Responses exceeding the RTW are considered non-response. 
+During the SC-IAT administration, respondents' usually receive a feedback signaling whether the response was correct (a green "O") or incorrect (a red "X"). A response time window (RTW) at 1,500ms is usually included in the administration, after which the stimulus on the screen disappears. Responses exceeding the RTW are considered non-response. 
 
 As in the IAT, the *SC-IAT effect* results from the difference in respondents' performance between the two associative conditions, under the assumption that the task will be easier in the condition consistent with the automatically activated association. A modification of the *D-score* has been proposed to interpret the SC-IAT effect, the *D* [@karp:2006]. Only the two associative test blocks are considered for the computation of the *D*. Fast responses (responses under 350ms) are discarded, as well as non-responses (responses exceeding the rtw). Error responses are replaced by the average response time of the block increased by a standard penalty of 400ms. The difference between the average response time in the two contrasting conditions is then divided by the standard deviation of the correct trials in both conditions. 
 
