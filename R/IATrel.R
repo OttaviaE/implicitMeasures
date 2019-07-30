@@ -14,6 +14,7 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' # compute D-score 2 for the IAT data ###
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -31,19 +32,20 @@
 #'   iat_data <- iat_cleandata[[1]]
 #' # calculate D-score
 #'   iat_dscore <- computeD(iat_data,
-#'                        Dscore =  "d2")
+#'                          Dscore =  "d2")
 #'   IATrel(iat_dscore)
-#'
+#'   }
 IATrel <- function(data){
-
+  # check dataset class --------------------------
   if(is.na(class(data)[2]) | class(data)[2] != "dscore"){
     stop("data is not an object of class dscore")
   }
-
-  IATreliability <- list(rel =round(cor(data[, c(grep("d_practice",
-                                                      colnames(data)),
-                                                 grep("d_test",
-                                                      colnames(data)))])[2,1],2),
+  # compute realiability --------------------------
+  IATreliability <- list(rel = round(
+                              cor(data[ , c(grep("d_practice", colnames(data)),
+                                            grep("d_test",
+                                                 colnames(data)))])[2, 1],
+                              2),
                          number = round(nrow(data)))
   names(IATreliability) <- c("Test-pratice Reliability",
                              "Number of participants")

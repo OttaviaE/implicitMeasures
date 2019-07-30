@@ -50,6 +50,7 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' # calculate D for the SCIAT
 #'   data("raw_data") # load data
 #' sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -65,62 +66,63 @@
 #'                                              "reminder1"))
 #'  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
 #'  d_sciat1 <- Dsciat(sciat1,
-#'                   mappingA = "test.sc_dark.Darkbad",
-#'                   mappingB = "test.sc_dark.Darkgood",
-#'                   non_response = "alert")
+#'                     mappingA = "test.sc_dark.Darkbad",
+#'                     mappingB = "test.sc_dark.Darkgood",
+#'                     non_response = "alert")
 #'  head(d_sciat1) # dataframe containing the SC-IAT D of the of the
 #'                 # first SC-IAT
 #'
 #'  sciat2 <- sciat_data[[2]] # Compute D for the second SC-IAT
 #'  d_sciat2 <- Dsciat(sciat2,
-#'                   mappingA = "test.sc_milk.Milkbad",
-#'                   mappingB = "test.sc_milk.Milkgood",
-#'                   non_response = "alert")
+#'                     mappingA = "test.sc_milk.Milkbad",
+#'                     mappingB = "test.sc_milk.Milkgood",
+#'                     non_response = "alert")
 #'  head(d_sciat2)
+#'  }
 
 Dsciat <- function(data,
                    mappingA = "mappingA",
                    mappingB = "mappingB",
                    non_response = NULL){
+  # check dataset class --------------------------
   if (is.na(class(data)[2]) | class(data)[2] != "sciat_clean"){
     stop('Object is not of class sciat_clean')
   }
-  # rename the blocks
   options_label = c(mappingA, mappingB)
   names(options_label) <- c("mappingA", "mappingB")
 
+  # labels check --------------------------
   if (sum(any(data[, "block"] == mappingA)) == 0 |
-      sum(any(data[, "block"] == mappingB)) == 0){
+      sum(any(data[, "block"] == mappingB)) == 0) {
     stop("mappingA/mappingB labels not found in the dataset")
-  }
-  else if (mappingA == mappingB){
+  } else if (mappingA == mappingB) {
     stop("the labels of the two conditions have the same name")
   }
 
+  # preparare dataset --------------------------
   data <- mutate(data,
-                 condition = ifelse(
-                   data[, "block"] == options_label[1],
+                 condition = ifelse(data[ , "block"] == options_label[1],
                                     "mappingA", "mappingB"))
-  data[,"participant"] <- as.character(data[, "participant"])
+  data[,"participant"] <- as.character(data[ , "participant"])
   # create order of presentation variable
   condition_order <- aggregate(condition ~ participant,
                                data = data,
                                unique)
   colnames(condition_order)[2] <-  "order"
-  condition_order$cond_ord <- paste(condition_order$order[, 1],
-                                    condition_order$order[, 2],
+  condition_order$cond_ord <- paste(condition_order$order[ , 1],
+                                    condition_order$order[ , 2],
                                     sep = "_")
   condition_order <- condition_order[, c("participant", "cond_ord")]
   condition_order$cond_ord <- with(condition_order,
-                                   ifelse(
-                                     cond_ord == "MappingA_MappingB",
+                                   ifelse(cond_ord == "MappingA_MappingB",
                                      "MappingA_First",
                                      "MappingB_First"))
   condition_order$legendMappingA <- mappingA
   condition_order$legendMappingB <- mappingB
 
   # take out non responses, if any:
-  if (is.null(non_response)){
+  # count the non responses before removing
+  if (is.null(non_response)) {
     data <- data
     n_resp <- data.frame(participant = unique(data[, "participant"]),
                          no_response = "none")
@@ -139,34 +141,28 @@ Dsciat <- function(data,
     data <- data[!(data[, "trial"]) %in% non_response, ]
   }
 
-  # save the numebr of trials per participant before the deletion of anything
+  #store number of trials per participant
   n_trial <- data.frame(table(data$participant))
   colnames(n_trial) <- c("participant", "n_trial")
-
   # filter for slow responses (10000ms)
   data <- mutate(data,
                  slow10000 = ifelse(
                    data$latency > 10000,
                                     "out", "keep"))
-  # create the table for slow participants
+  # create table for slow participants
   table_slow <- table(data$slow1000, data$participant)
-
   # filter for fast responses (400ms)
   data <- mutate(data,
-                 fast400 = ifelse(
-                   data$latency < 400,
+                 fast400 = ifelse(data$latency < 400,
                                   "out", "keep"))
-  # create teh table for fast 400
+  # create table for fast participants
   table_400 <- table(data$fast400, data$participant)
-
   # filter for fast responses (300ms)
   data <- mutate(data,
-                 fast350 = ifelse(
-                   data$latency < 350,
+                 fast350 = ifelse(data$latency < 350,
                                   "out", "keep"))
-  # create the table for fast 400
+  # create table for fast participants
   table_350 <- table(data$fast350, data$participant)
-
   # filter on accuracy
   accuracy_clean <- aggregate(correct ~ participant + condition,
                               data = data,
@@ -175,9 +171,8 @@ Dsciat <- function(data,
                             idvar = "participant",
                             timevar = "condition",
                             direction = "wide")
-  acc_clean_wide$out_accuracy <- ifelse(
-                                    acc_clean_wide$correct.mappingA < .75 |
-                                    acc_clean_wide$correct.mappingB < .75,
+  acc_clean_wide$out_accuracy <- ifelse(acc_clean_wide$correct.mappingA < .75 |
+                                        acc_clean_wide$correct.mappingB < .75,
                                         "out", "keep")
   data <- merge(data,
                 acc_clean_wide,
@@ -187,25 +182,23 @@ Dsciat <- function(data,
                          n_trial,
                          by = "participant")
   descript_data <- merge(descript_data, n_resp)
-
   # number of slow trials > 10000ms
-  if (dim(table_slow)[1] == 1){
+  if (dim(table_slow)[1] == 1) {
     # if there are no trials > 10000 it just writes 0
     descript_data$nslow10000 <- 0
   } else {
     # otherwise it reports the number of trials slower than 10000ms
     # per participant
     nslow10000 <- data.frame(participant = names(table_slow[1, ]),
-                             nslow10000 = (table_slow[2,]))
+                             nslow10000 = (table_slow[2, ]))
     # merge with the descript data
     descript_data <- merge(descript_data, nslow10000,
                            by ="participant")
     # compute the proprortion
-    descript_data$nslow10000 <- round(descript_data$nslow10000/
-                                        descript_data$n_trial,2)
+    descript_data$nslow10000 <- round(descript_data$nslow10000 /
+                                        descript_data$n_trial, 2)
   }
-
-  # number of slow trials < 400ms
+  # number of slow trials (< 400ms)
   if (dim(table_400)[1] == 1){
     # if there are no trials < 400 it just writes 0
     descript_data$nfast400 <- 0
@@ -213,16 +206,15 @@ Dsciat <- function(data,
     # otherwise it reports the number of trials faster than 400ms
     # per participant
     nfast400 <- data.frame(participant = names(table_400[1, ]),
-                           nfast400 = (table_400[2,]))
+                           nfast400 = (table_400[2, ]))
     # merge with the descript data
     descript_data <- merge(descript_data, nfast400,
-                           by ="participant")
+                          by ="participant")
     # compute the proportion
-    descript_data$nfast400 <- round(descript_data$nfast400/
-                                      descript_data$n_trial, 2)
+    descript_data$nfast400 <- round(descript_data$nfast400 /
+                                    descript_data$n_trial, 2)
   }
-
-  # number of slow trials < 300ms
+  # number of slow trials (< 300ms)
   if (dim(table_350)[1] == 1){
     # if there are no trials < 300 it just writes 0
     descript_data$nfast300 <- 0
@@ -230,28 +222,23 @@ Dsciat <- function(data,
     # otherwise it reports the number of trials faster than 300ms
     # per participant
     nfast350 <- data.frame(participant = names(table_350[1, ]),
-                           nfast350 = (table_350[2,]))
+                           nfast350 = (table_350[2, ]))
     # merge with the descript data
     descript_data <- merge(descript_data, nfast350,
                            by ="participant")
     # compute the proportion
-    descript_data$nfast350 <- round(descript_data$nfast350/
+    descript_data$nfast350 <- round(descript_data$nfast350 /
                                       descript_data$n_trial, 2)
   }
-
   # take out fast responses
-
   data <- data[data$fast350 %in% "keep", ]
-
   #take out participant based on the accuracy
   sbj_out_acc <- aggregate(out_accuracy ~ participant,
                            data = data,
                            unique)
-
   descript_data <- merge(descript_data,
                          sbj_out_acc,
                          by = "participant")
-
   accuracy_condition <- aggregate(correct ~ participant + condition,
                                   data = data,
                                   mean)
@@ -261,15 +248,13 @@ Dsciat <- function(data,
                                 direction = "wide")
   colnames(accuracy_condition) <- gsub("correct", "accuracy",
                                        colnames(accuracy_condition))
-
-  # Compute D sciat ####
+  # Compute D sciat --------------------------
   sciat_correct <- data[data$correct == 1, ]
   sciat_mean <- with(data,
                      aggregate(latency,
                                by = list(condition, participant),
                                FUN = mean))
   colnames(sciat_mean) <- c("condition", "participant", "mean_sc")
-
   sciat_sd <- with(sciat_correct,
                    aggregate(latency,
                              by = list(participant),
@@ -284,33 +269,27 @@ Dsciat <- function(data,
   data <- merge(data,
                 sciat_sd,
                 by = "participant" )
-
-  # replce errror response with mean + 400ms
+  # replace errror response with mean + 400ms
   data$latency_cor <- with(data,
                            ifelse(correct == 0,
                                   mean_sc + 400,
                                   latency))
-
   sc_mean_correct <- with(data,
                           aggregate(latency_cor,
                                     by = list(condition, participant),
                                     FUN = mean))
   colnames(sc_mean_correct) <- c("condition", "participant", "mean_correct")
-
   calc_d_sciat <- reshape(sc_mean_correct,
                           idvar = "participant",
                           timevar = "condition",
                           direction = "wide")
   calc_d_sciat <- merge(calc_d_sciat,
                         sciat_sd, by = "participant")
-
   calc_d_sciat$diff_mean <- with(calc_d_sciat,
                                  mean_correct.mappingA - mean_correct.mappingB)
   calc_d_sciat$d_sciat <- with(calc_d_sciat,
-                               diff_mean/sd_sciat)
-
+                               diff_mean / sd_sciat)
   d_sciat <- calc_d_sciat[, c("participant", "d_sciat")]
-
   mean_condition <- aggregate(latency_cor ~ participant + condition,
                               data = data,
                               mean)
@@ -320,7 +299,6 @@ Dsciat <- function(data,
                             direction = "wide")
   colnames(mean_condition) <- gsub("latency_cor", "RT_mean",
                                    colnames(mean_condition))
-
   descript_data <- merge(descript_data,
                          accuracy_condition,
                          by = "participant")
@@ -338,7 +316,7 @@ Dsciat <- function(data,
                                  "RT_mean.mappingB", "cond_ord",
                                  "legendMappingA", "legendMappingB",
                                  "d_sciat")]
-
   class(Dsciat_data) <- append(class(Dsciat_data), "dsciat")
+  # results --------------------------
   return(Dsciat_data)
 }

@@ -23,6 +23,7 @@
 #' @import ggplot2
 #'
 #' @examples
+#' \dontrun{
 #'   # Plotting the IAT D-score
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -43,7 +44,7 @@
 #'                        Dscore =  "d2")
 #'   d_distr(iat_dscore) # Default graph
 #'   d_distr(iat_dscore, graph = "histogram",
-#'             n_bin = 30) # Histogram with a different number of bins
+#'           n_bin = 30) # Histogram with a different number of bins
 #'   d_distr(iat_dscore, graph = "density") # IAT D-score density plot
 #'   d_distr(iat_dscore, graph = "violin") # IAT D-score violin plot
 #'
@@ -67,8 +68,9 @@
 #'                   mappingB = "test.sc_dark.Darkgood",
 #'                   non_response = "alert")
 #'   d_distr(d_sciat1, graph = "histogram",
-#'              include_stats = TRUE) # SC-IAT D histogram with descriptive
+#'           include_stats = TRUE) # SC-IAT D histogram with descriptive
 #'                                    #  statistics
+#'                                    }
 
 d_distr <- function(data,
                     graph = c("histogram", "density", "violin"),
@@ -78,6 +80,7 @@ d_distr <- function(data,
                     include_stats = FALSE){
   graph = match.arg(graph)
   data$variable <- 0
+  # check dataset class --------------------------
   if (is.na(class(data)[2])){
     stop("data must be an object of class dscore or dsciat")
   } else if (class(data)[2] == "dscore"){
@@ -90,65 +93,66 @@ d_distr <- function(data,
     stop("data must be an object of class dscore or dsciat")
   }
 
-  if (graph == "histogram"){
+  # initialize plots --------------------------
+  if (graph == "histogram") {
     d_graph <- ggplot(data,
                       aes(x = data$d)) +
-      geom_histogram(bins = n_bin, col = col_fill,
-                     fill = col_fill,
-                     alpha = .50)
+               geom_histogram(bins = n_bin, col = col_fill,
+                              fill = col_fill,
+                              alpha = .50)
     d_graph <- d_graph  + theme_minimal() + xlab(x_lab)  +
-      theme(axis.title.y = element_blank())
-    if (include_stats == FALSE){
+               theme(axis.title.y = element_blank())
+    # include descroptive statistics
+    if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
       d_graph <- d_graph + geom_vline(xintercept = mean(data$d))
       d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) +
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
       d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) -
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
     }
-  }
-  else if (graph == "density"){
+  } else if (graph == "density") {
     d_graph <- ggplot(data,
                       aes(x = data$d)) +
-      geom_density(alpha = 0.70, fill = col_fill ,
-                   col = col_fill)
+               geom_density(alpha = 0.70, fill = col_fill ,
+                            col = col_fill)
     d_graph <- d_graph  + theme_minimal() + xlab(x_lab) +
       theme(axis.title.y = element_blank())
-    if (include_stats == FALSE){
+    # include statistics
+    if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
       d_graph <- d_graph + geom_vline(xintercept = mean(data$d))
       d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) +
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
       d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) -
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
     }
-  }
-  else if (graph == "violin"){
+  } else if (graph == "violin") {
     d_graph <- ggplot(data,
                       aes(y = data$d,
                           x = data$variable)) +
-      geom_violin(trim = F)  +
-      geom_jitter(shape=16, col = col_point,
-                  position=position_jitter(0.2))
+               geom_violin(trim = F)  +
+               geom_jitter(shape = 16, col = col_point,
+                           position = position_jitter(0.2))
     d_graph <- d_graph  + theme_minimal()
     d_graph <- d_graph + theme(axis.text.x = element_blank(),
                                axis.title.x = element_blank()) +
-      ylab(x_lab)
-
-    if (include_stats == FALSE){
+                               ylab(x_lab)
+    # include statistics
+    if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
       d_graph <- d_graph + stat_summary(fun.data=mean_sdl,
                                         geom="pointrange",
                                         color="black")
     }
-
   }
+  # plot --------------------------
   return(d_graph)
 }

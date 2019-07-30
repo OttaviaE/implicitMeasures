@@ -53,6 +53,7 @@
 #' @import stats
 #'
 #' @examples
+#' \dontrun{
 #' data("raw_data") # load data
 #' iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
 #'                           block_id = "blockcode",
@@ -71,6 +72,7 @@
 #' demo_data <- iat_cleandata[[3]] # select the third element of the list
 #'                             # (demographic data)
 #' head(demo_data)
+#' }
 clean_iat <- function(data, sbj_id = "participant",
                       block_id = "blockcode",
                       mapA_practice = "practice_MappingA",
@@ -91,84 +93,85 @@ clean_iat <- function(data, sbj_id = "participant",
                             "mapB_test")
   # save the colum names of the orginal dataset
   original_colnames <- c(colnames(data))
-  # create a vector for checking whether the variable names were correctly specified
-  if (is.null(trial_id) & is.null(demo_id)){
+  # labels and columns check --------------------------
+  if (is.null(trial_id) & is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id)
-  } else if (!is.null(trial_id) & is.null(demo_id)){
+  } else if (!is.null(trial_id) & is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id)
-  } else if (is.null(trial_id) & !is.null(demo_id)){
+  } else if (is.null(trial_id) & !is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, demo_id)
-  } else if (!is.null(trial_id) & !is.null(demo_id)){
+  } else if (!is.null(trial_id) & !is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id, demo_id)
   }
 
-  # check whether the column names are entered correctly ####
+  # colnames check
   test_colnames <- NULL
   for(i in 1:length(name_data)){
     test_colnames[i] <- any(original_colnames == name_data[i])
   }
-  if (any(test_colnames == FALSE)){stop("Specify valid column names")}
+  if (any(test_colnames == FALSE)) {stop("Specify valid column names")}
 
-  # check whether the labels are actually in the dataframe ###
+  # blockcode labels check
   check_lab <- list()
   for(i in 1:length(options_label)){
-    check_lab[[i]] <- any(data[, block_id] == options_label[i])
+    check_lab[[i]] <- any(data[ , block_id] == options_label[i])
   }
   test_lab <- unlist(check_lab)
-  if(any(test_lab == FALSE)){
+  if(any(test_lab == FALSE)) {
     stop("blocks labels not found in the dataset")
-  } else if (length(unique(options_label)) < 4){
+  } else if (length(unique(options_label)) < 4) {
     stop("Two equals blocks labels were found")
   } else {
-    # create the list with keeping and deleting dataframes ####
-    data <- list(data_keep = data[data[, block_id] %in% options_label, ],
-                 data_eliminate = data[!(data[, block_id]) %in% options_label, ])
+  # create the list with keeping and deleting dataframes
+  data <- list(data_keep = data[data[ , block_id] %in% options_label, ],
+               data_eliminate = data[!(data[ , block_id]) %in% options_label, ])
     data$data_keep[, block_id] <- as.character(data$data_keep[, block_id])
-
   }
-  # if trial_eliminate is specified but not trial_id -> throws an error ####
-  if (!is.null(trial_eliminate) & is.null(trial_id)){
+
+  # check consistency between columns and labels --------------------------
+  if (!is.null(trial_eliminate) & is.null(trial_id)) {
     stop("You must specificy the trial_id variable to eliminate trials")
   }
-  # if trial_id is specified but not trial_eliminate -> throws an error ####
-  if (is.null(trial_eliminate) & !is.null(trial_id)){
+
+  if (is.null(trial_eliminate) & !is.null(trial_id)) {
     stop("You must specificy the trial_elimate variable to eliminate trials")
   }
-  # same thing for the demographic variables ####
-  if (!is.null(trial_demo) & is.null(demo_id)){
+
+  if (!is.null(trial_demo) & is.null(demo_id)) {
     stop("You must specificy the demo_id variable to select demographic trials")
   }
 
-  # same thing for the demographic variables ####
-  if (is.null(trial_demo) & !is.null(demo_id)){
+  if (is.null(trial_demo) & !is.null(demo_id)) {
     stop("You must specificy the trial_demo variable to select demographic trials")
   }
 
-  # select only useful columns (according to the functions specification) ###
-  if (!is.null(trial_id)){
-    data$data_keep <- data$data_keep[, c(sbj_id, block_id, latency_id,
+  # select only useful columns --------------------------
+  if (!is.null(trial_id)) {
+    data$data_keep <- data$data_keep[ , c(sbj_id, block_id, latency_id,
                                          accuracy_id, trial_id)]
   } else {
-    data$data_keep <- data$data_keep[, c(sbj_id, block_id, latency_id,
+    data$data_keep <- data$data_keep[ , c(sbj_id, block_id, latency_id,
                                          accuracy_id)]
   }
   # save original block code
   data$data_keep$block_original <- data$data_keep[, block_id]
   data$data_keep[, block_id] <- NULL
 
-  # create the condition
+  # prepare dataset --------------------------
+  # create conditions
   data$data_keep <- mutate(data$data_keep,
                            condition = ifelse(
-                             data$data_keep[, "block_original"] == options_label[1] |
-                               data$data_keep[, "block_original"] == options_label[2],
-                             "MappingA", "MappingB"))
-  # create the block pool (practice vs test)
+                           data$data_keep[ , "block_original"] == options_label[1] |
+                           data$data_keep[ , "block_original"] == options_label[2],
+                             "MappingA", "MappingB")
+                           )
+  # create pooled blocks (practice vs test)
   data$data_keep <- mutate(data$data_keep,
                            block_pool = ifelse(
-                             data$data_keep[, "block_original"] == options_label[1] |
-                               data$data_keep[,"block_original"] == options_label[3],
+                           data$data_keep[ , "block_original"] == options_label[1] |
+                           data$data_keep[ ,"block_original"] == options_label[3],
                              "practice", "test"))
-  # create the block
+  # create blocks
   data$data_keep <- mutate(data$data_keep,
                            block = paste(data$data_keep$block_pool,
                                          data$data_keep$condition, sep = "_"))
@@ -177,10 +180,10 @@ clean_iat <- function(data, sbj_id = "participant",
   class(data$data_keep) <- append(class(data$data_keep), "iat_clean")
 
 
-  if (!(is.null(trial_id))){
+  if (!(is.null(trial_id))) {
     data <- list(data_keep = data$data_keep[!(data$data_keep[ , trial_id])
                                             %in% trial_eliminate, ],
-                 data_eliminate = data$data_eliminate )
+                 data_eliminate = data$data_eliminate)
     data$data_keep <- data$data_keep[, c(1:3, 5:8, 4)]
     colnames(data$data_keep) <- c("participant", "latency", "correct",
                                   "block_original", "condition", "block_pool",
@@ -191,9 +194,11 @@ clean_iat <- function(data, sbj_id = "participant",
                                   "block_original", "condition", "block_pool",
                                   "block")
   }
-  if (!is.null(demo_id)){
+
+  if (!is.null(demo_id)) {
     data$demo <- original[original[, demo_id] %in% trial_demo, ]
     names(data$demo)[names(data$demo) == sbj_id] <- "participant"
   }
+  # results --------------------------
   return(data)
 }

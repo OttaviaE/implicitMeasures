@@ -15,6 +15,7 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #'  # Compute multiple IAT D-scores
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -40,41 +41,40 @@
 #'
 #'   # plot the results
 #'   multiple_scores$graph
+#'   }
 multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
+  # check class --------------------------
   if (is.na(class(data)[2]) | class(data)[2] != "iat_clean"){
     stop('use the clean_iat function to prepare the dataset for the multi_dscore
          function')
   }
   ds <- match.arg(ds)
-  if (ds == "built-in"){
+  # prepare d labels
+  if (ds == "built-in") {
     label_d <- c(paste0("d", 1:2))
   }
   else if (ds == "error-inflation") {
     label_d <-  c(paste0("d", 3:6))
   }
 
-  #label_d <- c(paste0("d", 1:2))
+  # initialize storing object for multiple Ds
   scores <- list()
-  for(i in 1:length(label_d)){
+  for(i in 1:length(label_d)) {
     scores[[i]] <- computeD(data, Dscore = label_d[i])
   }
-
   dscores <- data.frame(participant = scores[[1]]$participant)
-
   for (i in 1:length(scores)){
     name_col <- gsub("d", "dscore_d", label_d)
     dscores[, name_col[i]] <- scores[[i]][, name_col[[i]]]
   }
-
-
   scoreslong <- tidyr::gather(dscores, key = "type", value = "dscore",
                               2:max(ncol(dscores)))
   mg <- ggplot(scoreslong,
                aes(y = scoreslong$dscore, x = scoreslong$type)) +
-    geom_violin(trim = F, draw_quantiles = TRUE) +
-    stat_summary(fun.data=mean_sdl,
-                  geom="pointrange",
-                  color="black") + theme_minimal()
+        geom_violin(trim = F, draw_quantiles = TRUE) +
+        stat_summary(fun.data=mean_sdl,
+                     geom="pointrange",
+                    color="black") + theme_minimal()
   mg <- mg + theme(axis.title.x = element_blank()) + ylab("D-scores")
   mulitple_dscores <- list(dscores = dscores,
                            graph = mg)

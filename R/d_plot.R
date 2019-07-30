@@ -21,6 +21,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Plotting the IAT D-score
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -43,7 +44,7 @@
 #'   d_plot(iat_dscore, order_sbj = "D-increasing") # D-score with increasing
 #'                                                  # order
 #'   d_plot(iat_dscore, order_sbj = "D-decreasing",
-#'       col_point = "salmon") # D-score with decreasing order changed color
+#'          col_point = "salmon") # D-score with decreasing order changed color
 #' # Plot the SC-IAT D for the first SC-IAT
 #'   data("raw_data") # load data
 #'   sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -65,12 +66,14 @@
 #'                   non_response = "alert")
 #'   d_plot(d_sciat1, col_point = "salmon",
 #'           include_stats = TRUE) # SC-IAT D with descriptive statistics
+#'           }
 d_plot <- function(data, point_size = 1,
                    x_label = "Participant",
                    x_values = TRUE,
                    order_sbj = c("default", "D-increasing", "D-decreasing"),
                    col_point = "springgreen4",
                    include_stats = FALSE){
+  # checki dataset class --------------------------
   if (is.na(class(data)[2])){
     stop("data must be an object of class dscore or dsciat")
   } else if (class(data)[2] == "dscore"){
@@ -83,80 +86,80 @@ d_plot <- function(data, point_size = 1,
     stop("data must be an object of class dscore or dsciat")
   }
 
+  # initialize plots
   order_sbj <- match.arg(order_sbj)
-  if (order_sbj == "default"){
+  if (order_sbj == "default") {
     data <- data[order(data$participant), ]
     data$d_cres <- data$participant
     data$d_cres <- as.factor(data$d_cres)
     d_graph <- ggplot(data,
                       aes(y = data$d, x = data$d_cres)) +
-      geom_point(col = col_point,
-                 size = point_size)
+                      geom_point(col = col_point,
+                      size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
                                           labels = data$participant) +
-      ylab(x_lab)
-    if (include_stats == FALSE){
+                                           ylab(x_lab)
+    # include statistics
+    if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
       d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
       d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
       d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
-                                                      2*sd(data$d)),
+                                                    2 * sd(data$d)),
                                       linetype = "dotted")
     }
-
-  } else if (order_sbj == "D-increasing"){
+  } else if (order_sbj == "D-increasing") {
     data <- data[order(data$d), ]
     data$d_cres <- 1:nrow(data)
     data$d_cres <- factor(data$d_cres)
     coordinates_labels <- ifelse(length(unique(data$participant)) < 150,
-                                 nrow(data)-4, nrow(data)-10 )
+                                 nrow(data) - 4, nrow(data) - 10 )
     d_graph <- ggplot(data,
                       aes(y = data$d, x = data$d_cres)) +
-      geom_point(col = col_point,  size = point_size)
+               geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
                                           labels = data$participant) +
-      ylab(x_lab)
-
-
-  }
-  else if (order_sbj == "D-decreasing"){
+                        ylab(x_lab)
+  } else if (order_sbj == "D-decreasing") {
     data <- data[order(data$d, decreasing = T), ]
     data$d_cres <- 1:nrow(data)
     data$d_cres <- factor(data$d_cres)
     coordinates_labels <- ifelse(length(unique(data$participant)) < 150,
-                                 (nrow(data)-(nrow(data)-4)),
-                                 (nrow(data)-(nrow(data)-15)) )
+                                 (nrow(data) - (nrow(data) - 4)),
+                                 (nrow(data) - (nrow(data) - 15)) )
     d_graph <- ggplot(data,
                       aes(y = data$d, x = data$d_cres)) +
-      geom_point(col = col_point,  size = point_size)
+               geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
                                           labels = data$participant) +
       ylab(x_lab)
-
   }
 
   d_graph <- d_graph  + theme_classic()
   d_graph <- d_graph + theme(axis.text.x = element_text(size = 5))
 
-  if (include_stats == FALSE){
+  # include statistics
+  if (include_stats == FALSE) {
     d_graph <- d_graph
   } else {
     d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
     d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
-                                                    2*sd(data$d)),
+                                                  2 * sd(data$d)),
                                     linetype = "dotted")
     d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
-                                                    2*sd(data$d)),
+                                                  2 * sd(data$d)),
                                     linetype = "dotted")
   }
 
+  # remove participants labels --------------------------
   if (x_values == TRUE){
     d_graph <- d_graph
   } else {
     d_graph <- d_graph + theme(axis.text.x = element_blank())
   }
+  # results --------------------------
   return(d_graph)
 }

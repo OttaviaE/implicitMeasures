@@ -49,6 +49,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data("raw_data")
 #' sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
 #'                          block_id = "blockcode",
@@ -63,6 +64,7 @@
 #'                                              "reminder1"))
 #' sciat1 <- sciat_data[[1]]
 #' sciat2 <- sciat_data[[2]]
+#' }
 clean_sciat <- function(data, sbj_id = "participant",
                         block_id = "blockcode",
                         accuracy_id = "correct",
@@ -74,56 +76,50 @@ clean_sciat <- function(data, sbj_id = "participant",
                         demo_id = NULL,
                         trial_demo = NULL){
   original <- data
-  # if trial_eliminate is specified but not trial_id -> throws an error ####
+  # check consistency between columns and labels --------------------------
   if (!is.null(trial_eliminate) & is.null(trial_id)){
     stop("You must specificy the trial_eliminate variable to eliminate trials")
   }
 
-  # if trial_id is specified but not trial_eliminate -> throws an error ####
   if (is.null(trial_eliminate) & !is.null(trial_id)){
     stop("You must specificy the trial_id variable to eliminate trials")
   }
 
-  # same thing for the demographic variables
   if (!is.null(trial_demo) & is.null(demo_id)){
     stop("You must specificy the trial_demo variable to select demographic trials")
   }
 
-  # same thing for the demographic variables
   if (is.null(trial_demo) & !is.null(demo_id)){
     stop("You must specificy the demo_id variable to select demographic trials")
   }
 
   # save the colum names of the orginal dataset
   original_colnames <- c(colnames(data))
-  # create a vector for checking whether the variable names were correctly specified
-  if (is.null(trial_id) & is.null(demo_id)){
+  # labels and column check --------------------------
+  if (is.null(trial_id) & is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id)
-  }
-  else if (!is.null(trial_id) & is.null(demo_id)){
+  } else if (!is.null(trial_id) & is.null(demo_id)) {
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id)
-  }
-  else if (is.null(trial_id) & !is.null(demo_id)){
+  } else if (is.null(trial_id) & !is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, demo_id)
-  }
-  else if (!is.null(trial_id) & !is.null(demo_id)){
+  } else if (!is.null(trial_id) & !is.null(demo_id)){
     name_data <- c(sbj_id, block_id, latency_id, accuracy_id, trial_id, demo_id)
   }
 
   # check whether the colum names are entered correctly
   test_colnames <- NULL
-  for(i in 1:length(name_data)){
+  for(i in 1:length(name_data)) {
     test_colnames[i] <- any(original_colnames == name_data[i])
   }
-  if (any(test_colnames == FALSE)){stop("Specify valid column names")}
+  if (any(test_colnames == FALSE)) {stop("Specify valid column names")}
 
-  # elimante trials (if any)
+  # trials deletion (if any) --------------------------
   if(!is.null(trial_id)){
     data <- data[!(data[, trial_id]) %in% trial_eliminate, ]
     # select meaningful column
     data <- data[, c(sbj_id, block_id, trial_id, accuracy_id, latency_id)]
     names(data)[names(data) == trial_id] <- "trial"
-  } else if (is.null(trial_id))  {
+  } else if (is.null(trial_id)) {
     data <- data
     # select meanaingful column
     data <- data[, c(sbj_id, block_id, accuracy_id, latency_id)]
@@ -131,18 +127,18 @@ clean_sciat <- function(data, sbj_id = "participant",
   # prepare an empty list (sciat) for storing the results
   sciat <- list()
 
-  data[, block_id] <- as.character(data[, block_id])
+  data[ , block_id] <- as.character(data[, block_id])
   # rename block column
   names(data)[names(data) == block_id] <- "block"
   # rename subject column
   names(data)[names(data) == sbj_id] <- "participant"
-  # check whether the labels for block_sciat1 are actually in the data ####
+  # sciat 1 labels check --------------------------
   check_b1 <- list()
   for (i in 1:length(block_sciat_1)) {
-    check_b1[[i]] <- any(data[, "block"] == block_sciat_1[i])
+    check_b1[[i]] <- any(data[ , "block"] == block_sciat_1[i])
   }
   b1_test <- unlist(check_b1)
-  if (any(b1_test == FALSE)){
+  if (any(b1_test == FALSE)) {
     stop("blocks labels not found in the dataset")
   } else {
     # save data from sciat 1
@@ -150,18 +146,18 @@ clean_sciat <- function(data, sbj_id = "participant",
     sciat$sciat1 <- sciat1
   }
 
-  # save data from sciat 2 (if any) ######
+  # store data for sciat 2 (if present) --------------------------
   if (!is.null(block_sciat_2)){
     # check whether the labels exist
     check_b2 <- list()
     for (i in 1:length(block_sciat_2)) {
-      check_b2[[i]] <- any(data[, "block"] == block_sciat_2[i])
+      check_b2[[i]] <- any(data[ , "block"] == block_sciat_2[i])
     }
     b2_test <- unlist(check_b2)
-    if (any(b2_test == FALSE)){
+    if (any(b2_test == FALSE)) {
       stop("blocks labels not found in the dataset")
     } else {
-      sciat2 <- data[data[, "block"] %in% block_sciat_2, ]
+      sciat2 <- data[data[ , "block"] %in% block_sciat_2, ]
       sciat$sciat2 <- sciat2
       # assign a class to each sciat
       class(sciat$sciat1) <- append(class(sciat$sciat1), "sciat_clean")
@@ -173,13 +169,14 @@ clean_sciat <- function(data, sbj_id = "participant",
     sciat$sciat1 <- sciat1
   }
 
-  # check for the demographic variables
-  if (!is.null(demo_id)){
+  # check/store demographic variables --------------------------
+  if (!is.null(demo_id)) {
     demo <- original[original[, demo_id] %in% trial_demo, ]
     names(demo)[names(demo) == sbj_id] <- "participant"
     sciat$demo <- demo
   } else {
     sciat <- sciat
   }
+  # results --------------------------
   return(sciat)
 }
