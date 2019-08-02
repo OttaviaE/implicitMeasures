@@ -7,7 +7,9 @@ Author: Ottavia M. Epifania [aut, cre],
     Egidio Robusto [ctb]
 Maintainer: Ottavia M. Epifania <otta.epifania@gmail.com>
 Description: A tool for computing the scores for the Implicit Association Test 
-    (IAT) and the Single Category-IAT (SC_IAT). Functions for preparing the data 
+    (IAT; Greenwald, McGhee & Schwartz (1998) <doi:10.1037/0022-3514.74.6.1464>) 
+    and the Single Category-IAT (SC-IAT: Karpinski & Steinman 
+    (2006) <doi:10.1037/0022-3514.91.1.16>). Functions for preparing the data 
     (both for the IAT and the SC-IAT), plotting the results, and obtaining a 
     table with the scores of implicit measures descriptive statistics are 
     provided. 
