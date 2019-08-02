@@ -50,7 +50,6 @@
 #'
 #'
 #' @examples
-#' \dontrun{
 #' # calculate D for the SCIAT
 #'   data("raw_data") # load data
 #' sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -78,7 +77,6 @@
 #'                     mappingB = "test.sc_milk.Milkgood",
 #'                     non_response = "alert")
 #'  head(d_sciat2)
-#'  }
 
 Dsciat <- function(data,
                    mappingA = "mappingA",

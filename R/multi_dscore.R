@@ -15,7 +15,7 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  # Compute multiple IAT D-scores
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -71,7 +71,7 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
                               2:max(ncol(dscores)))
   mg <- ggplot(scoreslong,
                aes(y = scoreslong$dscore, x = scoreslong$type)) +
-        geom_violin(trim = F, draw_quantiles = TRUE) +
+        geom_violin(trim = FALSE, draw_quantiles = TRUE) +
         stat_summary(fun.data=mean_sdl,
                      geom="pointrange",
                     color="black") + theme_minimal()

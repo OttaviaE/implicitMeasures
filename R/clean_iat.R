@@ -53,7 +53,6 @@
 #' @import stats
 #'
 #' @examples
-#' \dontrun{
 #' data("raw_data") # load data
 #' iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
 #'                           block_id = "blockcode",
@@ -72,7 +71,6 @@
 #' demo_data <- iat_cleandata[[3]] # select the third element of the list
 #'                             # (demographic data)
 #' head(demo_data)
-#' }
 clean_iat <- function(data, sbj_id = "participant",
                       block_id = "blockcode",
                       mapA_practice = "practice_MappingA",

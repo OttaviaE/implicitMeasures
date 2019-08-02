@@ -49,7 +49,6 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data("raw_data")
 #' sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
 #'                          block_id = "blockcode",
@@ -64,7 +63,6 @@
 #'                                              "reminder1"))
 #' sciat1 <- sciat_data[[1]]
 #' sciat2 <- sciat_data[[2]]
-#' }
 clean_sciat <- function(data, sbj_id = "participant",
                         block_id = "blockcode",
                         accuracy_id = "correct",

@@ -55,7 +55,6 @@
 #'
 #'
 #' @examples
-#' \dontrun{
 #' # compute D-score 2 for the IAT data ###
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -74,7 +73,6 @@
 #' # calculate D-score
 #'   iat_dscore <- computeD(iat_data,
 #'                          Dscore =  "d2")
-#'                        }
 computeD <- function(data,
                      Dscore = c("d1","d2","d3","d4", "d5", "d6")){
   # check the class of the dataset (must be "iat_clean) -----------------------
@@ -317,7 +315,7 @@ computeD <- function(data,
                            nfast400 = (table_400[2, ]))
     # merge with the descript data
     descript_data <- merge(descript_data, nfast400,
-                           by ="participant")
+                           by = "participant")
     # compute the proportion
     descript_data$nfast400 <- round(descript_data$nfast400 /
                                     descript_data$n_trial, 2)

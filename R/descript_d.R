@@ -12,7 +12,6 @@
 #'          (\code{D-Sciat}, \code{RT.MappingA}, \code{RT.MappingB}).
 #' @export
 #' @examples
-#' \dontrun{
 #' # compute D-score 2 for the IAT data ###
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -55,7 +54,6 @@
 #'   descript_d(d_sciat1,
 #'              latex = TRUE) # descriptive statistics for the SC-IAT in latex
 #'                           # format
-#'                           }
 
 descript_d <- function(data, latex = FALSE){
 

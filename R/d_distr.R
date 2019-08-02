@@ -23,7 +23,7 @@
 #' @import ggplot2
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   # Plotting the IAT D-score
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -137,7 +137,7 @@ d_distr <- function(data,
     d_graph <- ggplot(data,
                       aes(y = data$d,
                           x = data$variable)) +
-               geom_violin(trim = F)  +
+               geom_violin(trim = FALSE)  +
                geom_jitter(shape = 16, col = col_point,
                            position = position_jitter(0.2))
     d_graph <- d_graph  + theme_minimal()

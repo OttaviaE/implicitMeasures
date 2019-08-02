@@ -91,7 +91,7 @@ multi_dsciat <- function(sciat1, sciat2,
               theme_minimal() + theme(axis.title.y = element_blank()) +
               xlab(label_y)
     # add statistics
-    if (dens_mean == T) {
+    if (dens_mean == TRUE) {
       d_graph <- d_graph + geom_vline(data=sc_mean,
                                       aes(xintercept = sc_mean$x,
                                           color = sc_mean$Group.1),
