@@ -34,7 +34,7 @@ A ggplot object.
 Plot the distribution of the IAT \emph{D-score} or the SC-IAT \emph{D}.
 }
 \examples{
-\dontrun{
+\donttest{
   # Plotting the IAT D-score
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
