@@ -215,7 +215,7 @@ Dsciat <- function(data,
   # number of slow trials (< 300ms)
   if (dim(table_350)[1] == 1){
     # if there are no trials < 300 it just writes 0
-    descript_data$nfast300 <- 0
+    descript_data$nfast350 <- 0
   } else {
     # otherwise it reports the number of trials faster than 300ms
     # per participant
