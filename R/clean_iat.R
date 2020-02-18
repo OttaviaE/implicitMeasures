@@ -89,6 +89,12 @@ clean_iat <- function(data, sbj_id = "participant",
   options_label <- c(mapA_practice, mapA_test, mapB_practice, mapB_test)
   names(options_label) <- c("mapA_practice", "mapA_test", "mapB_practice",
                             "mapB_test")
+  # check if teh data are coming from spss ----
+  if (class(data)[1] == "tbl_df" | class(data)[1] == "list"){
+    data <- as.data.frame(data)
+  } else {
+    data <- data
+  }
   # save the colum names of the orginal dataset
   original_colnames <- c(colnames(data))
   # labels and columns check --------------------------
