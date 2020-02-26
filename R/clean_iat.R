@@ -50,6 +50,7 @@
 #' @export
 #'
 #' @importFrom dplyr mutate
+#' @importFrom stringr str_trim
 #' @import stats
 #'
 #' @examples
@@ -89,9 +90,12 @@ clean_iat <- function(data, sbj_id = "participant",
   options_label <- c(mapA_practice, mapA_test, mapB_practice, mapB_test)
   names(options_label) <- c("mapA_practice", "mapA_test", "mapB_practice",
                             "mapB_test")
-  # check if teh data are coming from spss ----
-  if (class(data)[1] == "tbl_df" | class(data)[1] == "list"){
+  # check if the data are coming from spss ----
+  if (class(data)[1] == "tbl_df"){
     data <- as.data.frame(data)
+  } else if (class(data)[1] == "list") {
+    data <- as.data.frame(data)
+    data[, block_id] <- stringr::str_trim(data[, block_id])
   } else {
     data <- data
   }

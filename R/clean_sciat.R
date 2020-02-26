@@ -74,6 +74,15 @@ clean_sciat <- function(data, sbj_id = "participant",
                         demo_id = NULL,
                         trial_demo = NULL){
   original <- data
+  # check if the data are coming from spss ----
+  if (class(data)[1] == "tbl_df"){
+    data <- as.data.frame(data)
+  } else if (class(data)[1] == "list") {
+    data <- as.data.frame(data)
+    data[, block_id] <- stringr::str_trim(data[, block_id])
+  } else {
+    data <- data
+  }
   # check consistency between columns and labels --------------------------
   if (!is.null(trial_eliminate) & is.null(trial_id)){
     stop("You must specify the trial_eliminate variable to eliminate trials")
@@ -130,6 +139,10 @@ clean_sciat <- function(data, sbj_id = "participant",
   names(data)[names(data) == block_id] <- "block"
   # rename subject column
   names(data)[names(data) == sbj_id] <- "participant"
+  # rename latency column
+  names(data)[names(data) == latency_id] <- "latency"
+  # rename correct column
+  names(data)[names(data) == accuracy_id] <- "correct"
   # sciat 1 labels check --------------------------
   check_b1 <- list()
   for (i in 1:length(block_sciat_1)) {
