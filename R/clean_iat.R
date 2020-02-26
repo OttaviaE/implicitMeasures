@@ -4,7 +4,7 @@
 #'
 #' @param data Dataframe containing IAT data.
 #' @param sbj_id Column identifying participants' IDs. This variable can be a \code{character},
-#'                  \code{numeric}, of \code{factor}.
+#'                  \code{numeric}, or \code{factor}.
 #' @param block_id String. Column identifying
 #'                  IAT blocks. The \code{block_id} variable should be a
 #'                  \code{factor} with each level identifying an IAT block.
@@ -39,7 +39,7 @@
 #'     \code{mapA_practice}, \code{mapA_test}, \code{mapB_practice},
 #'     \code{mapB_test}. If you have specified the trials to eliminate through
 #'     \code{trial_eliminate}, \code{data_keep} will contain the already
-#'      cleaned dataset. This dataset should to the \code{computeD} function.}
+#'      cleaned dataset. This dataset should be passed to the \code{computeD} function.}
 #'     \item{\code{data_eliminate}}{Dataframe containing all the discarded
 #'      blocks and trials.}
 #'     \item{\code{data_demo}}{Dataframe containing demographic variables.
@@ -95,7 +95,7 @@ clean_iat <- function(data, sbj_id = "participant",
     data <- as.data.frame(data)
   } else if (class(data)[1] == "list") {
     data <- as.data.frame(data)
-    data[, block_id] <- stringr::str_trim(data[, block_id])
+    data[, block_id] <- str_trim(data[, block_id])
   } else {
     data <- data
   }

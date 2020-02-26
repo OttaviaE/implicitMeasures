@@ -5,7 +5,7 @@
 #'
 #' @param data Dataframe containing SC-IAT data.
 #' @param sbj_id Column identifying participants' IDs. This variable can be a \code{character},
-#'                  \code{numeric}, of \code{factor}.
+#'                  \code{numeric}, or \code{factor}.
 #' @param block_id String. Column identifying
 #'                  SC-IAT blocks. The \code{block_id} variable should be a
 #'                  \code{factor} with each level identifying a SC-IAT block.
