@@ -95,7 +95,7 @@ clean_iat <- function(data, sbj_id = "participant",
     data <- as.data.frame(data)
   } else if (class(data)[1] == "list") {
     data <- as.data.frame(data)
-    data[, block_id] <- str_trim(data[, block_id])
+    data[, block_id] <- stringr::str_trim(data[, block_id])
   } else {
     data <- data
   }
