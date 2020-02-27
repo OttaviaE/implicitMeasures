@@ -24,6 +24,7 @@ Imports:
     methods,
     plyr,
     qpdf,
+    stringr,
     tidyr,
     xtable
 Suggests: 
@@ -31,6 +32,5 @@ Suggests:
     knitr,
     rmarkdown,
     tableHTML,
-    data.table,
-        stringr
+    data.table
 VignetteBuilder: knitr
