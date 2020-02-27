@@ -4,8 +4,7 @@
 \alias{Dsciat}
 \title{Compute D for the SC-IAT}
 \usage{
-Dsciat(data, mappingA = "mappingA", mappingB = "mappingB",
-  non_response = NULL)
+Dsciat(data, mappingA = "mappingA", mappingB = "mappingB", non_response = NULL)
 }
 \arguments{
 \item{data}{Dataframe with class \code{clean_sciat}.}

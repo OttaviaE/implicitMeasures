@@ -12,8 +12,6 @@
 #'  Dscores. The second object is a \code{ggplot} object, depicting the
 #'  distribution of the \emph{D-score}s through violin plots.
 #' @export
-#'
-#'
 #' @examples
 #' \donttest{
 #'  # Compute multiple IAT D-scores

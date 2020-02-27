@@ -4,10 +4,17 @@
 \alias{multi_dsciat}
 \title{Plot SC-IATs scores}
 \usage{
-multi_dsciat(sciat1, sciat2, graph = c("density", "violin", "point"),
-  x_values = TRUE, gcolors = c("dark", "greens", "blues", "pinks"),
-  label_sc1 = "SC-IAT1", label_sc2 = "SC-IAT2",
-  label_y = "SC-IAT scores", dens_mean = T)
+multi_dsciat(
+  sciat1,
+  sciat2,
+  graph = c("density", "violin", "point"),
+  x_values = TRUE,
+  gcolors = c("dark", "greens", "blues", "pinks"),
+  label_sc1 = "SC-IAT1",
+  label_sc2 = "SC-IAT2",
+  label_y = "SC-IAT scores",
+  dens_mean = T
+)
 }
 \arguments{
 \item{sciat1}{Dataframe with class \code{dsciat}. Contains the \emph{D} for
@@ -41,7 +48,6 @@ A ggplot object
 Plot the scores from two different SC-IATs.
 }
 \examples{
-\dontrun{
 # calculate D for the SCIAT
   data("raw_data") # load data
 sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -71,5 +77,4 @@ sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
                                             # D SC-IAT
  multi_dsciat(d_sciat1, d_sciat2) # plot the D of two SC-IATs with default
                                     # settings
-                                    }
 }

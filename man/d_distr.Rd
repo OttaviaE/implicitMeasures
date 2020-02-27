@@ -4,8 +4,14 @@
 \alias{d_distr}
 \title{Plot IAT or SC-IAT scores (distribution)}
 \usage{
-d_distr(data, graph = c("histogram", "density", "violin"), n_bin = 80,
-  col_fill = "royalblue", col_point = "red", include_stats = FALSE)
+d_distr(
+  data,
+  graph = c("histogram", "density", "violin"),
+  n_bin = 80,
+  col_fill = "royalblue",
+  col_point = "red",
+  include_stats = FALSE
+)
 }
 \arguments{
 \item{data}{Dataframe with either class \code{dscore} or \code{dsciat}.}

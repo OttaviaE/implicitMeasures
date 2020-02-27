@@ -14,7 +14,6 @@
 #'
 #'
 #' @examples
-#' \dontrun{
 #' # compute D-score 2 for the IAT data ###
 #'   data("raw_data") # import data
 #'   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -34,7 +33,6 @@
 #'   iat_dscore <- computeD(iat_data,
 #'                          Dscore =  "d2")
 #'   IATrel(iat_dscore)
-#'   }
 IATrel <- function(data){
   # check dataset class --------------------------
   if(is.na(class(data)[2]) | class(data)[2] != "dscore"){

@@ -4,9 +4,15 @@
 \alias{d_plot}
 \title{Plot either IAT or SC-IAT scores (points)}
 \usage{
-d_plot(data, point_size = 1, x_label = "Participant",
-  x_values = TRUE, order_sbj = c("default", "D-increasing",
-  "D-decreasing"), col_point = "springgreen4", include_stats = FALSE)
+d_plot(
+  data,
+  point_size = 1,
+  x_label = "Participant",
+  x_values = TRUE,
+  order_sbj = c("default", "D-increasing", "D-decreasing"),
+  col_point = "springgreen4",
+  include_stats = FALSE
+)
 }
 \arguments{
 \item{data}{Dataframe with either class \code{dscore} or \code{dsciat}.}

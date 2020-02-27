@@ -22,7 +22,6 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' # calculate D for the SCIAT
 #'   data("raw_data") # load data
 #' sciat_data <- clean_sciat(raw_data, sbj_id = "Participant",
@@ -52,7 +51,6 @@
 #'                                             # D SC-IAT
 #'  multi_dsciat(d_sciat1, d_sciat2) # plot the D of two SC-IATs with default
 #'                                     # settings
-#'                                     }
 multi_dsciat <- function(sciat1, sciat2,
                          graph = c("density", "violin", "point"),
                          x_values = TRUE,

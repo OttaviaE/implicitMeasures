@@ -74,14 +74,21 @@ dscore <- computeD(iat, D = "d3")
 
 `computeD()` results in a data frame with class `dscore`, and it can be
 passe to other functions, for example for plotting the results, either
-at the individual
-level:
+at the individual level:
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" />
-or at the sample
-level:
+or at the sample level:
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
+
+## Data import
+
+You can import import your data in any format you want. If you’re
+improting the data from SPSS, please use either
+`haven::read_sav("~/path/to/mydata.sav")` or
+`foreign::read.spss("~/path/to/mydata.sav")` without changibng the
+default options of the functions. The package will recognize that the
+data frame is coming form SPSS and will handle that.
 
 ## Bugs and problems
 

@@ -4,16 +4,25 @@
 \alias{clean_sciat}
 \title{Prepare and clean SC-IAT data}
 \usage{
-clean_sciat(data, sbj_id = "participant", block_id = "blockcode",
-  accuracy_id = "correct", latency_id = "latency",
-  block_sciat_1 = NULL, block_sciat_2 = NULL, trial_id = NULL,
-  trial_eliminate = NULL, demo_id = NULL, trial_demo = NULL)
+clean_sciat(
+  data,
+  sbj_id = "participant",
+  block_id = "blockcode",
+  accuracy_id = "correct",
+  latency_id = "latency",
+  block_sciat_1 = NULL,
+  block_sciat_2 = NULL,
+  trial_id = NULL,
+  trial_eliminate = NULL,
+  demo_id = NULL,
+  trial_demo = NULL
+)
 }
 \arguments{
 \item{data}{Dataframe containing SC-IAT data.}
 
 \item{sbj_id}{Column identifying participants' IDs. This variable can be a \code{character},
-\code{numeric}, of \code{factor}.}
+\code{numeric}, or \code{factor}.}
 
 \item{block_id}{String. Column identifying
 SC-IAT blocks. The \code{block_id} variable should be a

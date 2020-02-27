@@ -21,7 +21,6 @@ List of two objects:
 Compute the practice -- test IAT reliability.
 }
 \examples{
-\dontrun{
 # compute D-score 2 for the IAT data ###
   data("raw_data") # import data
   iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
@@ -41,5 +40,4 @@ Compute the practice -- test IAT reliability.
   iat_dscore <- computeD(iat_data,
                          Dscore =  "d2")
   IATrel(iat_dscore)
-  }
 }

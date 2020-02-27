@@ -105,4 +105,8 @@ str(raw_data)
 
 The data set contains respondents IDs (`Partcipant`), the response times in milliseconds for each trial (`latency`), the response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), the trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of the implicit measures or of the demographic information).
 
+## Importing data from SPSS
+
+If you are importing data from SPSS, no worries. Both `clean_iat()` and `clean_sciat()` functions recognize whether the data set is coming from SPSS and will take care of that. For importing the data set from SPSS, you can use either `haven::read_sav("dataset.sav")` or `foreign::read.spss("dataset.sav")`. Please leave all the defaults settings of these function unaltered. 
+
 # References

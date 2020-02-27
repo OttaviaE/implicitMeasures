@@ -4,17 +4,27 @@
 \alias{clean_iat}
 \title{Prepare and clean IAT data.}
 \usage{
-clean_iat(data, sbj_id = "participant", block_id = "blockcode",
-  mapA_practice = "practice_MappingA", mapA_test = "test_MappingA",
-  mapB_practice = "practice_MappingB", mapB_test = "test_MappingB",
-  latency_id = "latency", accuracy_id = "correct", trial_id = NULL,
-  trial_eliminate = NULL, demo_id = NULL, trial_demo = NULL)
+clean_iat(
+  data,
+  sbj_id = "participant",
+  block_id = "blockcode",
+  mapA_practice = "practice_MappingA",
+  mapA_test = "test_MappingA",
+  mapB_practice = "practice_MappingB",
+  mapB_test = "test_MappingB",
+  latency_id = "latency",
+  accuracy_id = "correct",
+  trial_id = NULL,
+  trial_eliminate = NULL,
+  demo_id = NULL,
+  trial_demo = NULL
+)
 }
 \arguments{
 \item{data}{Dataframe containing IAT data.}
 
 \item{sbj_id}{Column identifying participants' IDs. This variable can be a \code{character},
-\code{numeric}, of \code{factor}.}
+\code{numeric}, or \code{factor}.}
 
 \item{block_id}{String. Column identifying
 IAT blocks. The \code{block_id} variable should be a
@@ -61,7 +71,7 @@ List of dataframe.
     \code{mapA_practice}, \code{mapA_test}, \code{mapB_practice},
     \code{mapB_test}. If you have specified the trials to eliminate through
     \code{trial_eliminate}, \code{data_keep} will contain the already
-     cleaned dataset. This dataset should to the \code{computeD} function.}
+     cleaned dataset. This dataset should be passed to the \code{computeD} function.}
     \item{\code{data_eliminate}}{Dataframe containing all the discarded
      blocks and trials.}
     \item{\code{data_demo}}{Dataframe containing demographic variables.
