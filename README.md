@@ -84,9 +84,9 @@ or at the sample level:
 ## Data import
 
 You can import import your data in any format you want. If you’re
-improting the data from SPSS, please use either
+importing the data from SPSS, please use either
 `haven::read_sav("~/path/to/mydata.sav")` or
-`foreign::read.spss("~/path/to/mydata.sav")` without changibng the
+`foreign::read.spss("~/path/to/mydata.sav")` without changing the
 default options of the functions. The package will recognize that the
 data frame is coming form SPSS and will handle that.
 
