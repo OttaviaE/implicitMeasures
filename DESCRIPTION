@@ -21,9 +21,6 @@ RoxygenNote: 7.0.2
 Imports: 
     dplyr,
     ggplot2,
-    methods,
-    plyr,
-    qpdf,
     stringr,
     tidyr,
     xtable
