@@ -47,7 +47,7 @@ The *IAT effect* is given by the difference between respondents' performance in 
 data.table(Dscore = paste0(rep("D", 6), 1:6), 
                       "Error treatment" = c(rep("Built-in", 2), "Mean + 2sd", "Mean + 600ms", 
                                             "Mean +2 sd", "Mean + 600ms"), 
-                      "Lower tail treatment" = c("No", "< 400ms", "No", "No", "< 400ms", "<4 00ms")) %>%
+                      "Lower tail treatment" = c("No", "< 400ms", "No", "No", "< 400ms", "< 400ms")) %>%
   tableHTML(rownames = F, widths = c(20, 210, 210), caption = "Table 2: D-score algorithm") %>%
   add_theme(theme = "scientific") %>%
   add_css_caption(css = list(c("font-weight", "text-align"), c("bold", "left")))
