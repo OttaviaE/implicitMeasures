@@ -187,7 +187,6 @@ clean_iat <- function(data, sbj_id = "participant",
   # name the class of the clean IAT dataframe
   class(data$data_keep) <- append(class(data$data_keep), "iat_clean")
 
-
   if (!(is.null(trial_id))) {
     data <- list(data_keep = data$data_keep[!(data$data_keep[ , trial_id])
                                             %in% trial_eliminate, ],
