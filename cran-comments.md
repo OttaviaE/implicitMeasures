@@ -11,4 +11,4 @@
 
 There were no major changes in the package. A few lines of code were added to make the package compatible with data imported from SPSS. 
 
-It was found an error in a column name of the data frame resulting from the function clean_sciat(), and it was fixed. 
+It was found an error in a column name of the data frame resulting from the function `Dsciat()`, and it was fixed. 
