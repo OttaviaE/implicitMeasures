@@ -11,6 +11,8 @@
 #' @return A list. The first object is a dataframe containing all the computed
 #'  Dscores. The second object is a \code{ggplot} object, depicting the
 #'  distribution of the \emph{D-score}s through violin plots.
+#'
+#'  @import tidyr
 #' @export
 #' @examples
 #' \donttest{
@@ -65,10 +67,11 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
     name_col <- gsub("d", "dscore_d", label_d)
     dscores[, name_col[i]] <- scores[[i]][, name_col[[i]]]
   }
-  scoreslong <- tidyr::gather(dscores, key = "type", value = "dscore",
-                              2:max(ncol(dscores)))
+  scoreslong <- tidyr::pivot_longer(dscores,
+    -participant,
+                             names_to = "type", values_to = "Dscore")
   mg <- ggplot(scoreslong,
-               aes(y = scoreslong$dscore, x = scoreslong$type)) +
+               aes(y = Dscore, x = type)) +
         geom_violin(trim = FALSE, draw_quantiles = TRUE) +
         stat_summary(fun.data=mean_sdl,
                      geom="pointrange",
