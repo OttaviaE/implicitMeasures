@@ -49,7 +49,6 @@
 #'
 #' @export
 #'
-#' @importFrom dplyr mutate
 #' @importFrom stringr str_trim
 #' @import stats
 #'
@@ -167,22 +166,20 @@ clean_iat <- function(data, sbj_id = "participant",
 
   # prepare dataset --------------------------
   # create conditions
-  data$data_keep <- mutate(data$data_keep,
-                           condition = ifelse(
-                           data$data_keep[ , "block_original"] == options_label[1] |
-                           data$data_keep[ , "block_original"] == options_label[2],
-                             "MappingA", "MappingB")
-                           )
+  data$data_keep$condition <- ifelse(
+    data$data_keep[ , "block_original"] == options_label[1] |
+      data$data_keep[ , "block_original"] == options_label[2],
+    "MappingA", "MappingB")
+
   # create pooled blocks (practice vs test)
-  data$data_keep <- mutate(data$data_keep,
-                           block_pool = ifelse(
-                           data$data_keep[ , "block_original"] == options_label[1] |
-                           data$data_keep[ ,"block_original"] == options_label[3],
-                             "practice", "test"))
+  data$data_keep$block_pool <- ifelse(
+    data$data_keep[ , "block_original"] == options_label[1] |
+      data$data_keep[ ,"block_original"] == options_label[3],
+    "practice", "test")
+
   # create blocks
-  data$data_keep <- mutate(data$data_keep,
-                           block = paste(data$data_keep$block_pool,
-                                         data$data_keep$condition, sep = "_"))
+  data$data_keep$block <- paste(data$data_keep$block_pool,
+                                data$data_keep$condition, sep = "_")
 
   # name the class of the clean IAT dataframe
   class(data$data_keep) <- append(class(data$data_keep), "iat_clean")

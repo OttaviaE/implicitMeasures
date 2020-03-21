@@ -98,9 +98,8 @@ Dsciat <- function(data,
   }
 
   # preparare dataset --------------------------
-  data <- mutate(data,
-                 condition = ifelse(data[ , "block"] == options_label[1],
-                                    "mappingA", "mappingB"))
+  data$condition <- ifelse(data[ , "block"] == options_label[1],
+                                       "mappingA", "mappingB")
   data[,"participant"] <- as.character(data[ , "participant"])
   # create order of presentation variable
   condition_order <- aggregate(condition ~ participant,
@@ -143,22 +142,19 @@ Dsciat <- function(data,
   n_trial <- data.frame(table(data$participant))
   colnames(n_trial) <- c("participant", "n_trial")
   # filter for slow responses (10000ms)
-  data <- mutate(data,
-                 slow10000 = ifelse(
-                   data$latency > 10000,
-                                    "out", "keep"))
+  data$slow10000 <- ifelse(
+    data$latency > 10000,
+    "out", "keep")
   # create table for slow participants
   table_slow <- table(data$slow1000, data$participant)
   # filter for fast responses (400ms)
-  data <- mutate(data,
-                 fast400 = ifelse(data$latency < 400,
-                                  "out", "keep"))
+  data$fast400 <- ifelse(data$latency < 400,
+                         "out", "keep")
   # create table for fast participants
   table_400 <- table(data$fast400, data$participant)
   # filter for fast responses (300ms)
-  data <- mutate(data,
-                 fast350 = ifelse(data$latency < 350,
-                                  "out", "keep"))
+  data$fast350 <- ifelse(data$latency < 350,
+                         "out", "keep")
   # create table for fast participants
   table_350 <- table(data$fast350, data$participant)
   # filter on accuracy

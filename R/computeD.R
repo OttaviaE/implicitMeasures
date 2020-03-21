@@ -115,23 +115,20 @@ computeD <- function(data,
                                           sep = "_")
   # create filters   --------------------------
   # filter for slow responses (10000ms)
-  data <- mutate(data,
-                 slow10000 = ifelse(data$latency > 10000,
-                                    "out", "keep"))
+  data$slow10000 <- ifelse(data$latency > 10000,
+                           "out", "keep")
   # create table for slow participants
   table_slow <- table(data$slow1000, data$participant)
 
   # filter for fast responses (400ms)
-  data <- mutate(data,
-                 fast400 = ifelse(data$latency < 400,
-                                  "out", "keep"))
+  data$fast400 <- ifelse(data$latency < 400,
+                         "out", "keep")
   # create table for fast participants (400)
   table_400 <- table(data$fast400, data$participant)
 
   # filter for fast responses (300ms)
-  data <- mutate(data,
-                 fast300 = ifelse(data$latency < 300,
-                                  "out", "keep"))
+  data$fast300 <- ifelse(data$latency < 300,
+                         "out", "keep")
   # create table for fast participants (300)
   table_300 <- table(data$fast300, data$participant)
 
