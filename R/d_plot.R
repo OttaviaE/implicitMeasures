@@ -93,7 +93,7 @@ d_plot <- function(data, point_size = 1,
     data$d_cres <- data$participant
     data$d_cres <- as.factor(data$d_cres)
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = d, x = d_cres)) +
                       geom_point(col = col_point,
                       size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
@@ -118,7 +118,7 @@ d_plot <- function(data, point_size = 1,
     coordinates_labels <- ifelse(length(unique(data$participant)) < 150,
                                  nrow(data) - 4, nrow(data) - 10 )
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = d, x = d_cres)) +
                geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
                                           labels = data$participant) +
@@ -131,7 +131,7 @@ d_plot <- function(data, point_size = 1,
                                  (nrow(data) - (nrow(data) - 4)),
                                  (nrow(data) - (nrow(data) - 15)) )
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = d, x = d_cres)) +
                geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
                                           labels = data$participant) +

@@ -13,7 +13,7 @@ multi_dsciat(
   label_sc1 = "SC-IAT1",
   label_sc2 = "SC-IAT2",
   label_y = "SC-IAT scores",
-  dens_mean = T
+  dens_mean = TRUE
 )
 }
 \arguments{

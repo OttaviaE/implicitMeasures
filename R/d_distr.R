@@ -96,7 +96,7 @@ d_distr <- function(data,
   # initialize plots --------------------------
   if (graph == "histogram") {
     d_graph <- ggplot(data,
-                      aes(x = data$d)) +
+                      aes(x = d)) +
                geom_histogram(bins = n_bin, col = col_fill,
                               fill = col_fill,
                               alpha = .50)
@@ -116,7 +116,7 @@ d_distr <- function(data,
     }
   } else if (graph == "density") {
     d_graph <- ggplot(data,
-                      aes(x = data$d)) +
+                      aes(x = d)) +
                geom_density(alpha = 0.70, fill = col_fill ,
                             col = col_fill)
     d_graph <- d_graph  + theme_minimal() + xlab(x_lab) +
@@ -135,8 +135,8 @@ d_distr <- function(data,
     }
   } else if (graph == "violin") {
     d_graph <- ggplot(data,
-                      aes(y = data$d,
-                          x = data$variable)) +
+                      aes(y = d,
+                          x = variable)) +
                geom_violin(trim = FALSE)  +
                geom_jitter(shape = 16, col = col_point,
                            position = position_jitter(0.2))

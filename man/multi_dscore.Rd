@@ -18,6 +18,8 @@ correction (D3 to D6).}
 A list. The first object is a dataframe containing all the computed
  Dscores. The second object is a \code{ggplot} object, depicting the
  distribution of the \emph{D-score}s through violin plots.
+
+ @import tidyr
 }
 \description{
 Compute and plot multiple \emph{D-score}s.
