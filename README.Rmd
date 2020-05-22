@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: paper.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,13 +17,14 @@ knitr::opts_chunk$set(
 
 R package for computing different Implicit Measures scores
   <!-- badges: start -->
-  [![Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+  [Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
   <!-- badges: end -->
   
-## Overview
+## Aim and Overview
 
-The goal of implicitMeasures is to provide functions for cleaning data from different implicit measures, computing their scores, and plotting the results. So far, functions for the computing the scores for the Implicit Association Test (IAT) and the Single Category-IAT (SC-IAT) are available: 
+The goal of `implicitMeasures` package is to provide a tool for easily cleaning and computing the scores for the Implicit Association Test [IAT; @Greenwald:1998] and the Single Catgeory Implicit Association Test [SC-IAT; @karpinski2006]. 
 
+Six different algortihms for the computation of the IAT effect, the so-called *D-score*, are available [@Greenwald2003]. The six different alogrithms differentiate themselves for the treatment of the extreme fast responses and for the strategy used for replacing the error responses. Different mistakes can be made during the computation of the *D-score*, which can raise replicability issues of the results. On top of that, many reserahcres fail to report the exact algorithm they have used for computing the *D-score*, raising again replicability issues [@ellithorpe2015]. 
 
 * `clean_iat()` cleans and prepares the data for computing the IAT *D-score*.
 * `clean_sciat()` cleans and prepares the data for computing the SC-IAT *D*.
@@ -30,11 +32,11 @@ The goal of implicitMeasures is to provide functions for cleaning data from diff
 * `Dsciat()` computes the SC-IAT *D*.
 * `d_plot()`, `d_distr()` plot the results of the computation.
 * `multi_dscore()`, `multi_dsciat()` plots the results of multiple *D-score*s and multiple SC-IATs, respectively.
-
+* `IATrel()` computes the IAT reliablity [@gaw2017]
 
 ## Installation
 
-You can install the released version of implicitMeasures from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `implicitMeasures` from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("implicitMeasures")
@@ -75,24 +77,26 @@ iat <- iat_data[[1]]
 dscore <- computeD(iat, D = "d3")
 ```
 
-`computeD()` results in a data frame with class `dscore`, and it can be passe to other functions, for example for plotting the results, either at the individual level: 
+`computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level (Figure \ref{fig:individual}): 
 
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="\\label{fig:individual} Graphical representation of respondents' individual scores"}
 d_plot(dscore, 
        x_values = FALSE)
 ```
-or at the sample level: 
+or at the sample level (\ref{fig:sampleDensity}): 
 
-```{r echo =FALSE, fig.align='center'}
+```{r echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="\\label{fig:sampleDensity} Density distribution of sample scores"}
 d_distr(dscore, 
         graph = "density")
 ```
 
 ## Data import
 
-You can import import your data in any format you want. If you're importing the data from SPSS, please use either `haven::read_sav("~/path/to/mydata.sav")` or `foreign::read.spss("~/path/to/mydata.sav")` without changing the default options of the functions. The package will recognize that the data frame is coming form SPSS and will handle that. 
+You can import import your data in any format you want. If you are importing data sets from SPSS, please use either `haven::read_sav("~/path/to/mydata.sav")` or `foreign::read.spss("~/path/to/mydata.sav")` without changing the default options of the functions. `implicitMeasures` will recognize that the data frame is coming from SPSS and will handle that. 
 
 ## Bugs and problems
 
 If you find any bugs or encounter any problems in using this package, please post a minimal reproducible example on [github](https://github.com/OttaviaE/implicitMeasures/issues). 
-For questions and other discussion, you can contact the author and maintainer of the package at otta.epifania@gmail.com. 
+For questions and other discussion, you can contact the author and maintainer of the package at otta.epifania@gmail.com.
+
+# References
