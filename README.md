@@ -25,16 +25,21 @@ the results. On top of that, many reserahcres fail to report the exact
 algorithm they have used for computing the *D-score*, raising again
 replicability issues (Ellithorpe, Ewoldsen, and Velez 2015).
 
-  - `clean_iat()` cleans and prepares the data for computing the IAT
-    *D-score*.
-  - `clean_sciat()` cleans and prepares the data for computing the
-    SC-IAT *D*.
-  - `computeD()` computes the IAT *D-score*.
-  - `Dsciat()` computes the SC-IAT *D*.
-  - `d_plot()`, `d_distr()` plot the results of the computation.
-  - `multi_dscore()`, `multi_dsciat()` plots the results of multiple
-    *D-score*s and multiple SC-IATs, respectively.
+`implicitMeasures` include the following functions:
+
+  - `clean_iat()`: Prepare and clean IAT data.
+  - `clean_sciat()`: Prepare and clean SC-IAT data.
+  - `computeD()`: Compute IAT *D-score*.
+  - `Dsciat()`: Compute SC-IAT *D-score*.
+  - `descript_d()`: Descriptive table of *D-score*s (also in LaTeX)
+    format. \*`d_distr()`: Plot IAT or SC-IAT scores (distribution).
+  - `d_plot()`: Plot IAT or SC-IAT scores (points).
+  - `multi_dscore()`: Compute and plot multiple IAT *D-score*s.
+  - `multi_dsciat()`: Plot SC-IAT *D-score*s.
   - `IATrel()` computes the IAT reliablity (Gawronski et al. 2017)
+
+All the functions for graphically represernting the results are based on
+`ggplot2` (Wickham 2016).
 
 ## Installation
 
@@ -98,7 +103,7 @@ Graphical representation of respondents’ individual scores
 
 </div>
 
-or at the sample level ():
+or at the sample level (Figure ):
 
 <div class="figure" style="text-align: center">
 
@@ -175,6 +180,13 @@ Karpinski, Andrew, and Ross B. Steinman. 2006. “The Single Category
 Implicit Association Test as a measure of implicit social cognition.”
 *Journal of Personality and Social Psychology* 91 (1): 16–32.
 <https://doi.org/10.1037/0022-3514.91.1.16>.
+
+</div>
+
+<div id="ref-Wickham2016">
+
+Wickham, Hadley. 2016. *Ggplot2: Elegant Graphics for Data Analysis*.
+Springer-Verlag New York. <https://ggplot2.tidyverse.org>.
 
 </div>
 

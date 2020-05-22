@@ -26,13 +26,20 @@ The goal of `implicitMeasures` package is to provide a tool for easily cleaning 
 
 Six different algortihms for the computation of the IAT effect, the so-called *D-score*, are available [@Greenwald2003]. The six different alogrithms differentiate themselves for the treatment of the extreme fast responses and for the strategy used for replacing the error responses. Different mistakes can be made during the computation of the *D-score*, which can raise replicability issues of the results. On top of that, many reserahcres fail to report the exact algorithm they have used for computing the *D-score*, raising again replicability issues [@ellithorpe2015]. 
 
-* `clean_iat()` cleans and prepares the data for computing the IAT *D-score*.
-* `clean_sciat()` cleans and prepares the data for computing the SC-IAT *D*.
-* `computeD()` computes the IAT *D-score*.
-* `Dsciat()` computes the SC-IAT *D*.
-* `d_plot()`, `d_distr()` plot the results of the computation.
-* `multi_dscore()`, `multi_dsciat()` plots the results of multiple *D-score*s and multiple SC-IATs, respectively.
+`implicitMeasures` include the following functions: 
+
+* `clean_iat()`: Prepare and clean IAT data.
+* `clean_sciat()`: Prepare and clean SC-IAT data.
+* `computeD()`: Compute IAT *D-score*.
+* `Dsciat()`: Compute SC-IAT *D-score*.
+* `descript_d()`: Descriptive table of *D-score*s (also in  LaTeX) format.
+*`d_distr()`: Plot IAT or SC-IAT scores (distribution).
+* `d_plot()`: Plot IAT or SC-IAT scores (points).
+* `multi_dscore()`: Compute and plot multiple IAT *D-score*s.
+* `multi_dsciat()`: Plot SC-IAT *D-score*s.
 * `IATrel()` computes the IAT reliablity [@gaw2017]
+
+All the functions for graphically represernting the results are based on `ggplot2` [@Wickham2016].
 
 ## Installation
 
@@ -83,7 +90,7 @@ dscore <- computeD(iat, D = "d3")
 d_plot(dscore, 
        x_values = FALSE)
 ```
-or at the sample level (\ref{fig:sampleDensity}): 
+or at the sample level (Figure \ref{fig:sampleDensity}): 
 
 ```{r echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="\\label{fig:sampleDensity} Density distribution of sample scores"}
 d_distr(dscore, 
