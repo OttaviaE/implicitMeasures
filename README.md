@@ -4,8 +4,8 @@
 # implicitMeasures
 
 R package for computing different Implicit Measures scores
-<!-- badges: start --> [Travis build
-status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)\](<https://travis-ci.org/OttaviaE/implicitMeasures>)
+<!-- badges: start --> [![Travis build
+status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
 <!-- badges: end -->
 
 ## Aim and Overview
@@ -89,33 +89,12 @@ dscore <- computeD(iat, D = "d3")
 
 `computeD()` results in a data frame with class `dscore`, and it can be
 passed to other functions, for example for plotting the results, either
-at the individual level (Figure ):
+at the individual level:
 
-<div class="figure" style="text-align: center">
+<img src="man/figures/README-pointsExample-1.png" width="100%" style="display: block; margin: auto;" />
+or at the sample level:
 
-<img src="man/figures/README-pointsExample-1.png" alt="Graphical representation of respondents' individual scores" width="100%" />
-
-<p class="caption">
-
-Graphical representation of respondents’ individual scores
-
-</p>
-
-</div>
-
-or at the sample level (Figure ):
-
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/README-densityexamples-1.png" alt="Density distribution of sample scores" width="100%" />
-
-<p class="caption">
-
-Density distribution of sample scores
-
-</p>
-
-</div>
+<img src="man/figures/README-densityexamples-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Data import
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 R package for computing different Implicit Measures scores
   <!-- badges: start -->
-  [Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+[![Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
   <!-- badges: end -->
   
 ## Aim and Overview
@@ -84,15 +84,15 @@ iat <- iat_data[[1]]
 dscore <- computeD(iat, D = "d3")
 ```
 
-`computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level (Figure \ref{fig:individual}): 
+`computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level: 
 
-```{r pointsExample, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Graphical representation of respondents' individual scores"}
+```{r pointsExample, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
 d_plot(dscore, 
        x_values = FALSE)
 ```
-or at the sample level (Figure \ref{fig:sampleDensity}): 
+or at the sample level: 
 
-```{r densityexamples, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Density distribution of sample scores"}
+```{r densityexamples, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE}
 d_distr(dscore, 
         graph = "density")
 ```
