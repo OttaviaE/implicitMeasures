@@ -9,6 +9,7 @@ bibliography: paper.bib
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  fig.path = "",
   out.width = "100%"
 )
 ```
@@ -58,7 +59,7 @@ devtools::install_github("OttaviaE/implicitMeasures")
 
 This is a basic example which shows you how to compute the IAT *D-score*. More detailed examples are given the package vignettes.
 
-```{r example}
+```{r}
 library(implicitMeasures)
 ## load the raw_data dataframe
 data("raw_data")
@@ -85,13 +86,13 @@ dscore <- computeD(iat, D = "d3")
 
 `computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level: 
 
-```{r pointsExample, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
+```{r, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
 d_plot(dscore, 
        x_values = FALSE)
 ```
 or at the sample level: 
 
-```{r densityexamples, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE}
+```{r, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE}
 d_distr(dscore, 
         graph = "density")
 ```
