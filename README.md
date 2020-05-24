@@ -93,7 +93,7 @@ at the individual level (Figure ):
 
 <div class="figure" style="text-align: center">
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" alt="\label{fig:individual} Graphical representation of respondents' individual scores" width="100%" />
+<img src="man/figures/README-pointsExample-1.png" alt="\label{fig:individual} Graphical representation of respondents' individual scores" width="100%" />
 
 <p class="caption">
 
@@ -107,7 +107,7 @@ or at the sample level (Figure ):
 
 <div class="figure" style="text-align: center">
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="\label{fig:sampleDensity} Density distribution of sample scores" width="100%" />
+<img src="man/figures/README-density examples-1.png" alt="\label{fig:sampleDensity} Density distribution of sample scores" width="100%" />
 
 <p class="caption">
 
