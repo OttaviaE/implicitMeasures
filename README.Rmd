@@ -86,13 +86,13 @@ dscore <- computeD(iat, D = "d3")
 
 `computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level (Figure \ref{fig:individual}): 
 
-```{r pointsExample, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="\\label{fig:individual} Graphical representation of respondents' individual scores"}
+```{r pointsExample, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Graphical representation of respondents' individual scores"}
 d_plot(dscore, 
        x_values = FALSE)
 ```
 or at the sample level (Figure \ref{fig:sampleDensity}): 
 
-```{r density examples, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="\\label{fig:sampleDensity} Density distribution of sample scores"}
+```{r densityexamples, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Density distribution of sample scores"}
 d_distr(dscore, 
         graph = "density")
 ```
