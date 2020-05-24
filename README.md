@@ -91,10 +91,10 @@ dscore <- computeD(iat, D = "d3")
 passed to other functions, for example for plotting the results, either
 at the individual level:
 
-<img src="man/figures/README-pointsExample-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/pointsExample-1.png" width="100%" style="display: block; margin: auto;" />
 or at the sample level:
 
-<img src="man/figures/README-densityexamples-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/densityexamples-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Data import
 
