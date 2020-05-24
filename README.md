@@ -4,8 +4,8 @@
 # implicitMeasures
 
 R package for computing different Implicit Measures scores
-<!-- badges: start --> [![Travis build
-status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+<!-- badges: start --> [Travis build
+status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)\](<https://travis-ci.org/OttaviaE/implicitMeasures>)
 <!-- badges: end -->
 
 ## Aim and Overview
@@ -91,10 +91,31 @@ dscore <- computeD(iat, D = "d3")
 passed to other functions, for example for plotting the results, either
 at the individual level:
 
-<img src="unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="Graphical representation of respondents' individual scores" width="100%" />
+
+<p class="caption">
+
+Graphical representation of respondents’ individual scores
+
+</p>
+
+</div>
+
 or at the sample level:
 
-<img src="unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="Density distribution of sample scores" width="100%" />
+
+<p class="caption">
+
+Density distribution of sample scores
+
+</p>
+
+</div>
 
 ## Data import
 

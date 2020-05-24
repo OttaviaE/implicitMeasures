@@ -9,7 +9,7 @@ bibliography: paper.bib
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "",
+  fig.path = "man/figures/README-",
   out.width = "100%"
 )
 ```
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 R package for computing different Implicit Measures scores
   <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+  [Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
   <!-- badges: end -->
   
 ## Aim and Overview
@@ -59,7 +59,7 @@ devtools::install_github("OttaviaE/implicitMeasures")
 
 This is a basic example which shows you how to compute the IAT *D-score*. More detailed examples are given the package vignettes.
 
-```{r}
+```{r example}
 library(implicitMeasures)
 ## load the raw_data dataframe
 data("raw_data")
@@ -86,13 +86,13 @@ dscore <- computeD(iat, D = "d3")
 
 `computeD()` results in a data frame with class `dscore`, and it can be passed to other functions, for example for plotting the results, either at the individual level: 
 
-```{r, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
+```{r, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Graphical representation of respondents' individual scores"}
 d_plot(dscore, 
        x_values = FALSE)
 ```
 or at the sample level: 
 
-```{r, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE}
+```{r, echo =FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Density distribution of sample scores"}
 d_distr(dscore, 
         graph = "density")
 ```
