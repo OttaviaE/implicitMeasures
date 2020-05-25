@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="implicitmeasures">implicitMeasures</h1>
+<p>Ottavia M. Epifania 2020-05-25</p>
+<p>This vignette gives an overview of <code>implicitMeasures</code> package functioning. The structure of the Implicit Association Test (IAT; Greenwald, McGhee, and Schwartz 1998) and the Single Category IAT (SC-IAT; Karpinski and Steinman 2006) will be illustrated, as well as the algorithms used for the computation of their scores. A brief description of the data set included in the package (i.e., <code>raw_data</code>) is given as well.</p>
+<h2 id="the-implicit-association-test">The Implicit Association Test</h2>
+<p>The IAT is used for assessing the strength and direction of automatic associations between two target catgeories (i.e., <em>Object 1</em> and <em>Object 2</em> in Table 1) and two evalatuive dimensions, <em>Positive</em> and <em>Negative</em>. It is mostly used in social psychology for obtaining a measure of people’s attitudes towards different social groups. It is also used in marketing reserach for assessing people’ preferences towards contrasting brands, or in clinical psychology to assess both functionial (i.e., self-esteem) and disfunctional (i.e., personality disorders) personality traits. The advantages of using the IAT are related to the fact that it provides a measure of all the above-mentioned constructs without directly asking them, but by measuring the speed and accuracy with which prototypical examplars of the two targets and of the two evaluative dimensions are sorted in the catgeory to which they belong.</p>
+<p>The IAT (Table 1) is usually composed of seven blocks. Three blocks (B1, B2 and B5 in Table 1) are pure practice blocks in which either target stimuli (Blocks B1 and B5) or attribute stimuli (Block B2) are sorted in their reference categories. The remaining blocks are the associative blocks that constitute the two IAT mappings conditions of the IAT (e.g., Mapping A and Mapping B). In Blocks B3 and B4, exemplars of the <em>Object 1</em> categories share the response key with <em>Positive</em>, while exemplars of <em>Object 2</em> share the response key with <em>Negative</em> exemplars. In the contrasting associative condition (i.e., Blocks B6 and B7), the categorization task is reversed. Exemplars of <em>Object 1</em> share the response key with <em>Negative</em> exemplars and exemplars of <em>Object 2</em> share the response key with <em>Positive</em> exemplars. Usually, the practice and associative practice blocks are composed of 20 trials exemplars, while each, while the associative test blocks are composed of 40 trials each. The two mapping conditions result in 60 trials each.</p>
+<!--html_preserve-->
+
+<table style="border-collapse:collapse;" class="table_9816" border="0">
+
+<caption style="font-weight:bold;text-align:left;">
+
+<p>Table 1: IAT structure.</p>
+</caption>
+
+<col width="20">
+
+<col width="310">
+
+<col width="310">
+
+<col width="310">
+
+<thead>
+
+<tr style="border-bottom:2px solid black;border-top:3px solid black;">
+
+<th id="tableHTML_header_1">
+
+<p>Block</p>
+</th>
+
+<th id="tableHTML_header_2">
+
+<p>Function</p>
+</th>
+
+<th id="tableHTML_header_3">
+
+<p>Left response key</p>
+</th>
+
+<th id="tableHTML_header_4">
+
+<p>Right response key</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B1</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Practice</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 1</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 2</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B2</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Practice</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Negative</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B3</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative Practice Mapping A</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 1 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 2 + Negative</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B4</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative Test Mapping A</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 1 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 2 + Negative</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B5</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Practice</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 2</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 1</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B6</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative Practice Mapping B</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 2 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 1 + Negative</p>
+</td>
+
+</tr>
+
+<tr style="border-bottom:3px solid black;">
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B7</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative Test Mapping B</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 2 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 1 + Negative</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--/html_preserve-->
+
+<p>During IAT administration, respondents might be given a feedback. In case a stimulus is sorted into the incorrect category, a red cross appears on the screen and the response must be corrected to proceed with the experiment. If a feedback strategy is not included, the error response is not signaled to participants, and they can go on with the experiment.</p>
+<p>The <em>IAT effect</em> is given by the difference between respondents’ performance in the two associative conditions, under the assumption that the categorization task is easier (i.e., lower response times and higher response accuracy) in the associative condition consistent with respondents’ automatic association. The <em>D-score</em> (Greenwald, Nosek, and Banaji 2003) is usually employed for expressing the strenght and direction of the IAT effect. Six different algorithms are available for the computation of the <em>D-score</em> (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same.</p>
+<!--html_preserve-->
+
+<table style="border-collapse:collapse;" class="table_5502" border="0">
+
+<caption style="font-weight:bold;text-align:left;">
+
+<p>Table 2: D-score algorithm</p>
+</caption>
+
+<col width="50">
+
+<col width="280">
+
+<col width="280">
+
+<thead>
+
+<tr style="border-bottom:2px solid black;border-top:3px solid black;">
+
+<th id="tableHTML_header_1">
+
+<p>Dscore</p>
+</th>
+
+<th id="tableHTML_header_2">
+
+<p>Error treatment</p>
+</th>
+
+<th id="tableHTML_header_3">
+
+<p>Lower tail treatment</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D1</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Built-in</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>No</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D2</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Built-in</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>&lt; 400ms</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D3</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Mean + 2sd</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>No</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D4</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Mean + 600ms</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>No</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D5</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Mean +2 sd</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>&lt; 400ms</p>
+</td>
+
+</tr>
+
+<tr style="border-bottom:3px solid black;">
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>D6</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Mean + 600ms</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>&lt; 400ms</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--/html_preserve-->
+
+<p>Irrespective of the algorithm, trials with a response latency exceeding 10,000ms must be excluded. When participants are given a feedback for their responses, the algorithms using a built-in correction (<em>D1</em> and <em>D2</em>) must be used, according to which error responses are replaced by the time at the incorrect response increased by the time needed to correct it. All the other algorithms (<em>D3</em> to <em>D6</em>) are used when IAT administration does not include a feedback. The error responses are replaced by the average response time of the block in which the error occurred increased by a standard penalty (i.e., either 600ms or twice the standard deviation of the block). The other feature distinguishing the algorithms regards the decision to include responses faster than 400ms or not.</p>
+<p>Once the algorithm has been chosen and the error and fast responses have been treated accordingly, it is possible to compute the <em>D-score</em> following a 3-step procedure:</p>
+<ol>
+<li><p>Compute the <em>D-score</em> for the associative practice block (i.e., (D_{practice})) by taking the difference between the average response time in the two contrasting associative practice blocks. The difference is divided by the standard deviation computed on the pooled trials of both blocks.</p></li>
+<li><p>Compute the <em>D-score</em> for the associative test blocks (i.e., (D_{test})) by taking the difference between the average response time in the two contrasting associative test blocks. The difference is divided by the standard deviation computed on the pooled trials of both blocks.</p></li>
+<li><p>Compute the actual <em>D-score</em> as the mean of (D_{practice}) and (D_{test}).</p></li>
+</ol>
+<p><code>implicitMeasures</code> also includes a function (<code>IATrel()</code>) for computing IAT reliability as the correlation between (D_{practice}) and (D_{test}) (see Gawronski et al. 2017).</p>
+<h2 id="the-single-category-implicit-association-test">The Single Category Implicit Association Test</h2>
+<p>The IAT is particularly suitable when the aim is to obtain a comparative measure of <em>Object 1</em> in relation to <em>Object 2</em>. However, there are cases in which it is more useful to ahve an absoulte information of the positive or negative evaluation of just one of the target categories. The SC-IAT (Table 3; Karpinski and Steinman 2006) has been proposed as an alternative to the IAT to provide a meausure of the absolute positive or negative evaluation towards just one target. It results from a modification of the IAT procedure, where one of the target categories is dropped. Blocks B1 and B3 are associative practice blocks, usually composed by 24 trials. Blocks B2 and B4 are the actual test blocks, usually composed by 72 trials. The first associative conditon is composed of Blocks B1 and B2, where exemplars of the target catgory <em>Object 1</em> share the response key with <em>Positive</em> exemplars while <em>Negative</em> exemplars are mapped with the the other response key. In the opposite condition, exemplars of the target category <em>Object 1</em> share the response key with <em>Negative</em> exemplars, and <em>Positive</em> exemplars are sorted with the opposite response key.</p>
+<!--html_preserve-->
+
+<table style="border-collapse:collapse;" class="table_9695" border="0">
+
+<caption style="font-weight:bold;text-align:left;">
+
+<p>Table 3: SC-IAT structure</p>
+</caption>
+
+<col width="20">
+
+<col width="310">
+
+<col width="310">
+
+<col width="310">
+
+<thead>
+
+<tr style="border-bottom:2px solid black;border-top:3px solid black;">
+
+<th id="tableHTML_header_1">
+
+<p>Block</p>
+</th>
+
+<th id="tableHTML_header_2">
+
+<p>Function</p>
+</th>
+
+<th id="tableHTML_header_3">
+
+<p>Left response Key</p>
+</th>
+
+<th id="tableHTML_header_4">
+
+<p>Right response Key</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B 1</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative practice Mapping A</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 1 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Negative</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B 2</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative test Mapping A</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Object 1 + Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Negative</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B 3</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative practice Mapping B</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 1 + Negative</p>
+</td>
+
+</tr>
+
+<tr style="border-bottom:3px solid black;">
+
+<td id="tableHTML_column_1" style="text-align:center;">
+
+<p>B 4</p>
+</td>
+
+<td id="tableHTML_column_2" style="text-align:center;">
+
+<p>Associative test Mapping B</p>
+</td>
+
+<td id="tableHTML_column_3" style="text-align:center;">
+
+<p>Positive</p>
+</td>
+
+<td id="tableHTML_column_4" style="text-align:center;">
+
+<p>Object 1 + Negative</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--/html_preserve-->
+
+<p>During the SC-IAT administration, respondents’ receive a feedback signaling whether the response was correct (a green “O”) or incorrect (a red “X”). A response time window (rtw) at 1,500ms is included in the administration, after which the stimulus on the screen disappears. Responses exceeding the rtw are considered non-response. However, there also cases in which the SC-IAT administartion does not inclued any of these features.</p>
+<p>The <em>SC-IAT effect</em> results from the difference in respondents’ performance between the two associative conditions, under the assumption that the task is easier in the condition consistent with respondents’ automatic association.</p>
+<p>A modification of the IAT <em>D-score</em> has been proposed to interpret the SC-IAT effect (Karpinski and Steinman 2006). Only Blocks B2 and B4 are used for the computation of the SC-IAT <em>D-score</em>. Fast responses (responses under 350ms) are discarded, as well as non-responses (responses exceeding the rtw). Error responses are replaced by the average response time in which the error occurred increased by a standard penalty of 400ms. The difference between the average response time in the two contrasting conditions is standardized by the standard deviation of the correct trials in both conditions.</p>
+<h2 id="the-raw_data-data-set">The <code>raw_data</code> data set</h2>
+<p>The <code>raw_data</code> contains the data from 162 respondents administered with an IAT for the implicit assessment of the preference between Dark and Milk chocolate (i.e., Chocolate IAT), a SC-IAT for the assessment of the absolute positive or negative evalutation of Milk chocolate (Milk SC-IAT), and a SC-IAT for the implicit assessment of the absoulte positive or negative evaluation of Dark Chocolate SC-IAT (Dark SC-IAT), along with their demographic information. These data are published in Epifania, Anselmi, and Robusto (2020).</p>
+<p>The IAT administration did not include a feedback strategy, hence only the <em>D-score</em> algorithms not including a built-in correction should be computed.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># upload the data set</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">data</span>(raw_data)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># explore the dataset</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">head</span>(raw_data)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt;   Participant latency correct trialcode                blockcode  response</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; 1           4    2592       1  reminder practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; 2           4     628       1  darkleft practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; 3           4     808       1   badleft practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; 4           4     783       1 goodright practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt; 5           4    2059       1   badleft practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; 6           4    1114       1 goodright practice.sc_dark.Darkbad trial_imp</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">str</span>(raw_data)</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; &#39;data.frame&#39;:    84726 obs. of  6 variables:</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt;  $ Participant: int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt;  $ latency    : int  2592 628 808 783 2059 1114 608 663 771 676 ...</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt;  $ correct    : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt;  $ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 31 5 3 20 3 20 5 3 20 3 ...</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt;  $ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt;  $ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 43 43 43 43 43 43 43 43 43 43 ...</span></span></code></pre></div>
+<p>The data set contains respondents’ IDs (<code>Partcipant</code>), response times in milliseconds for each trial (<code>latency</code>), response accuracy (<code>correct</code>, 1 for correct responses and 0 for incorrect responses), trials and blocks labels of the implicit measures (<code>trialcode</code> and <code>blockcode</code> labels, respectively), and the type of response (<code>response</code>, identifying the trials of eithr the implicit measures or of the demographic information).</p>
+<h2 id="importing-data-from-spss">Importing data from SPSS</h2>
+<p>If you are importing data from SPSS, no worries. Both <code>clean_iat()</code> and <code>clean_sciat()</code> functions recognize whether the data set is coming from SPSS and will take care of that. For importing the data set from SPSS, you can use either <code>haven::read_sav(&quot;dataset.sav&quot;)</code> or <code>foreign::read.spss(&quot;dataset.sav&quot;)</code>. Please leave all the defaults settings of these functions unaltered.</p>
+<h1 id="references">References</h1>
+<div id="refs" class="references">
+
+<div id="ref-epifania2020">
+
+<p>Epifania, Ottavia M, Pasquale Anselmi, and Egidio Robusto. 2020. “A fairer comparison between the Implicit Association Test and the Single Category – Implicit Association Test.” <em>Testing, Psychometrics, and Methodology in Applied Psychology</em> 27 (2): 1–14.</p>
+</div>
+
+<div id="ref-gaw2017">
+
+<p>Gawronski, Bertram, Mike Morrison, Curtis E Phills, and Silvia Galdi. 2017. “Temporal Stability of Implicit and Explicit Measures: A Longitudinal Analysis.” <em>Personality and Social Psychology Bulletin</em> 43 (3): 300–312. <a href="https://doi.org/10.1177/0146167216684131">https://doi.org/10.1177/0146167216684131</a>.</p>
+</div>
+
+<div id="ref-Greenwald:1998">
+
+<p>Greenwald, Anthony G, Debbie E McGhee, and Jordan L K Schwartz. 1998. “Measuring Individual Differences in Implicit Cognition: The Implicit Association Test.” <em>Journal of Personality and Soclal Psychology</em> 74 (6): 1464–80. <a href="https://doi.org/10.1037/0022-3514.74.6.1464">https://doi.org/10.1037/0022-3514.74.6.1464</a>.</p>
+</div>
+
+<div id="ref-Greenwald:2003">
+
+<p>Greenwald, Anthony G, Brian A Nosek, and Mahzarin R Banaji. 2003. “Understanding and Using the Implicit Association Test: I. An Improved Scoring Algorithm.” <em>Journal of Personality and Social Psychology</em> 85 (2): 197–216. <a href="https://doi.org/10.1037/0022-3514.85.2.197">https://doi.org/10.1037/0022-3514.85.2.197</a>.</p>
+</div>
+
+<div id="ref-karp:2006">
+
+<p>Karpinski, Andrew, and Ross B. Steinman. 2006. “The Single Category Implicit association Test as a measure of implicit social cognition.” <em>Journal of Personality and Social Psychology</em> 91 (1): 16–32. <a href="https://doi.org/10.1037/0022-3514.91.1.16">https://doi.org/10.1037/0022-3514.91.1.16</a>.</p>
+</div>
+
+</div>
+
+</body>
+</html>

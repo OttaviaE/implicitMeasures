@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Ottavia M. Epifania" />
+
+<meta name="date" content="2020-05-25" />
+
+<title>SC-IAT-example</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">SC-IAT-example</h1>
+<h4 class="author">Ottavia M. Epifania</h4>
+<h4 class="date">2020-05-25</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(implicitMeasures)</span></code></pre></div>
+<p>This vignette illustrates how to use <code>implicitMeasures</code> package for computing SC-IAT <em>D-score</em>. The illustration is based on the data set provided with the package (i.e., <code>raw_data</code>).</p>
+<div id="first-thing-first-import-and-explore-data" class="section level3">
+<h3>First thing first: Import and explore data</h3>
+<p>Labels containing specification <code>sc_</code> in variable <code>blockcode</code> identify SC-IAT blocks.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(<span class="st">&quot;raw_data&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># explore the dataframe</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">str</span>(raw_data)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; &#39;data.frame&#39;:    84726 obs. of  6 variables:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  $ Participant: int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  $ latency    : int  2592 628 808 783 2059 1114 608 663 771 676 ...</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  $ correct    : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  $ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 31 5 3 20 3 20 5 3 20 3 ...</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  $ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  $ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 43 43 43 43 43 43 43 43 43 43 ...</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># explore the levels of the blockcode variable to identify the SC-IAT blocks</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">levels</span>(raw_data<span class="op">$</span>blockcode)</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;  [1] &quot;demo&quot;                      &quot;practice.iat.Milkbad&quot;     </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt;  [3] &quot;practice.iat.Milkgood&quot;     &quot;practice.sc_dark.Darkbad&quot; </span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt;  [5] &quot;practice.sc_dark.Darkgood&quot; &quot;practice.sc_milk.Milkbad&quot; </span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;  [7] &quot;practice.sc_milk.Milkgood&quot; &quot;test.iat.Milkbad&quot;         </span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;  [9] &quot;test.iat.Milkgood&quot;         &quot;test.sc_dark.Darkbad&quot;     </span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; [11] &quot;test.sc_dark.Darkgood&quot;     &quot;test.sc_milk.Milkbad&quot;     </span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; [13] &quot;test.sc_milk.Milkgood&quot;</span></span></code></pre></div>
+<p><code>raw_data</code> contains data from two different SC-IATs, one for the implicit assessment of the positive/negative evaluation of Milk chocolate (<code>sc_milk</code>), and one for the implicit assessment of the positive/negative evaluation of Dark chocolate (<code>sc_dark</code>).</p>
+<p>Once the SC-IATs blocks have been identified, it is possible to prepare and clean the data for computing the <em>D-score</em>. Function <code>clean_sciat</code> allows for cleaning the data set of either just one SC-IAT or to clean the data sets of two SC-IATs concurrently. The labels identifying the test blocks must be specified as a character vector via argument <code>block_sciat_1</code> and argument <code>block_sciat_2</code> (only if there is a second SC-IAT). The labels identifying the demographic information (if any) must be passed to argument <code>trial_demo</code>, after specifying the column of the data set containing the labels of the demographic information (argument <code>demo_id</code>).</p>
+<p><strong>DON’T USE THE <code>trial_eliminate</code> ARGUMENT TO ELIMINATE TRIALS EXCEEDING THE RESPONSE TIME WINDOW (rtw).</strong></p>
+<p>The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the variable identified by <code>trial_id</code>, but they have to be specified via the <code>non_response</code> in function <code>Dsciat()</code> function to actually be deleted.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">data</span>(<span class="st">&quot;raw_data&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>sciat_data &lt;-<span class="st"> </span><span class="kw">clean_sciat</span>(raw_data, <span class="dt">sbj_id =</span> <span class="st">&quot;Participant&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                         <span class="dt">block_id =</span> <span class="st">&quot;blockcode&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                         <span class="dt">latency_id =</span> <span class="st">&quot;latency&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                         <span class="dt">accuracy_id =</span> <span class="st">&quot;correct&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>                         <span class="dt">block_sciat_1 =</span> <span class="kw">c</span>(<span class="st">&quot;test.sc_dark.Darkbad&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>                                           <span class="st">&quot;test.sc_dark.Darkgood&quot;</span>),</span>
+<span id="cb3-8"><a href="#cb3-8"></a>                         <span class="dt">block_sciat_2 =</span> <span class="kw">c</span>(<span class="st">&quot;test.sc_milk.Milkbad&quot;</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                                           <span class="st">&quot;test.sc_milk.Milkgood&quot;</span>),</span>
+<span id="cb3-10"><a href="#cb3-10"></a>                         <span class="dt">trial_id  =</span> <span class="st">&quot;trialcode&quot;</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>                         <span class="dt">trial_eliminate =</span> <span class="kw">c</span>(<span class="st">&quot;reminder&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>                                             <span class="st">&quot;reminder1&quot;</span>), </span>
+<span id="cb3-13"><a href="#cb3-13"></a>                         <span class="dt">demo_id =</span> <span class="st">&quot;blockcode&quot;</span>, </span>
+<span id="cb3-14"><a href="#cb3-14"></a>                         <span class="dt">trial_demo =</span> <span class="st">&quot;demo&quot;</span>)</span></code></pre></div>
+<p>Since two SC-IATs and demographic data were specified, <code>clean_sciat()</code> results in a list of 3 elements:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">str</span>(sciat_data) <span class="co"># structure of the resulting List</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;  $ sciat1:Classes &#39;sciat_clean&#39; and &#39;data.frame&#39;:    23328 obs. of  5 variables:</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;   ..$ participant: int [1:23328] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;   ..$ block      : chr [1:23328] &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; ...</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;   ..$ trial      : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 5 3 5 3 20 3 5 20 5 5 ...</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;   ..$ correct    : int [1:23328] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;   ..$ latency    : int [1:23328] 461 1495 639 573 671 643 714 1190 625 517 ...</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  $ sciat2:Classes &#39;sciat_clean&#39; and &#39;data.frame&#39;:    23328 obs. of  5 variables:</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;   ..$ participant: int [1:23328] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;   ..$ block      : chr [1:23328] &quot;test.sc_milk.Milkbad&quot; &quot;test.sc_milk.Milkbad&quot; &quot;test.sc_milk.Milkbad&quot; &quot;test.sc_milk.Milkbad&quot; ...</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;   ..$ trial      : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 3 23 3 3 3 23 23 23 20 20 ...</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;   ..$ correct    : int [1:23328] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt;   ..$ latency    : int [1:23328] 653 990 594 550 818 591 570 620 661 623 ...</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt;  $ demo  :&#39;data.frame&#39;:  3726 obs. of  6 variables:</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt;   ..$ participant: int [1:3726] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt;   ..$ latency    : int [1:3726] 53047 53047 53047 53047 21554 21554 11266 11266 11266 11266 ...</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt;   ..$ correct    : int [1:3726] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt;   ..$ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 19 1 21 8 22 4 10 11 12 13 ...</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt;   ..$ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt;   ..$ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 33 15 41 34 16 20 1 1 1 1 ...</span></span></code></pre></div>
+<p>The first two elements (<code>sciat1</code> and <code>sciat2</code>) are two <code>data.frame</code> with class <code>sciat_clean</code>. They contain the data of the SC-IATs specified in the <code>block_sciat1</code> and <code>block_sciat2</code> arguments of the <code>clean_sciat()</code> function, respectively. The third element (<code>demo</code>) is a <code>data.frame</code> that contains the demographic information as specified in the <code>trial_demo</code> argument of function <code>clean_sciat()</code>.</p>
+<p>Each element of the resulting list can be stored in a separate object.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>sciat1 &lt;-<span class="st"> </span>sciat_data[[<span class="dv">1</span>]] <span class="co"># extract first SC-IAT data</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>sciat2 &lt;-<span class="st"> </span>sciat_data[[<span class="dv">2</span>]] <span class="co"># extract second SC-IAT data</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>demo_data &lt;-<span class="st"> </span>sciat_data[[<span class="dv">3</span>]] <span class="co"># extract demographic information</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">head</span>(sciat1)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;    participant                block     trial correct latency</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 23           4 test.sc_dark.Darkbad  darkleft       1     461</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 24           4 test.sc_dark.Darkbad   badleft       1    1495</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 25           4 test.sc_dark.Darkbad  darkleft       1     639</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; 26           4 test.sc_dark.Darkbad   badleft       1     573</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; 27           4 test.sc_dark.Darkbad goodright       1     671</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; 28           4 test.sc_dark.Darkbad   badleft       1     643</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="kw">head</span>(demo_data)</span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt;       participant latency correct trialcode blockcode response</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; 81001           4   53047       1    gender      demo     male</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 81002           4   53047       1       age      demo       29</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; 81003           4   53047       1       job      demo     stud</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; 81004           4   53047       1       edu      demo       MD</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; 81005           4   21554       1 milk_eval      demo        3</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt; 81006           4   21554       1 dark_eval      demo        4</span></span></code></pre></div>
+</div>
+<div id="compute-the-sc-iat-d-score" class="section level3">
+<h3>Compute the SC-IAT D-score</h3>
+<p>Once the SC-IAT(s) data have been prepared and cleaned through function <code>clean_sciat()</code>, it is possible to compute the <em>D-score</em> by using function <code>Dsciat()</code>.</p>
+<p>This function takes three mandatory arguments and one optional argument. The three mandatory arguments are the data set with class <code>sciat_clean</code>, and the labels identifying the two critical associative conditions (arguments <code>mappingA</code> and <code>mappingB</code>). If the SC-IAT administration included a rtw, the label identifying the trials exceeding the threshold must be specified via the (optional) argument <code>non_response</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Compute the D-score for the first SC-IAT</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a> d_sciat1 &lt;-<span class="st"> </span><span class="kw">Dsciat</span>(sciat1,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>                  <span class="dt">mappingA =</span> <span class="st">&quot;test.sc_dark.Darkbad&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>                  <span class="dt">mappingB =</span> <span class="st">&quot;test.sc_dark.Darkgood&quot;</span>,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                  <span class="dt">non_response =</span> <span class="st">&quot;alert&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># dataframe containing the SC-IAT D-score of the of the first SC-IAT</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">str</span>(d_sciat1) </span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt; Classes &#39;dsciat&#39; and &#39;data.frame&#39;:   162 obs. of  15 variables:</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  $ participant      : Factor w/ 162 levels &quot;100&quot;,&quot;101&quot;,&quot;102&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  $ n_trial          : int  144 144 144 144 144 144 144 144 144 144 ...</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  $ no_response      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt;  $ nslow10000       : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;  $ nfast400         : num  0.03 0.05 0.01 0.01 0 0 0.01 0.11 0.02 0.05 ...</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt;  $ nfast350         : num  0.01 0.01 0 0 0 0 0 0.01 0 0 ...</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt;  $ out_accuracy     : chr  &quot;keep&quot; &quot;keep&quot; &quot;keep&quot; &quot;keep&quot; ...</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt;  $ accuracy.mappingA: num  0.986 0.986 0.958 0.986 1 ...</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt;  $ accuracy.mappingB: num  0.944 0.986 0.931 0.986 0.931 ...</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt;  $ RT_mean.mappingA : num  626 785 627 586 885 ...</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt;  $ RT_mean.mappingB : num  730 913 704 633 1056 ...</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt;  $ cond_ord         : chr  &quot;MappingB_First&quot; &quot;MappingB_First&quot; &quot;MappingB_First&quot; &quot;MappingB_First&quot; ...</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt;  $ legendMappingA   : chr  &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; &quot;test.sc_dark.Darkbad&quot; ...</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt;  $ legendMappingB   : chr  &quot;test.sc_dark.Darkgood&quot; &quot;test.sc_dark.Darkgood&quot; &quot;test.sc_dark.Darkgood&quot; &quot;test.sc_dark.Darkgood&quot; ...</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt;  $ d_sciat          : num  -0.413 -0.242 -0.393 -0.288 -0.314 ...</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a> </span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co"># Compute D-score for the second SC-IAT</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a> d_sciat2 &lt;-<span class="st"> </span><span class="kw">Dsciat</span>(sciat2,</span>
+<span id="cb6-28"><a href="#cb6-28"></a>                  <span class="dt">mappingA =</span> <span class="st">&quot;test.sc_milk.Milkbad&quot;</span>,</span>
+<span id="cb6-29"><a href="#cb6-29"></a>                  <span class="dt">mappingB =</span> <span class="st">&quot;test.sc_milk.Milkgood&quot;</span>,</span>
+<span id="cb6-30"><a href="#cb6-30"></a>                  <span class="dt">non_response =</span> <span class="st">&quot;alert&quot;</span>)</span>
+<span id="cb6-31"><a href="#cb6-31"></a> </span>
+<span id="cb6-32"><a href="#cb6-32"></a> <span class="co"># dataframe containing the SC-IAT D-score of the of the second SC-IAT</span></span>
+<span id="cb6-33"><a href="#cb6-33"></a> <span class="kw">head</span>(d_sciat2)</span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="co">#&gt;   participant n_trial no_response nslow10000 nfast400 nfast350 out_accuracy</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="co">#&gt; 1         100     144           0          0     0.02     0.01         keep</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a><span class="co">#&gt; 2         101     144           0          0     0.02     0.00         keep</span></span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="co">#&gt; 3         102     144           0          0     0.02     0.00         keep</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a><span class="co">#&gt; 4         103     144           0          0     0.00     0.00         keep</span></span>
+<span id="cb6-39"><a href="#cb6-39"></a><span class="co">#&gt; 5         104     144           0          0     0.00     0.00         keep</span></span>
+<span id="cb6-40"><a href="#cb6-40"></a><span class="co">#&gt; 6         105     144           0          0     0.03     0.01         keep</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a><span class="co">#&gt;   accuracy.mappingA accuracy.mappingB RT_mean.mappingA RT_mean.mappingB</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a><span class="co">#&gt; 1         0.9436620         0.9722222         695.2269         648.8692</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a><span class="co">#&gt; 2         0.9861111         1.0000000         917.3706         699.7917</span></span>
+<span id="cb6-44"><a href="#cb6-44"></a><span class="co">#&gt; 3         0.9583333         0.9166667         757.4988         784.3854</span></span>
+<span id="cb6-45"><a href="#cb6-45"></a><span class="co">#&gt; 4         0.9861111         0.9722222         640.5077         607.7566</span></span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="co">#&gt; 5         1.0000000         0.9861111         849.7500         928.0496</span></span>
+<span id="cb6-47"><a href="#cb6-47"></a><span class="co">#&gt; 6         1.0000000         1.0000000         540.3099         614.8611</span></span>
+<span id="cb6-48"><a href="#cb6-48"></a><span class="co">#&gt;         cond_ord       legendMappingA        legendMappingB     d_sciat</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a><span class="co">#&gt; 1 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood  0.16120777</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a><span class="co">#&gt; 2 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood  0.58453600</span></span>
+<span id="cb6-51"><a href="#cb6-51"></a><span class="co">#&gt; 3 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood -0.08226841</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a><span class="co">#&gt; 4 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood  0.24119095</span></span>
+<span id="cb6-53"><a href="#cb6-53"></a><span class="co">#&gt; 5 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood -0.26484892</span></span>
+<span id="cb6-54"><a href="#cb6-54"></a><span class="co">#&gt; 6 MappingB_First test.sc_milk.Milkbad test.sc_milk.Milkgood -0.50147795</span></span></code></pre></div>
+<p>Function <code>Dsciat()</code> results in a <code>data.frame</code> with class <code>dsciat</code> containing a number of rows equal to the number of participants, their <em>D-score</em>, and a bunch of useful information on their performance (see the documentation for the <code>Dsciat()</code> function for further information on the resulting data frame). Functions <code>dscr_d()</code>, <code>d_plot()</code>, and <code>d_distr()</code> require the object resulting from function <code>Dsciat()</code> to work.</p>
+</div>
+<div id="descriptive-statistics" class="section level3">
+<h3>Descriptive statistics</h3>
+<p>The descriptive statistics of the <em>D-score</em> and of the response times in the two critical conditions can be easily obtained by using function <code>descript_d()</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">descript_d</span>(d_sciat1) <span class="co"># Data frame containing SC-IAT D-scores</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;               Mean     SD    Min     Max</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; D-Sciat      -0.04   0.32  -0.91    0.78</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; RT.MappingA 700.53 125.94 459.56 1299.09</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; RT.MappingB 710.23 125.28 462.28 1218.77</span></span></code></pre></div>
+<p>By specifying argument <code>latex = TRUE</code>, function <code>dscr_d()</code> prints the results in a LaTeX compatible format:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">descript_d</span>(d_sciat2, <span class="co"># Data frame containing IAT D-scores</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>           <span class="dt">latex =</span> <span class="ot">TRUE</span>) <span class="co"># obtain the code for latex tables</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt; % latex table generated in R 3.6.3 by xtable 1.8-4 package</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; % Mon May 25 14:33:30 2020</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; \begin{table}[ht]</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; \centering</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt; \begin{tabular}{rrrrr}</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;   \hline</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  &amp; Mean &amp; SD &amp; Min &amp; Max \\ </span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;   \hline</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt; D-Sciat &amp; 0.16 &amp; 0.34 &amp; -0.95 &amp; 1.20 \\ </span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;   RT.MappingA &amp; 729.20 &amp; 146.02 &amp; 448.56 &amp; 1686.09 \\ </span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt;   RT.MappingB &amp; 681.52 &amp; 109.97 &amp; 485.15 &amp; 1166.36 \\ </span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt;    \hline</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt; \end{tabular}</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt; \end{table}</span></span></code></pre></div>
+</div>
+<div id="plotting-the-results" class="section level3">
+<h3>Plotting the results</h3>
+<p><code>implicitMeasures</code> comes with several functions for obtaining nice and clear representations of the results at both individual respondent and sample levels. Additionally, it includes functions for plotting SC-IAT <em>D-score</em>s resulting from two different SC-IATs.</p>
+<div id="indivdual-respondent-level" class="section level4">
+<h4>Indivdual respondent level</h4>
+<p><code>d_plot()</code> plots the SC-IAT <em>D-score</em> for each respondent.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a> <span class="kw">d_plot</span>(d_sciat1) <span class="co"># Data frame containing SC-IAT D-scores</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:scpointDefault} Default use of function d_plot() function" />
+<p class="caption">
+ Default use of function d_plot() function
+</p>
+</div>
+<p>Clearly, in case of large sample size, as in this case, the label identifying each respondent is not easy to read, and it can be elimnated by setting the argument <code>x_values</code> to <code>FALSE</code>. Respondents can be arranged by increasing or decreasing <em>D-score</em>s by setting argument <code>order_sbj</code> equal to either <code>D-increasing</code> or <code>D-decreasing</code>. Descriptive statistics (i.e., <span class="math inline">\(M_{\text{D-score}}\pm 2sd\)</span>) can be added by setting argument <code>include_stats = TRUE</code>. Finally, the color of the points can be changed by using argument <code>col_point</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">d_plot</span>(d_sciat1, <span class="co"># dataframe containing SC-IAT D-scores</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>       <span class="dt">order_sbj =</span> <span class="st">&quot;D-increasing&quot;</span>, <span class="co"># change respondents&#39; order</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>       <span class="dt">x_values =</span> <span class="ot">FALSE</span>,  <span class="co"># remove respodents&#39; labels</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>       <span class="dt">include_stats =</span> <span class="ot">TRUE</span>, <span class="co"># include descriptive statistics</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>       <span class="dt">col_point =</span> <span class="st">&quot;aquamarine3&quot;</span>) <span class="co"># change points color</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:scpointSettings} Function d_plot() with settings change" />
+<p class="caption">
+ Function d_plot() with settings change
+</p>
+</div>
+</div>
+<div id="sample-level" class="section level4">
+<h4>Sample level</h4>
+<p>Function <code>d_distr()</code> plots the distribution of the SC-IAT <em>D-score</em>s. It provides different options for choosing the most appropriate representation. Figure  represents the default output of <code>d_distr()</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">d_distr</span>(d_sciat1) <span class="co"># Data frame containing SC-IAT D-scores</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:scsampleDefault} Default use of d_plot() function" />
+<p class="caption">
+ Default use of d_plot() function
+</p>
+</div>
+</div>
+<div id="multiple-sc-iats" class="section level4">
+<h4>Multiple SC-IATs</h4>
+<p>Function <code>multi_dsciat()</code> plots the distributions of the <em>D-score</em>s obtained from two different SC-IATs. This function takes only two mandatory arguments, which are the data frames containing the results of each SC-IAT obtained by using function <code>Dsciat()</code>. The type of graphical representation can be changed by using argument <code>graph</code>, which is set to <code>density</code> by default. Default representation also contains the lines indicating the mean of each distribution. These lines can be taken out of the graph by setting argument <code>dens_mean = FALSE</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">multi_dsciat</span>(d_sciat1, <span class="co"># dataframe containing the results of the first SC-IAT</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>             d_sciat2) <span class="co"># dataframe containing the results of the second SC-IAT</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:multiscDefault} Default results represention of function multi_dsciat()" />
+<p class="caption">
+ Default results represention of function multi_dsciat()
+</p>
+</div>
+<p>Argument <code>graph</code> can be set equal to <code>violin</code> (violin plots of the SC-IATs <em>D-score</em>s) or <code>point</code> (point representation of both SC-IATs <em>D-score</em>s). The labels identifying each SC-IAT can be set with arguments <code>label_sc1</code> and <code>label_sc2</code> (default are <code>SC-IAT 1</code> and <code>SC-IAT 2</code>). The values labels of the x-axis can be removed by setting <code>x-values = FALSE</code> (suggested in case of big sample size). Argument <code>gcolors</code> can be used to change the colors of each SC-IAT (default is <code>dark</code>). Other colors options are <code>greens</code>, <code>blues</code>, and <code>pink</code>. Figure  depicts an example of the graphical representation of the results obtained by changing the settings in function <code>multi_dsciat()</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">multi_dsciat</span>(d_sciat1, <span class="co"># dataframe containing the results of the first SC-IAT</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>             d_sciat2, <span class="co"># dataframe containing the results of the second SC-IAT</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>             <span class="dt">graph =</span> <span class="st">&quot;point&quot;</span>, <span class="co"># change graph type</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>       <span class="dt">x_values =</span> <span class="ot">FALSE</span>, <span class="co"># take out x values</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>       <span class="dt">gcolors =</span> <span class="st">&quot;greens&quot;</span>, <span class="co"># change color</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>       <span class="dt">label_sc1 =</span> <span class="st">&quot;Dark SC-IAT&quot;</span>,  <span class="co"># change label first SC-IAT</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>       <span class="dt">label_sc2 =</span> <span class="st">&quot;Milk SC-IAT&quot;</span>) <span class="co"># change label second SC-IAT</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:multiscSettings} Results representation of function multi_dsciat() with settings change" />
+<p class="caption">
+ Results representation of function multi_dsciat() with settings change
+</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Ottavia M. Epifania" />
+
+<meta name="date" content="2020-05-25" />
+
+<title>IAT-example</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">IAT-example</h1>
+<h4 class="author">Ottavia M. Epifania</h4>
+<h4 class="date">2020-05-25</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(implicitMeasures)</span></code></pre></div>
+<p>This vignette illustrates how to use <code>implicitMeasures</code> package for computing compute the IAT <em>D-score</em>. The illustartion is based on the data set <code>raw_data</code> that is provided with the package.</p>
+<div id="first-thing-first-import-and-explore-data" class="section level3">
+<h3>First thing first: Import and explore data</h3>
+<p>Labels containing specification <code>.iat</code> in variable <code>blockcode</code> identify IAT blocks.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(<span class="st">&quot;raw_data&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># explore the dataframe</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">str</span>(raw_data)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; &#39;data.frame&#39;:    84726 obs. of  6 variables:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  $ Participant: int  4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  $ latency    : int  2592 628 808 783 2059 1114 608 663 771 676 ...</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  $ correct    : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  $ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 31 5 3 20 3 20 5 3 20 3 ...</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  $ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  $ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 43 43 43 43 43 43 43 43 43 43 ...</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># explore the levels of the blockcode variable to identify the IAT blocks</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="kw">levels</span>(raw_data<span class="op">$</span>blockcode)</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  [1] &quot;demo&quot;                      &quot;practice.iat.Milkbad&quot;     </span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;  [3] &quot;practice.iat.Milkgood&quot;     &quot;practice.sc_dark.Darkbad&quot; </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt;  [5] &quot;practice.sc_dark.Darkgood&quot; &quot;practice.sc_milk.Milkbad&quot; </span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt;  [7] &quot;practice.sc_milk.Milkgood&quot; &quot;test.iat.Milkbad&quot;         </span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;  [9] &quot;test.iat.Milkgood&quot;         &quot;test.sc_dark.Darkbad&quot;     </span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; [11] &quot;test.sc_dark.Darkgood&quot;     &quot;test.sc_milk.Milkbad&quot;     </span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; [13] &quot;test.sc_milk.Milkgood&quot;</span></span></code></pre></div>
+<p>Once the IAT blocks have been identified, it is possible to prepare and clean the IAT data by using function <code>clean_iat()</code>. Since the data set also includes respondents’ demographic information (<code>demo</code> label in <code>blockcode</code> variable), it is possible to extract and store these information in a separate data frame:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>iat_cleandata &lt;-<span class="st"> </span><span class="kw">clean_iat</span>(raw_data, <span class="dt">sbj_id =</span> <span class="st">&quot;Participant&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>                          <span class="dt">block_id =</span> <span class="st">&quot;blockcode&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                          <span class="dt">mapA_practice =</span> <span class="st">&quot;practice.iat.Milkbad&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                          <span class="dt">mapA_test =</span> <span class="st">&quot;test.iat.Milkbad&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                          <span class="dt">mapB_practice =</span> <span class="st">&quot;practice.iat.Milkgood&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>                          <span class="dt">mapB_test =</span> <span class="st">&quot;test.iat.Milkgood&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>                          <span class="dt">latency_id =</span> <span class="st">&quot;latency&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>                          <span class="dt">accuracy_id =</span> <span class="st">&quot;correct&quot;</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                          <span class="dt">trial_id =</span> <span class="st">&quot;trialcode&quot;</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>                          <span class="dt">trial_eliminate =</span> <span class="kw">c</span>(<span class="st">&quot;reminder&quot;</span>, <span class="st">&quot;reminder1&quot;</span>),</span>
+<span id="cb3-11"><a href="#cb3-11"></a>                          <span class="dt">demo_id =</span> <span class="st">&quot;blockcode&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>                          <span class="dt">trial_demo =</span> <span class="st">&quot;demo&quot;</span>)</span></code></pre></div>
+<p>Since also the demographic data has been specified, <code>clean_iat()</code> results in a list of 3 elements:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">str</span>(iat_cleandata)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;  $ data_keep     :Classes &#39;iat_clean&#39; and &#39;data.frame&#39;:  19440 obs. of  8 variables:</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;   ..$ participant   : int [1:19440] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;   ..$ latency       : int [1:19440] 1282 1299 1435 1089 967 648 967 615 729 642 ...</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;   ..$ correct       : int [1:19440] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;   ..$ block_original: chr [1:19440] &quot;practice.iat.Milkbad&quot; &quot;practice.iat.Milkbad&quot; &quot;practice.iat.Milkbad&quot; &quot;practice.iat.Milkbad&quot; ...</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;   ..$ condition     : chr [1:19440] &quot;MappingA&quot; &quot;MappingA&quot; &quot;MappingA&quot; &quot;MappingA&quot; ...</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;   ..$ block_pool    : chr [1:19440] &quot;practice&quot; &quot;practice&quot; &quot;practice&quot; &quot;practice&quot; ...</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;   ..$ block         : chr [1:19440] &quot;practice_MappingA&quot; &quot;practice_MappingA&quot; &quot;practice_MappingA&quot; &quot;practice_MappingA&quot; ...</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;   ..$ trial_id      : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 20 6 20 6 20 6 20 6 20 23 ...</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  $ data_eliminate:&#39;data.frame&#39;:  64638 obs. of  6 variables:</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;   ..$ Participant: int [1:64638] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt;   ..$ latency    : int [1:64638] 2592 628 808 783 2059 1114 608 663 771 676 ...</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt;   ..$ correct    : int [1:64638] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt;   ..$ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 31 5 3 20 3 20 5 3 20 3 ...</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt;   ..$ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt;   ..$ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 43 43 43 43 43 43 43 43 43 43 ...</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt;  $ demo          :&#39;data.frame&#39;:  3726 obs. of  6 variables:</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt;   ..$ participant: int [1:3726] 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt;   ..$ latency    : int [1:3726] 53047 53047 53047 53047 21554 21554 11266 11266 11266 11266 ...</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="co">#&gt;   ..$ correct    : int [1:3726] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co">#&gt;   ..$ trialcode  : Factor w/ 32 levels &quot;age&quot;,&quot;alert&quot;,..: 19 1 21 8 22 4 10 11 12 13 ...</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="co">#&gt;   ..$ blockcode  : Factor w/ 13 levels &quot;demo&quot;,&quot;practice.iat.Milkbad&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt;   ..$ response   : Factor w/ 46 levels &quot;&quot;,&quot;0&quot;,&quot;1&quot;,&quot;19&quot;,..: 33 15 41 34 16 20 1 1 1 1 ...</span></span></code></pre></div>
+<p><code>data_keep</code> is a <code>data.frame</code> with class <code>iat_clean</code>. It contains the data set to pass to function <code>computeD()</code>.</p>
+<p><code>data_eliminate</code> is a <code>data.frame</code> containing all the discarded blocks and trials. <code>demo</code>is a <code>data.frame</code> containing all the trials identified as <code>demo</code> in the <code>blockcode</code> variable.</p>
+<p>Store the first <code>data_keep</code> element in a data frame to pass to function <code>computeD()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>iat_data &lt;-<span class="st"> </span>iat_cleandata[[<span class="dv">1</span>]]</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">head</span>(iat_data)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;       participant latency correct       block_original condition block_pool</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; 60914           4    1282       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 60915           4    1299       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; 60916           4    1435       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 60917           4    1089       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 60918           4     967       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 60919           4     648       1 practice.iat.Milkbad  MappingA   practice</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;                   block  trial_id</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; 60914 practice_MappingA goodright</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; 60915 practice_MappingA darkright</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 60916 practice_MappingA goodright</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; 60917 practice_MappingA darkright</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; 60918 practice_MappingA goodright</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 60919 practice_MappingA darkright</span></span></code></pre></div>
+<p>You can also skip this step and directly pass <code>iat_cleandata[[1]]</code> to function <code>compute_D()</code>.</p>
+</div>
+<div id="compute-the-iat-d-score" class="section level3">
+<h3>Compute the IAT D-score</h3>
+<p>Once that IAT data have been prepared and cleaned by function <code>clean_iat()</code>, it is possible to compute the <em>D-score</em> by using function <code>computeD()</code>.</p>
+<p>This function only takes two arguments. The first argument is the data frame with class <code>iat_clean</code>, the second argument is a character specifiying the <em>D-score</em> algortihm for the computation. To compute multiple <em>D-score</em> algorithms at the same time, use the <code>multi_dscore()</code> function.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>dscore &lt;-<span class="st"> </span><span class="kw">computeD</span>(iat_data, <span class="dt">Dscore =</span> <span class="st">&quot;d3&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">str</span>(dscore)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; Classes &#39;dscore&#39; and &#39;data.frame&#39;:   162 obs. of  23 variables:</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  $ participant               : int  4 6 8 11 14 17 18 19 20 21 ...</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  $ n_trial                   : int  120 120 120 120 120 120 120 120 120 120 ...</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  $ nslow10000                : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  $ nfast400                  : num  0 0 0 0.01 0.08 0.04 0 0.05 0 0 ...</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  $ nfast300                  : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  $ accuracy.practice_MappingA: num  1 0.95 0.7 0.9 0.95 0.9 0.95 0.95 0.85 0.9 ...</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  $ accuracy.practice_MappingB: num  1 1 0.85 0.95 1 1 1 0.85 1 0.85 ...</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  $ accuracy.test_MappingA    : num  1 0.9 1 0.95 0.9 0.925 0.95 0.95 0.8 0.9 ...</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  $ accuracy.test_MappingB    : num  1 1 0.85 0.95 1 0.95 1 0.975 0.975 0.9 ...</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt;  $ accuracy.MappingA         : num  1 0.917 0.9 0.933 0.917 ...</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;  $ accuracy.MappingB         : num  1 1 0.85 0.95 1 ...</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt;  $ RT_mean.MappingA          : num  1037 1179 954 1297 852 ...</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt;  $ RT_mean.MappingB          : num  788 596 926 731 604 ...</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt;  $ mean_practice_MappingA    : num  1070 1224 1504 1608 821 ...</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt;  $ mean_test_MappingA        : num  1021 1157 679 1141 867 ...</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt;  $ mean_practice_MappingB    : num  889 611 1108 702 637 ...</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt;  $ mean_test_MappingB        : num  737 589 836 745 587 ...</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt;  $ d_practice_d3             : num  -0.647 -1.274 -0.584 -1.114 -0.514 ...</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt;  $ d_test_d3                 : num  -0.878 -1.226 0.508 -0.816 -0.672 ...</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt;  $ dscore_d3                 : num  -0.762 -1.25 -0.038 -0.965 -0.593 ...</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt;  $ cond_ord                  : chr  &quot;MappingA_First&quot; &quot;MappingB_First&quot; &quot;MappingB_First&quot; &quot;MappingA_First&quot; ...</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#&gt;  $ legendMappingA            : chr  &quot;practice.iat.Milkbad_and_test.iat.Milkbad&quot; &quot;practice.iat.Milkbad_and_test.iat.Milkbad&quot; &quot;practice.iat.Milkbad_and_test.iat.Milkbad&quot; &quot;practice.iat.Milkbad_and_test.iat.Milkbad&quot; ...</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#&gt;  $ legendMappingB            : chr  &quot;practice.iat.Milkgood_and_test.iat.Milkgood&quot; &quot;practice.iat.Milkgood_and_test.iat.Milkgood&quot; &quot;practice.iat.Milkgood_and_test.iat.Milkgood&quot; &quot;practice.iat.Milkgood_and_test.iat.Milkgood&quot; ...</span></span></code></pre></div>
+<p>Function <code>computeD()</code> results in a <code>data.frame</code> with class <code>dscore</code> containing a number of rows equal to the number of participants, their <em>D-score</em>s and a bunch of useful information on their performance (see the documentation of the <code>computeD()</code> function for further details on the resulting data frame). Functions <code>IATrel()</code>, <code>dscr_d()</code>, <code>d_plot()</code>, and <code>d_distr()</code> require the object resulting from function <code>computeD()</code> function.</p>
+</div>
+<div id="iat-descriptive-statistics-and-reliability" class="section level3">
+<h3>IAT descriptive statistics and reliability</h3>
+<p>The descriptive statistics of the <em>D-score</em>, computed on the practice and test blocks and the actual <em>D-score</em>, can be easily obtained with function <code>dscr_d()</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">descript_d</span>(dscore) <span class="co"># Data frame containing IAT D-scores</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;             Mean   SD   Min  Max</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; D-score    -0.56 0.54 -1.59 1.29</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; D-practice -0.59 0.64 -1.59 1.26</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; D-test     -0.54 0.56 -1.59 1.32</span></span></code></pre></div>
+<p>By specifying <code>latex = TRUE</code>, function <code>dscr_d()</code> print the results in Latex:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">descript_d</span>(dscore, <span class="co"># Data frame containing IAT D-scores</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>           <span class="dt">latex =</span> <span class="ot">TRUE</span>) <span class="co"># obtain the code for latex tables</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt; % latex table generated in R 3.6.3 by xtable 1.8-4 package</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; % Mon May 25 14:33:17 2020</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; \begin{table}[ht]</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; \centering</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt; \begin{tabular}{rrrrr}</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;   \hline</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  &amp; Mean &amp; SD &amp; Min &amp; Max \\ </span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;   \hline</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt; D-score &amp; -0.56 &amp; 0.54 &amp; -1.59 &amp; 1.29 \\ </span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;   D-practice &amp; -0.59 &amp; 0.64 &amp; -1.59 &amp; 1.26 \\ </span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt;   D-test &amp; -0.54 &amp; 0.56 &amp; -1.59 &amp; 1.32 \\ </span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt;    \hline</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt; \end{tabular}</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt; \end{table}</span></span></code></pre></div>
+<p>Function <code>IATrel()</code> computes IAT reliability by correlating the <em>D-score</em> obtained from practice blocks with the <em>D-score</em> obtained from test blocks <span class="citation">(see Gawronski et al. 2017 for further details)</span>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">IATrel</span>(dscore)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; $`Test-pratice Reliability`</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; [1] 0.65</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; </span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; $`Number of participants`</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; [1] 162</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; </span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; [1] &quot;IATrel&quot;</span></span></code></pre></div>
+</div>
+<div id="plotting-the-results" class="section level3">
+<h3>Plotting the results</h3>
+<p><code>implicitMeasures</code> comes with several functions for obtaining nice and clear representations of the results at both individual respondent and sample levels. Additionally, it includes a function for computing and plotting multiple IAT <em>D-score</em> algorithms at the same time.</p>
+<div id="respondent-level" class="section level4">
+<h4>Respondent level</h4>
+<p>Function <code>d_plot()</code> plots the IAT <em>D-score</em> for each respondent.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">d_plot</span>(dscore) <span class="co"># Data frame containing IAT D-scores</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="Default use function d_plot()" />
+<p class="caption">
+Default use function d_plot()
+</p>
+</div>
+<p>Clearly, in case of large sample size, the label identifying each respondent is not easy to read, and it can be eliminated by setting argument <code>x_values</code> to <code>FALSE</code>. Respondents can be arranged by increasing or decreasing <em>D-score</em> by setting argument <code>order_sbj</code> equal to either <code>D-increasing</code> or <code>D-decreasing</code>. Descriptive statistics (<span class="math inline">\(M_{\text{D-score}}\pm 2sd\)</span>) can be added by setting the argument <code>include_stats = TRUE</code>. Finally, the color of the points can be changed by using argument <code>col_point</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">d_plot</span>(dscore, <span class="co"># dataframe containing IAT D-scores</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>       <span class="dt">order_sbj =</span> <span class="st">&quot;D-decreasing&quot;</span>, <span class="co"># change respondents order</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>       <span class="dt">x_values =</span> <span class="ot">FALSE</span>, <span class="co"># remove respodents&#39; labels</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>       <span class="dt">include_stats =</span> <span class="ot">TRUE</span>, <span class="co"># include descriptive statistics</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>       <span class="dt">col_point =</span> <span class="st">&quot;lightskyblue&quot;</span>) <span class="co"># change points color</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:pointSettings} Function d_plot() with settings change" />
+<p class="caption">
+ Function d_plot() with settings change
+</p>
+</div>
+</div>
+<div id="sample-level" class="section level4">
+<h4>Sample level</h4>
+<p>Function <code>d_distr()</code> plots the distribution of the IAT <em>D-score</em>s. It provides different options for choosing the most appropriate representation.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">d_distr</span>(dscore) <span class="co"># dataframe containing IAT Dscores</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAEgCAMAAABrWDzDAAAArlBMVEUAAAAAADoAAGYAOpAAZrY6AAA6ADo6AGY6kNtBaeFNTU1NTW5NTY5NbqtNjshmAABmtv9uTU1uTW5uTY5ubo5ubqtuq+SOTU2OTW6OTY6Obk2ObquOyP+QOgCQkDqQ2/+WquagtPCrbk2rbm6rjk2ryKur5OSr5P+2ZgC2///Ijk3I///bkDrb///kq27k///r6+v/tmb/yI7/25D/5Kv//7b//8j//9v//+T///822/IYAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAKRElEQVR4nO2dCXfTVhBG0zZd4pYWaIEuUFK6QIEGmrgh+v9/rJZXOZq3jEYTa/C95zTgePR57Ll5snN41UkDYODk0A1AbBAITCAQmEAgMIFAYAKBwMQIAr23R9xRKK2OH4lA0wwN0yoCTTM0TKsINM3QMK0i0DRDw7SKQNMMDdMqAk0zNEyrCDTN0DCtbgWaP5h982ZQRJSn6pV63K1uBLr+8WVzce/dkIgoT9Ur9bhb3Qg0f/Suuf5p0BIU5al6pR53q+IK9P4wnK0YuRRcuC1Qc/1kNuwMNp7WZ7+1nNWEdksVRPmx9kr1PIU9fNlcDnsXjUBhUh0FulwsP+1pbAAIFCaVFUgqVRBlKl6pnr8HupzNvh60ACGQR2iYVqf0m2gE8k5FIKlUQZSpeKUikFSqIMpUvFIRSCpVEGUqXqkIJJUqiDIVr1QEkkoVRJmKVyoCSaUKokzFKxWBpFIFUabilYpAUqmCKFPxSkUgqVRBlKl4pSKQVKogylS8UhFIKlUQZSpeqQgklSqIMhWvVASSShVEmYpXKgJJpQqiTMUrFYGkUgVRpuKVikBSqYIoU/FKRSCpVEGUqXilIpBUqiDKVLxSEUgqVRBlKl6pdyXQgTY7np231O1MrS8FF7IC6WAFCpPKKUwqVRBlKl6pCCSVKogyFa9UBJJKFUSZilcqAkmlCqJMxSsVgaRSBVGm4pWKQFKpgihT8UpFIKlUQZSpeKUikFSqIMpUvFIRSCpVEGUqXqkIJJUqiDIVr1QEkkoVRJmKVyoCSaUKokzFKxWBpFIFUabilYpAUqmCKFPxSkUgqVRBlKl4pSKQVKogylS8UhFIKlUQZSpeqQgklSqIMhWvVASSShVEmYpXKgJJpQqiTMUrFYGkUgVRpuKVikBSqYIoU/FK9RTo5gUXWxkGAi15/XR5zbABIFCYVEeBBl5wtwWBwqQ6CjR/9MfuFHag3bKF/crdC+3ulbpegZfL+8r0BHrwdHnp7wHc1QrUvXtvBapfjga0Wg5nBWpZXjd+2tdMRaAphm7fA/2CQMWmRgutIJpA7acwTmGFpkYLrSCcQNdPZsMu2oxA+tAKwgk0HATyAIH0IJB3KgIh0NRCEUjR1GihFSCQHgTyTkUgBJpaKAIpmhottAIE0oNA3qkIhEBTC0UgRVOjhVaAQHoQyDsVgRBoaqEIpGhqtNAKEEgPAnmnIhACTS0UgRRNjRZaAQLpQSDvVARCoKmFIpCiqdFCK0AgPQjknYpACDS10INdtfmsy/pbnf3Kwo7i9d0r9rY2549LP3b/W0Jt91HZ4bwlK5COYVqvf7JTK4nwg793hOK4fquror2q5HHdx5NzWYGMIJAHCFQAgfIgUAEEyoNABRAoDwIVQKA8CFQAgfIgUAEEyoNABRAoDwIVQKA8CFQAgfIgUAEEyoNABRAoDwIVQKA8CFQAgfIgUAEEyoNABRAoDwIVQKA8CFQAgfIgUAEEyoNABRAoDwIVQKA8CFQAgfIEFOjmxdNBEQjkQUCBLmYIlO8TgfrsBJr/8DMC5ftEoD5bgW5+/2t7CvPaDitcdzm5Rbl/Bee9I/Y2HKeO23u8Lue99OQVo7uPl76i9PHRE+jisf97IGGpsK1Av/VC8oHnyfWEFWggnas2IxAC6dkIdDFreTwkAoE8iCZQcxcf4xGoHgQSQKB6Ago0FATyAIEEEKgeBBJAoHoQSACB6kEgAQSqB4EEEKgeBBJAoHoQSACB6kEgAQSqB4EEEKgeBBJAoHoQSACB6kEgAQSqB4EEEKgeBBJAoHoQSACB6kEgAQSqB4EEEKgeBBJAoHoQSACB6kEgAQSqJ7RAI+6AlS7L3N2PXNja3N+Q3P96LsQKN4Tjuh2mLs5ctbW57qLOH9WVn7MC6chqLa0I/a/9WmmJKaxAFXdIK5B0XP8J5Feg3N2J16JE6BVIBwIhkAkEQiATCIRAJhAIgUwgEAKZQCAEMoFACGQCgRDIBAIhkAkEQiATCIRAJhAIgUwgEAKZQCAEMoFACGQCgRDIBAIhkAkEQiATCIRAJhAIgUwgEAKZQCAEWjB/MPO46C4CJV6LEtEEuv7xZTN/+HJIBAIhUNNcfrv48nrQEoRACLSiXYVWjzMe0lbjwtWXe6XSETV3F49T7Hnub23uX4K6dFHn5JWhNa/nVLZHCwLdvBh0ydSqFWjklWSkFSh5XK/19NJ0xyuQKqM21MJOoOsnw/xBIARqmT8Y9hkMgRCoZbg/CIRAzea68W6fwhCo+cgFMoBACGQCgRDIBAIhkAkEQiATCIRAJhAIgUwgEAKZQCAEMoFACGQCgRDIBAIhkAkEQiATCIRAJhAIgUwgEAKZQCAEMoFACGQCgRDIBAIhkAkEQqDbj5OicHHZvbvvcIfp6MepL9O7d9zea9Hbv3qWRHglFRmKXaVVRxSKsgIlEX/S3st3e64k3itQ8g7pmZ3fPq5XlHxFhOM2r+R5r1aITRyd5H13TuOslwiEQLlZIxAC9UeFQAjUj6qZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvkhEAIl+6yZHwIhULLPmvl5CnT9ZHbvXakagYRnhkAtNy+eNhfflqoRSHhmCNRy/dObZv79m0I1AgnPDIFa5o/eVVx0N70tFz5Sarc2X97rCKTDYce+Uyitjh8prkA6ojxVr9TjblX3HkgkylP1Sj3uVnefwh5XfAoTifJUvVKPu1Xd74FEojxVr9TjbtX7/1A2qVBaHT8SgaYZGqZVBJpmaJhWEWiaoWFaRaBphoZpdQSB4JhBIDCBQGACgcAEAoEJBAITCAQmEAhMIBCYmKxAA/91210z/F/BHACP13SqAl3OvokgUN1uqIng8ppOVKDXX/8ZYgUy/EvgO8fnNZ2oQFFOYYa9CAfgmE5hQQQy7IY6AMch0OvZrH1TEUMgVqDpCbQmhkCR3gMh0AQx7IY6AAg0Pfg90OiJcFQgEJhAIDCBQGACgcAEAoEJBNrx4dlJy+mh+wgFAu348Oyr5dfP/jl0J4FAoB0rgZr/vrt/6E4CgUA71gI1bzcnsavPF2e0+6tz22mz/fPqy19PPv27vfHp3wdrdiog0I6NQP+uz2FXXzxvJbr/4dnpcllq/2z/u/r8tFn+pXnL2Q6BdmwFWi8sV1+u/2xF2nx/8WXh1PoGZzsE6nB7BWperc5cG6GW31/YtBTq7fIT28lXB+p1MiDQjo1Ar06XerQ3/vtu8T5HFoiz1xIE2iF+Clvc2p7CPnm+OoW1t5c3AIE63P490HLlWdiyefO8fRPdCrQswyIE6rD+TfTubc2/i1ufPO9/jF+uSO0N/EEgsIFAYAKBwAQCgQkEAhMIBCYQCEwgEJhAIDCBQGDif4z5ee/CCugVAAAAAElFTkSuQmCC" alt="\label{fig:sampleDefault}d_distr() function default settings" />
+<p class="caption">
+d_distr() function default settings
+</p>
+</div>
+<p>The number of bins can be changed with argument <code>n_bin</code>. Argument <code>graph</code> can be used for changing the graphical representation of the data. It is possible to choose an histogram representation (<code>graph = histogram</code>, default), a representation of the density distribution (<code>graph = density</code>), or a violin plot (<code>graph = violin</code>). Argument <code>col_fill</code> can be used to change the color of the points representing each respondent in the violin plot. Finally, also descriptive statistics (i.e., <span class="math inline">\(M_{\text{D-score}} \pm 2sd\)</span>) can be added to the graph by setting argument <code>include_stats = TRUE</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">d_distr</span>(dscore, <span class="co"># dataframe containing IAT Dscores</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>        <span class="dt">graph =</span> <span class="st">&quot;violin&quot;</span>, <span class="co"># change graphical representation</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>        <span class="dt">include_stats =</span> <span class="ot">TRUE</span>) <span class="co"># include descriptive statistics</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:sampleSettings}d_distr() function with settings change" />
+<p class="caption">
+d_distr() function with settings change
+</p>
+</div>
+</div>
+<div id="multiple-d-scores" class="section level4">
+<h4>Multiple D-scores</h4>
+<p>Function <code>multi_dscore()</code> computes and plot multiple <em>D-score</em> algorithms. The multiple <em>D-score</em>s that can be computed depend on IAT administration. If the IAT administration included a feedback strategy (i.e., built-in correction), only <em>D1</em> and <em>D2</em> algorithms should be computed. If the IAT administration did not include a feedback strategy, then algorithms <em>D3</em>, <em>D4</em>, <em>D5</em>, and <em>D6</em> should be computed. An exahustive and detailed illustration of the <em>D-score</em> algorithms is provided in the “Implicit Measures” vignette. To specify the algorithms that can be computed, argumet <code>ds</code> must be set equal to either <code>&quot;built-in&quot;</code> (for the computation of <em>D1</em> and <em>D2</em>) or <code>error-inflation</code> (for the computation of all other algorithms).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>multi_scores &lt;-<span class="st"> </span><span class="kw">multi_dscore</span>(iat_data, <span class="co"># object with class &quot;iat_clean&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>                             <span class="dt">ds =</span> <span class="st">&quot;error-inflation&quot;</span>) <span class="co"># string specifying the </span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>                                            <span class="co"># algorithms to compute</span></span></code></pre></div>
+<p>Function <code>multi_dscore()</code> results in a <code>list</code> containing two objects. The first object is a <code>data.frame</code> containing all computed algorithms and respondents’ IDs.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>multi_d &lt;-<span class="st"> </span>multi_scores[[<span class="dv">1</span>]]</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">head</span>(multi_d)</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt;   participant   dscore_d3   dscore_d4   dscore_d5   dscore_d6</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt; 1           4 -0.76242699 -0.76242699 -0.76242699 -0.76242699</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt; 2           6 -1.24976744 -1.26905702 -1.24976744 -1.26905702</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt; 3           8 -0.03801459  0.02021915 -0.03801459  0.02021915</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt; 4          11 -0.96488057 -0.97207623 -0.95538961 -0.96294963</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt; 5          14 -0.59341709 -0.57385144 -0.59236921 -0.57213017</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt; 6          17 -1.30474798 -1.27140694 -1.27997040 -1.26676628</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="kw">str</span>(multi_d)</span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt; &#39;data.frame&#39;:    162 obs. of  5 variables:</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt;  $ participant: int  4 6 8 11 14 17 18 19 20 21 ...</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt;  $ dscore_d3  : num  -0.762 -1.25 -0.038 -0.965 -0.593 ...</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt;  $ dscore_d4  : num  -0.7624 -1.2691 0.0202 -0.9721 -0.5739 ...</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co">#&gt;  $ dscore_d5  : num  -0.762 -1.25 -0.038 -0.955 -0.592 ...</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">#&gt;  $ dscore_d6  : num  -0.7624 -1.2691 0.0202 -0.9629 -0.5721 ...</span></span></code></pre></div>
+<p>The second object is a <code>ggplot</code> graph displaying the distribution of each algorithm in a violin plot.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>multi_scores[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="data:image/png;base64,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" alt="\label{fig:multiplr} Multiple D-scores representation" />
+<p class="caption">
+ Multiple D-scores representation
+</p>
+</div>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-gaw2017">
+<p>Gawronski, Bertram, Mike Morrison, Curtis E Phills, and Silvia Galdi. 2017. “Temporal Stability of Implicit and Explicit Measures: A Longitudinal Analysis.” <em>Personality and Social Psychology Bulletin</em> 43 (3): 300–312. <a href="https://doi.org/10.1177/0146167216684131">https://doi.org/10.1177/0146167216684131</a>.</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
