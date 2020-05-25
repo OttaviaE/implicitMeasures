@@ -4,6 +4,8 @@ author: Ottavia M. Epifania
 date: "`r Sys.Date()`"
 bibliography: vignette.bib
 output: github_document
+# output: rmarkdown::html_vignette 
+#  pdf_document: default
 vignette: >
   %\VignetteIndexEntry{implicitMeasures}
   %\VignetteEngine{knitr::rmarkdown}
@@ -24,14 +26,14 @@ knitr::opts_chunk$set(
 library(implicitMeasures)
 ```
 
-This vignette gives an overview of `implicitMeasures` package functioning. The structure of the Implicit Association Test [IAT; @Greenwald:1998] and the Single Category IAT [SC-IAT; @karp:2006] will be illustrated, as well as the algorithms used for the computation of their scores. A brief description of the data set included in the package (i.e., `raw_data`) is given as well. 
+This vignette gives an overview of `implicitMeasures` package functioning. The structure of the Implicit Association Test [IAT; @Greenwald:1998] and that of the Single Category IAT [SC-IAT; @karp:2006] will be illustrated, as well as the algorithms used for the computation of their scores. A brief description of the data set included in the package (i.e., `raw_data`) is given as well. 
 
 ## The Implicit Association Test
 
-The IAT is used for assessing the strength and direction of automatic associations between two target catgeories (i.e., *Object 1* and *Object 2* in Table 1) and two evalatuive dimensions, *Positive* and *Negative*. It is mostly used in social psychology for obtaining a measure of people's attitudes towards different social groups. It is also used in marketing reserach for assessing people' preferences towards contrasting brands, or in clinical psychology to assess both functionial (i.e., self-esteem) and disfunctional (i.e., personality disorders) personality traits. The advantages of using the IAT are related to the fact that it provides a measure of all the above-mentioned constructs without directly asking them, but by measuring the speed and accuracy with which prototypical examplars of the two targets and of the two evaluative dimensions are sorted in the catgeory to which they belong. 
+The IAT is used for assessing the strength and direction of automatic associations between two target categories (i.e., *Object 1* and *Object 2* in Table 1) and two evaluative dimensions, *Positive* and *Negative*. It is mostly used in social psychology for obtaining a measure of people's attitudes towards different social groups. It is also used in marketing research for assessing people' preferences towards contrasting brands, or in clinical psychology to assess both functional (i.e., self-esteem) and dysfunctional (i.e., personality disorders) personality traits. The advantages of using the IAT are related to the fact that it provides a measure of all the above-mentioned constructs without directly asking them, but by measuring the speed and accuracy with which prototypical exemplars of the two targets and of the two evaluative dimensions are sorted in the category to which they belong. 
 
 The IAT (Table 1) is usually composed of seven blocks.  Three blocks (B1, B2 and B5 in Table 1) are pure practice blocks in which either target stimuli (Blocks B1 and B5) or attribute stimuli (Block B2) are sorted in their reference categories. The remaining blocks are the associative blocks that constitute the two IAT mappings conditions of the IAT (e.g., Mapping A and Mapping B). In Blocks B3 and B4, exemplars of the *Object 1* categories share the response key with *Positive*, while exemplars of *Object 2* share the response key with *Negative* exemplars. In the contrasting associative condition (i.e., Blocks B6 and B7), the categorization task is reversed. Exemplars of *Object 1* share the response key with *Negative* exemplars and exemplars of *Object 2* share the response key with *Positive* exemplars. 
-Usually, the practice and associative practice blocks are composed of 20 trials  exemplars, while each, while the associative test blocks are composed of 40 trials each. The two mapping conditions result in 60 trials each. 
+Usually, the practice and associative practice blocks are composed of 20 trials exemplars, while each, while the associative test blocks are composed of 40 trials each. The two mapping conditions result in 60 trials each. 
 
 
 ```{r, echo = FALSE}
@@ -48,7 +50,7 @@ tableHTML(iat, rownames = FALSE, widths = c(20, c(rep(310, 3))),
 
 During IAT administration, respondents might be given a feedback. In case a stimulus is sorted into the incorrect category, a red cross appears on the screen and the response must be corrected to proceed with the experiment. If a feedback strategy is not included, the error response is not signaled to participants, and they can go on with the experiment. 
 
-The *IAT effect* is given by the difference between respondents' performance in the two associative conditions, under the assumption that the categorization task is easier (i.e., lower response times and higher response accuracy) in the associative condition consistent with respondents' automatic association. The *D-score* [@Greenwald:2003] is usually employed for expressing the strenght and direction of the IAT effect. Six different algorithms are available  for the computation of the *D-score* (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same. 
+The *IAT effect* is given by the difference between respondents' performance in the two associative conditions, under the assumption that the categorization task is easier (i.e., lower response times and higher response accuracy) in the associative condition consistent with respondents' automatic association. The *D-score* [@Greenwald:2003] is usually employed for expressing the strength and direction of the IAT effect. Six different algorithms are available for the computation of the *D-score* (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same. 
 
 ```{r, echo = FALSE}
 data.table(Dscore = paste0(rep("D", 6), 1:6), 
@@ -61,7 +63,7 @@ data.table(Dscore = paste0(rep("D", 6), 1:6),
 
 ```
 
-Irrespective of the algorithm, trials with a response latency exceeding 10,000ms must be excluded. When participants are given a feedback for their responses, the algorithms using a built-in correction (*D1* and *D2*) must be used, according to which error responses are replaced by the time at the incorrect response increased by the time needed to correct it. All the other algorithms (*D3* to *D6*) are used when IAT administration does not include a feedback. The error responses are replaced by the average response time of the block in which the error occurred increased by a standard penalty (i.e., either 600ms or twice the standard deviation of the block). The other feature distinguishing the algorithms regards the decision to include responses faster than 400ms or not. 
+Irrespective of the algorithm, trials with a response latency exceeding 10,000ms must be excluded. When participants are given a feedback for their error responses, the algorithms using a built-in correction (*D1* and *D2*) must be used, according to which error responses are replaced by the time at the incorrect response increased by the time needed to correct it. All the other algorithms (*D3* to *D6*) are used when IAT administration does not include a feedback. The error responses are replaced by the average response time of the block in which the error occurred increased by a standard penalty (i.e., either 600ms or twice the standard deviation of the block). The other feature distinguishing the algorithms regards the decision to include responses faster than 400ms or not. 
 
 Once the algorithm has been chosen and the error and fast responses have been treated accordingly, it is possible to compute the *D-score* following a 3-step procedure: 
 
@@ -75,9 +77,9 @@ Once the algorithm has been chosen and the error and fast responses have been tr
 
 ## The Single Category Implicit Association Test
 
-The IAT is particularly suitable when the aim is to obtain a comparative measure of *Object 1* in relation to *Object 2*. However, there are cases in which it is more useful to ahve an absoulte information of the positive or negative evaluation of just one of the target categories.
-The SC-IAT [Table 3; @karp:2006] has been proposed as an alternative to the IAT to provide a meausure of the absolute positive or negative evaluation towards just one target. It results from a modification of the IAT procedure, where one of the target categories is dropped. Blocks B1 and B3 are associative practice blocks, usually composed by 24 trials. Blocks B2 and B4 are the actual test blocks, usually composed by 72 trials. 
-The first associative conditon is composed of Blocks B1 and B2, where exemplars of the target catgory *Object 1* share the response key with *Positive* exemplars while *Negative* exemplars are mapped with the the other response key. In the opposite condition, exemplars of the target category *Object 1* share the response key with *Negative* exemplars, and *Positive* exemplars are sorted with the opposite response key. 
+The IAT is particularly suitable when the aim is to obtain a comparative measure of *Object 1* in relation to *Object 2*. However, there are cases in which it is more useful to have an absolute information of the positive or negative evaluation of just one of the target categories.
+The SC-IAT [Table 3; @karp:2006] has been proposed as an alternative to the IAT to provide a measure of the absolute positive or negative evaluation towards just one target. It results from a modification of the IAT procedure, where one of the target categories is dropped. Blocks B1 and B3 are associative practice blocks, usually composed by 24 trials. Blocks B2 and B4 are the actual test blocks, usually composed by 72 trials. 
+The first associative condition is composed of Blocks B1 and B2, where exemplars of the target category *Object 1* share the response key with *Positive* exemplars while *Negative* exemplars are mapped with the other response key. In the opposite condition, exemplars of the target category *Object 1* share the response key with *Negative* exemplars, and *Positive* exemplars are sorted with the opposite response key. 
 
 ```{r, echo = F}
 data.table(Block = paste("B",1:4), 
@@ -91,7 +93,7 @@ data.table(Block = paste("B",1:4),
   
 ```
 
-During the SC-IAT administration, respondents' receive a feedback signaling whether the response was correct (a green "O") or incorrect (a red "X"). A response time window (rtw) at 1,500ms is included in the administration, after which the stimulus on the screen disappears. Responses exceeding the rtw are considered non-response. However, there also cases in which the SC-IAT administartion does not inclued any of these features. 
+During the SC-IAT administration, respondents receive a feedback signaling whether the response was correct (a green "O") or incorrect (a red "X"). A response time window (rtw) at 1,500ms is included in the administration, after which the stimulus on the screen disappears. Responses exceeding the rtw are considered non-response. However, there also cases in which the SC-IAT administration does not include any of these features. 
 
 The *SC-IAT effect* results from the difference in respondents' performance between the two associative conditions, under the assumption that the task is easier in the condition consistent with respondents' automatic association. 
 
@@ -100,7 +102,7 @@ A modification of the IAT *D-score* has been proposed to interpret the SC-IAT ef
 
 ## The `raw_data` data set
 
-The `raw_data` contains the data from `r length(unique(raw_data$Participant))` respondents administered with an IAT for the implicit assessment of the preference between Dark and Milk chocolate (i.e., Chocolate IAT), a SC-IAT for the assessment of the absolute positive or negative evalutation of Milk chocolate (Milk SC-IAT), and a SC-IAT for the implicit assessment of the absoulte positive or negative evaluation of Dark Chocolate SC-IAT (Dark SC-IAT), along with their demographic information. These data are published in @epifania2020.
+The `raw_data` contains the data from `r length(unique(raw_data$Participant))` respondents administered with an IAT for the implicit assessment of the preference between Dark and Milk chocolate (i.e., Chocolate IAT), a SC-IAT for the assessment of the absolute positive or negative evaluation of Milk chocolate (Milk SC-IAT), and a SC-IAT for the implicit assessment of the absolute positive or negative evaluation of Dark Chocolate SC-IAT (Dark SC-IAT), along with their demographic information. These data are published in @epifania2020.
 
 The IAT administration did not include a feedback strategy, hence only the *D-score* algorithms not including a built-in correction should be computed. 
 
@@ -114,10 +116,10 @@ head(raw_data)
 str(raw_data)
 ```
 
-The data set contains respondents' IDs (`Partcipant`), response times in milliseconds for each trial (`latency`), response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of eithr the implicit measures or of the demographic information).
+The data set contains respondents' IDs (`Participant`), response times in milliseconds for each trial (`latency`), response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of eithr the implicit measures or of the demographic information).
 
 ## Importing data from SPSS
 
-If you are importing data from SPSS, no worries. Both `clean_iat()` and `clean_sciat()` functions recognize whether the data set is coming from SPSS and will take care of that. For importing the data set from SPSS, you can use either `haven::read_sav("dataset.sav")` or `foreign::read.spss("dataset.sav")`. Please leave all the defaults settings of these functions unaltered. 
+If you are importing data from SPSS, no worries. Both `clean_iat()` and `clean_sciat()` functions recognize whether the data set is coming from SPSS and will take care of that. For importing the data set from SPSS, you can use either `haven::read_sav("dataset.sav")` or `foreign::read.spss("dataset.sav")`. Please leave all the defaults settings of these functions unaltered.
 
 # References
