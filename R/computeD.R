@@ -162,7 +162,7 @@ computeD <- function(data,
   data <- merge(data,
                 acc_clean_wide,
                 by = "participant")
-  # save numebr of trials per participant before the deletion of anything
+  # save number of trials per participant before the deletion of anything
   n_trial <- data.frame(table(data$participant))
   colnames(n_trial) <- c("participant", "n_trial")
   # select only the trials with latency < 100000
