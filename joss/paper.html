@@ -362,20 +362,41 @@ summary {
 
 
 <h1 class="title toc-ignore">Scoring the implicit: The implicitMeasures package</h1>
-<h4 class="date">24 aprile, 2020</h4>
 
 </div>
 
 
 <div id="statement-of-need" class="section level1">
 <h1>Statement of need</h1>
-<p>Within the past decades, social sciences have shown a growing interest in the implicit investigation of attitudes. The Implicit Association Test <span class="citation">(IAT; Greenwald, McGhee, and Schwartz 1998)</span> and the Single Category IAT <span class="citation">(SC-IAT; Karpinski and Steinman 2006)</span> are the most common measures used for this aim. Both tests result in a differential score (the <em>D-score</em>) expressing respondents’ bias in categorizing different stimuli in two contrasting conditions. While the scoring of the SC-IAT is based only on one algortihm <span class="citation">(Karpinski and Steinman 2006)</span>, six different algorithms are availbale for computing the IAT <em>D-score</em> <span class="citation">(Greenwald, Nosek, and Banaji 2003)</span>. The core procedure for the computation of the IAT <em>D-score</em> is the same for all the alogirithms, which differentiate themsleves according for the treatment of extreme fast responses and the replacement of error responses.</p>
+<p>Within the past decades, there has been a growing interest in the possibility of assessing people’s attitudes, preferences, self-esteem, opinions and other social-psychological constructs without directly asking them. This was made possible by the advent of what are called implicit measures. Implicit measures are generally based on the speed and accuracy with which respondents are performing different categorization tasks in contrasting conditions. The assumption underlying their functioning is that the respondents’ performance will be faster and more accurate in the condition that is consistent with their actual attitudes, opinions, preferences and so on. The construct of interest is inferred from the difference in the response times in each condition.</p>
+<p>Among implicit measures, the Implicit Association Test <span class="citation">(IAT; Greenwald, McGhee, and Schwartz 1998)</span> and the Single Category IAT <span class="citation">(SC-IAT; Karpinski and Steinman 2006)</span> are the mostly common used ones <span class="citation">(Epifania, Robusto, and Anselmi 2020)</span>. Both tests result in a differential score (the so-called <em>D-score</em>) expressing respondents’ bias in categorizing different stimuli in two contrasting conditions. While the scoring of the SC-IAT is based only on one algorithm <span class="citation">(Karpinski and Steinman 2006)</span>, six different algorithms are available for computing the IAT <em>D-score</em> <span class="citation">(Greenwald, Nosek, and Banaji 2003)</span>. The core procedure for the computation of the IAT <em>D-score</em> is the same for all the algorithms, which differentiate themselves according for the treatment of extreme fast responses and the replacement of error responses.</p>
 <p>Despite that many R packages exist for computing IAT <em>D-score</em> algorithms, no packages exist for scoring the SC-IAT. Additionally, majority of existing R packages created for the computation of IAT <em>D-score</em> algorithms do not provide all the available algorithms. The packages allowing for the computation of multiple <em>D-score</em> algorithms either do not offer the chance to compare their results, or do not disambiguate the specific algorithm they are computing, raising reproducibility issue <span class="citation">(Ellithorpe, Ewoldsen, and Velez 2015)</span>.</p>
-<p>Recently, a Shiny Web Application <span class="citation">(Chang et al. 2020)</span> has been developed for computing the IAT <em>D-score</em>, called <em>DscoreApp</em> <span class="citation">(Epifania, Anselmi, and Robusto 2019)</span>. This app proied an inutitive and easy to use user interface. By providing a detailed explanation of the <em>D-score</em> algortihms that can be computed, <em>DscoreApp</em> addresses the majority of the above mentioned replicabilit issues. Moreover, the graphical representation of the results can give an immediate glimpse of the results. However, <em>DscoreApp</em> presents some shortcomings as well. Firstly, since it is a shiny app, it is associated with the most oustanding issue of the shiny aps in general, namely, the replicabilit of the results. Specifically, since it is not possible to access the code used for the computation, it is not possible to replicate the results and even check whether the code presents some mistakes. However, <span class="citation">Epifania, Anselmi, and Robusto (2019)</span> used a GitHub repository to let public access the code used for the compusation. Despite the graphical representations of the results provided by <em>DscoreApp</em> are really useful for getting a first idea on the IAT results and they are all downloadble in a .pdf format, they cannot be changed by the users. Moreover, <em>DscoreApp</em> computes the <em>D-score</em> for only the IAT.</p>
-<p><code>implicitMeasures</code> package is an <code>R</code> package aimed at overcoming both the shortcomings of the existing <code>R</code> packages for the computaion of the IAT <em>D-score</em> and those of the shiny app <em>DscoreApp</em>. <code>implicitMeasures</code> is an <code>R</code> package that provides an easy and open source way to score both the IAT and the SC-IAT, and to easily compare different IAT <em>D-score</em> algorithms.</p>
+<p>Recently, a Shiny Web Application <span class="citation">(Chang et al. 2020)</span> has been developed for computing the IAT <em>D-score</em>, called <em>DscoreApp</em> <span class="citation">(Epifania, Anselmi, and Robusto 2019)</span>. This app provides an intuitive and easy to use user interface. By giving a detailed explanation of the <em>D-score</em> algorithms that can be computed, <em>DscoreApp</em> addresses the majority of the above mentioned replicability issues. Moreover, the graphical representation of the results can give an immediate glimpse of the general performance of the respondents. However, <em>DscoreApp</em> presents some shortcomings as well. Firstly, since it is a shiny app, it is associated with the most outstanding issue of the shiny apps in general, namely, the replicability of the results. Specifically, by putting the code into the shiny interface, it is impossible to call it from the command line, and this point is crucial for replication and automation. However, <span class="citation">Epifania, Anselmi, and Robusto (2019)</span> used a <a href="https://github.com/OttaviaE/DscoreApp">GitHub</a> repository to let public access the code used for the computation. Despite the graphical representations of the results provided by <em>DscoreApp</em> are really useful for getting a first idea of the IAT results and they are all downloadable in a .pdf format, they cannot be further customized by the users. Moreover, <em>DscoreApp</em> computes the <em>D-score</em> only for the IAT.</p>
+<p><code>implicitMeasures</code> package is an <code>R</code> package aimed at overcoming both the shortcomings of the existing <code>R</code> packages for the computation of the IAT <em>D-score</em> and those of the shiny app <em>DscoreApp</em>. <code>implicitMeasures</code> provides an easy and open source way to clean and score both the IAT and the SC-IAT, to easily compare different IAT <em>D-score</em> algorithms, and to provide clear and customizable plots. Plot functions are all based on <code>ggplot2</code> <span class="citation">(Wickham 2016)</span>.</p>
 </div>
-<div id="overvie-of-implicitmeasures-package" class="section level1">
-<h1>Overvie of <code>implicitMeasures</code> package</h1>
+<div id="overview-of-implicitmeasures-package" class="section level1">
+<h1>Overview of <code>implicitMeasures</code> package</h1>
+<p>The released version of <code>implicitMeasures</code> can be installed from <a href="https://cran.r-project.org/web/packages/implicitMeasures/index.html">CRAN</a>:</p>
+<pre class="r"><code>install.packages(&quot;implicitMeasures&quot;)</code></pre>
+<p>while the development version can be installed from <a href="https://github.com/OttaviaE/implicitMeasures">GitHub</a>:</p>
+<pre class="r"><code># install.packages(&quot;devtools&quot;) # if you don&#39;t have devtools installed uncomment this line
+devtools::install_github(&quot;OttaviaE/implicitMeasures&quot;)</code></pre>
+<p><code>implicitMeasures</code> contains the following functions:</p>
+<ul>
+<li><code>clean_iat()</code>: Prepare and clean IAT data</li>
+<li><code>clean_sciat()</code>: Prepare and clean SC-IAT data</li>
+<li><code>computeD()</code>: Compute IAT <em>D-score</em></li>
+<li><code>Dsciat()</code>: Compute SC-IAT <em>D-score</em></li>
+<li><code>descript_d()</code>: Print descriptive table of <em>D-score</em>s (also in LaTex)</li>
+<li><code>d_distr()</code>: Plot IAT or SC-IAT scores (distribution)</li>
+<li><code>d_plot()</code>: Plot either IAT or SC-IAT scores (points)</li>
+<li><code>IATrel()</code>: Compute IAT reliability</li>
+<li><code>multi_dsciat()</code>: Plot scores resulting from two SC-IATs</li>
+<li><code>multi_dscore()</code>: Compute and plot multple IAT <em>D-score</em>s</li>
+<li><code>raw_data()</code>: Example data set</li>
+</ul>
+<p>Detailed explanations of the use of each function are provided in the <a href="https://cran.r-project.org/web/packages/implicitMeasures/implicitMeasures.pdf">package manual</a>. The <code>raw_data</code> object is a data set included in the package. All the examples in the package documentation and vignettes are based on this data set. The data set contains data from one IAT for the assessment of the preference for Dark or Milk Choaolate (Chocolate IAT), a SC-IAT for the implicit assessment of the positive/negative evaluation of Dark Chocolate (Dark SC-IAT), and a SC-IAT for the implicit assessment of the positive/negative evaluation of Milk chocolate (Milk SC-IAT) <span class="citation">(see: Epifania, Anselmi, and Robusto 2020 for further details)</span>.</p>
+<p><code>implicitMeasures</code> contains three vignettes, namely “implicitMeasures”, “IAT-example”, and “SC-IAT-example”. Vignette <a href="https://cran.r-project.org/web/packages/implicitMeasures/vignettes/implicitMeasures.html">“implicitMeasures”</a> contains information regarding both the IAT and the SC-IAT, the computation of their respective scoring algorithms, as well as an explanation of the dataset (i.e., <code>raw_data</code>) included in the package. Vignettes <a href="https://cran.r-project.org/web/packages/implicitMeasures/vignettes/IAT-example.html">“IAT-example”</a> and <a href="https://cran.r-project.org/web/packages/implicitMeasures/vignettes/SC-IAT-example.html">“SC-IAT-example”</a> provides examples of how to use the package functions for computing the IAT and SC-IAT <em>D-score</em>, respectively, for plotting their results, and for obtaining descriptive tables of the results. In the IAT case, an illustration of how to use the packages for computing multiple <em>D-score</em> algorithms concurrently, as well as for plotting their results, is provided. In the SC-IAT case, also an example of how to use the package for plotting multiple SC-IATs scores in one graph is provided.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
@@ -386,8 +407,14 @@ summary {
 <div id="ref-ellithorpe2015">
 <p>Ellithorpe, Morgan E, David R Ewoldsen, and John A Velez. 2015. “Preparation and Analyses of Implicit Attitude Measures: Challenges, Pitfalls, and Recommendations.” <em>Communication Methods and Measures</em> 9 (4): 233–52. <a href="https://doi.org/10.1080/19312458.2015.1096330">https://doi.org/10.1080/19312458.2015.1096330</a>.</p>
 </div>
+<div id="ref-epifania2020">
+<p>Epifania, O. M., Pasquale Anselmi, and Egidio Robusto. 2020. “A fairer comparison between the Implicit Association Test and the Single Category – Implicit Association Test.” <em>Testing, Psychometrics, and Methodology in Applied Psychology</em> 27 (2): 1–14.</p>
+</div>
 <div id="ref-dscoreapp">
-<p>Epifania, O. M., Pasquale Anselmi, and Egidio Robusto. 2019. “DscoreApp: An User-Friendly Web Application for Computing the Implicit Association Test d-Score.” <em>Journal of Open Source Software</em> 4 (42): 1764. <a href="https://doi.org/10.21105/joss.01764">https://doi.org/10.21105/joss.01764</a>.</p>
+<p>Epifania, O. M., P Anselmi, and E Robusto. 2019. “DscoreApp: An User-Friendly Web Application for Computing the Implicit Association Test d-Score.” <em>Journal of Open Source Software</em> 4 (42): 1764. <a href="https://doi.org/10.21105/joss.01764">https://doi.org/10.21105/joss.01764</a>.</p>
+</div>
+<div id="ref-review">
+<p>Epifania, O. M., Egidio Robusto, and Pasquale Anselmi. 2020. “Implicit social cognition through years: The Implicit Association Test at age 21,” February. <a href="https://doi.org/10.31124/advance.11914416.v1">https://doi.org/10.31124/advance.11914416.v1</a>.</p>
 </div>
 <div id="ref-Greenwald:1998">
 <p>Greenwald, Anthony G, Debbie E McGhee, and Jordan L K Schwartz. 1998. “Measuring Individual Differences in Implicit Cognition: The Implicit Association Test.” <em>Journal of Personality and Soclal Psychology</em> 74 (6): 1464–80. <a href="https://doi.org/10.1037/0022-3514.74.6.1464">https://doi.org/10.1037/0022-3514.74.6.1464</a>.</p>
@@ -397,6 +424,9 @@ summary {
 </div>
 <div id="ref-karpinski2006">
 <p>Karpinski, Andrew, and Ross B. Steinman. 2006. “The Single Category Implicit Association Test as a measure of implicit social cognition.” <em>Journal of Personality and Social Psychology</em> 91 (1): 16–32. <a href="https://doi.org/10.1037/0022-3514.91.1.16">https://doi.org/10.1037/0022-3514.91.1.16</a>.</p>
+</div>
+<div id="ref-ggplot2">
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.</p>
 </div>
 </div>
 </div>
