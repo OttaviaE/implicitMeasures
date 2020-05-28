@@ -28,5 +28,7 @@ Suggests:
     knitr,
     rmarkdown,
     tableHTML,
-    data.table
+    data.table,
+    spelling
 VignetteBuilder: knitr
+Language: en-US
