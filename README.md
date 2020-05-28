@@ -12,33 +12,34 @@ status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)\](<ht
 
 The goal of `implicitMeasures` package is to provide a tool for easily
 cleaning and computing the scores for the Implicit Association Test
-(IAT; Greenwald, McGhee, and Schwartz 1998) and the Single Catgeory
+(IAT; Greenwald, McGhee, and Schwartz 1998) and the Single Category
 Implicit Association Test (SC-IAT; Karpinski and Steinman 2006).
 
-Six different algortihms for the computation of the IAT effect, the
+Six different algorithms for the computation of the IAT effect, the
 so-called *D-score*, are available (Greenwald, Nosek, and Banaji 2003).
-The six different alogrithms differentiate themselves for the treatment
+The six different algorithms differentiate themselves for the treatment
 of the extreme fast responses and for the strategy used for replacing
 the error responses. Different mistakes can be made during the
 computation of the *D-score*, which can raise replicability issues of
-the results. On top of that, many reserahcres fail to report the exact
+the results. On top of that, many researchers fail to report the exact
 algorithm they have used for computing the *D-score*, raising again
 replicability issues (Ellithorpe, Ewoldsen, and Velez 2015).
 
-`implicitMeasures` include the following functions:
+`implicitMeasures` includes the following functions:
 
   - `clean_iat()`: Prepare and clean IAT data.
   - `clean_sciat()`: Prepare and clean SC-IAT data.
   - `computeD()`: Compute IAT *D-score*.
   - `Dsciat()`: Compute SC-IAT *D-score*.
-  - `descript_d()`: Descriptive table of *D-score*s (also in LaTeX)
-    format. \*`d_distr()`: Plot IAT or SC-IAT scores (distribution).
+  - `descript_d()`: Descriptive table of *D-score*s (also in LaTeX
+    format).
+  - `d_distr()`: Plot IAT or SC-IAT scores (distribution).
   - `d_plot()`: Plot IAT or SC-IAT scores (points).
   - `multi_dscore()`: Compute and plot multiple IAT *D-score*s.
   - `multi_dsciat()`: Plot SC-IAT *D-score*s.
-  - `IATrel()` computes the IAT reliablity (Gawronski et al. 2017)
+  - `IATrel()`: computes the IAT reliability (Gawronski et al. 2017)
 
-All the functions for graphically represernting the results are based on
+All the functions for graphically representing the results are based on
 `ggplot2` (Wickham 2016).
 
 ## Installation
@@ -50,7 +51,7 @@ You can install the released version of `implicitMeasures` from
 install.packages("implicitMeasures")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+and the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -60,7 +61,7 @@ devtools::install_github("OttaviaE/implicitMeasures")
 ## Example
 
 This is a basic example which shows you how to compute the IAT
-*D-score*. More detailed examples are given the package vignettes.
+*D-score*. More detailed examples are given in the package vignettes.
 
 ``` r
 library(implicitMeasures)
@@ -80,16 +81,16 @@ iat_data <- clean_iat(raw_data,
                           trial_id = "trialcode",
                           trial_eliminate = c("reminder", "reminder1"))
 
-## store the dataset for comptuing the D-score
+## store the dataset for computing the D-score
 iat <- iat_data[[1]]
 
 ## Compute the D-score
 dscore <- computeD(iat, D = "d3")
 ```
 
-`computeD()` results in a data frame with class `dscore`, and it can be
-passed to other functions, for example for plotting the results, either
-at the individual level:
+`computeD()` results in a data frame with class `dscore`. This data
+frame can be passed to other functions, for example for plotting the
+results, either at the individual level:
 
 <div class="figure" style="text-align: center">
 
@@ -119,8 +120,8 @@ Density distribution of sample scores
 
 ## Data import
 
-You can import import your data in any format you want. If you are
-importing data sets from SPSS, please use either
+You can import your data in any format you want. If you are importing
+data sets from SPSS, please use either
 `haven::read_sav("~/path/to/mydata.sav")` or
 `foreign::read.spss("~/path/to/mydata.sav")` without changing the
 default options of the functions. `implicitMeasures` will recognize that
@@ -131,7 +132,7 @@ the data frame is coming from SPSS and will handle that.
 If you find any bugs or encounter any problems in using this package,
 please post a minimal reproducible example on
 [github](https://github.com/OttaviaE/implicitMeasures/issues). For
-questions and other discussion, you can contact the author and
+questions and other discussions, you can contact the author and
 maintainer of the package at <otta.epifania@gmail.com>.
 
 # References
@@ -183,7 +184,7 @@ Implicit Association Test as a measure of implicit social cognition.”
 
 </div>
 
-<div id="ref-Wickham2016">
+<div id="ref-ggplot2">
 
 Wickham, Hadley. 2016. *Ggplot2: Elegant Graphics for Data Analysis*.
 Springer-Verlag New York. <https://ggplot2.tidyverse.org>.
