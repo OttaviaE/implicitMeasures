@@ -1,8 +1,6 @@
 ---
 output: github_document
-# output: 
-#   pdf_document: default
-bibliography: paper.bib
+bibliography: C:\\Users\\huawei\\Dropbox\\implicitMeasures\\inst\\paper.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -24,7 +22,7 @@ R package for computing different Implicit Measures scores
   
 ## Aim and Overview
 
-The goal of `implicitMeasures` package is to provide a tool for easily cleaning and computing the scores for the Implicit Association Test [IAT; @Greenwald:1998] and the Single Category Implicit Association Test [SC-IAT; @karpinski2006]. 
+The goal of `implicitMeasures` package is to provide a tool for easily cleaning and computing the scores for the Implicit Association Test [IAT; @Greenwald1998] and the Single Category Implicit Association Test [SC-IAT; @karpinski2006]. 
 
 Six different algorithms for the computation of the IAT effect, the so-called *D-score*, are available [@Greenwald2003]. The six different algorithms differentiate themselves for the treatment of the extreme fast responses and for the strategy used for replacing the error responses. Different mistakes can be made during the computation of the *D-score*, which can raise replicability issues of the results. On top of that, many researchers fail to report the exact algorithm they have used for computing the *D-score*, raising again replicability issues [@ellithorpe2015]. 
 

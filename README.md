@@ -157,7 +157,7 @@ Longitudinal Analysis.” *Personality and Social Psychology Bulletin* 43
 
 </div>
 
-<div id="ref-Greenwald:1998">
+<div id="ref-Greenwald1998">
 
 Greenwald, Anthony G, Debbie E McGhee, and Jordan L K Schwartz. 1998.
 “Measuring Individual Differences in Implicit Cognition: The Implicit
