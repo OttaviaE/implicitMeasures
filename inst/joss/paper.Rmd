@@ -1,5 +1,5 @@
 ---
-title: 'Scoring the implicit: The implicitMeasures package'
+title: 'Implicit measures with reproducible results: the implicitMeasures package'
 authors:
 - affiliation: '1'
   name: Ottavia M. Epifania
