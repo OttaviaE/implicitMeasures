@@ -59,6 +59,8 @@ while the development version can be installed from [GitHub](https://github.com/
 devtools::install_github("OttaviaE/implicitMeasures")
 ```
 
+The packages on which `implicitMeasures` depends are listed in the `DESCRIPTION` file. If they are not already installed, they will be installed when `implicitMeasures` package gets installed. 
+
 `implicitMeasures` contains the following functions: 
 
 - `clean_iat()`: Prepare and clean IAT data
