@@ -135,6 +135,12 @@ please post a minimal reproducible example on
 questions and other discussions, you can contact the author and
 maintainer of the package at <otta.epifania@gmail.com>.
 
+## Contributing to `implicitMeasures`
+
+If you want to contirbute to `implicitMeasures`, please do\! You can
+open a new branch on <https://github.com/OttaviaE/implicitMeasures>,
+modify the code, and submit your pull request for added features.
+
 # References
 
 <div id="refs" class="references">

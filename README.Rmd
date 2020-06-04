@@ -1,6 +1,6 @@
 ---
 output: github_document
-bibliography: C:\\Users\\huawei\\Dropbox\\implicitMeasures\\inst\\paper.bib
+bibliography: C:\\Users\\huawei\\Dropbox\\implicitMeasures\\inst\\joss\\paper.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -105,5 +105,9 @@ You can import your data in any format you want. If you are importing data sets 
 
 If you find any bugs or encounter any problems in using this package, please post a minimal reproducible example on [github](https://github.com/OttaviaE/implicitMeasures/issues). 
 For questions and other discussions, you can contact the author and maintainer of the package at otta.epifania@gmail.com.
+
+## Contributing to `implicitMeasures`
+
+If you want to contirbute to `implicitMeasures`, please do! You can open a new branch on https://github.com/OttaviaE/implicitMeasures, modify the code, and submit  your pull request for added features. 
 
 # References
