@@ -40,7 +40,7 @@ replicability issues (Ellithorpe, Ewoldsen, and Velez 2015).
   - `IATrel()`: computes the IAT reliability (Gawronski et al. 2017)
 
 All the functions for graphically representing the results are based on
-`ggplot2` (Wickham 2016).
+`ggplot2` (Wickham 2016), and can be further customized by the users.
 
 ## Installation
 

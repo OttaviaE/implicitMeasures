@@ -1,6 +1,6 @@
 ---
 output: github_document
-bibliography: C:\\Users\\huawei\\Dropbox\\implicitMeasures\\inst\\joss\\paper.bib
+bibliography: C:\\Users\\huawei\\Dropbox\\implicitMeasures\\inst\\paper.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -39,7 +39,7 @@ Six different algorithms for the computation of the IAT effect, the so-called *D
 * `multi_dsciat()`: Plot SC-IAT *D-score*s.
 * `IATrel()`: computes the IAT reliability [@gaw2017]
 
-All the functions for graphically representing the results are based on `ggplot2` [@ggplot2].
+All the functions for graphically representing the results are based on `ggplot2` [@ggplot2], and can be further customized by the users.
 
 ## Installation
 
