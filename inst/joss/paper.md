@@ -1,5 +1,5 @@
 ---
-title: 'Implicit measures with reproducible results: the implicitMeasures package'
+title: 'Implicit measures with reproducible results: The implicitMeasures package'
 authors:
 - affiliation: '1'
   name: Ottavia M. Epifania
@@ -11,7 +11,6 @@ authors:
   name: Egidio Robusto
 date: ""
 output: 
-#  pdf_document: default
   html_document:
        keep_md: true
 bibliography: paper.bib
