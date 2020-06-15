@@ -5,8 +5,10 @@
 
 R package for computing different Implicit Measures scores
 
-[![Build
-Status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+<!-- badges: start --> 
+[![Build Status](https://travis-ci.com/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.com/OttaviaE/implicitMeasures)
+<!-- badges: end -->
+
 
 ## Aim and Overview
 
