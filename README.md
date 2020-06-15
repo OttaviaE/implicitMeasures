@@ -4,9 +4,9 @@
 # implicitMeasures
 
 R package for computing different Implicit Measures scores
-<!-- badges: start --> 
-[Travis build status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)\](<https://travis-ci.org/OttaviaE/implicitMeasures>)
-<!-- badges: end -->
+
+[![Build
+Status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
 
 ## Aim and Overview
 
