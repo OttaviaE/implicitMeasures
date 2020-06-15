@@ -13,6 +13,7 @@ date: ""
 output: 
   html_document:
        keep_md: true
+  pdf_document: default
 bibliography: paper.bib
 tags:
 - R
@@ -43,7 +44,7 @@ Recently, a Web Application was developed  with `shiny` package [@shiny] for com
 `implicitMeasures` package is an `R` package aimed at overcoming both the shortcomings of the existing `R` packages for the computation of the IAT *D-score* and those of the shiny app *DscoreApp*.
 `implicitMeasures` provides an easy and open source way to clean and score both the IAT and the SC-IAT, to easily compare different IAT *D-score* algorithms, and to provide clear and customizable plots. Plot functions are all based on `ggplot2` [@ggplot2].
 
-# Overview of `implicitMeasures` package
+# Package overview
 
 The released version of `implicitMeasures` can be installed from [CRAN](https://cran.r-project.org/web/packages/implicitMeasures/index.html): 
 
