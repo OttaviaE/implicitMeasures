@@ -55,7 +55,7 @@ install.packages("implicitMeasures")
 while the development version can be installed from [GitHub](https://github.com/OttaviaE/implicitMeasures):
 
 ```{r echo = TRUE, eval=FALSE}
-# install.packages("devtools") # uncomment to install devtools
+# install.packages("devtools") # un-comment to install devtools
 devtools::install_github("OttaviaE/implicitMeasures")
 ```
 
