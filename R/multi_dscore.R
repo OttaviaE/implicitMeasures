@@ -52,9 +52,11 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
   # prepare d labels
   if (ds == "built-in") {
     label_d <- c(paste0("d", 1:2))
+    type <- "D Built-in"
   }
   else if (ds == "error-inflation") {
     label_d <-  c(paste0("d", 3:6))
+    type <- "D Error Inflation"
   }
 
   # initialize storing object for multiple Ds
@@ -67,15 +69,15 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
     name_col <- gsub("d", "dscore_d", label_d)
     dscores[, name_col[i]] <- scores[[i]][, name_col[[i]]]
   }
-  scoreslong <- tidyr::gather(dscores, key = "type", value = "Dscore",
+  data <- tidyr::gather(dscores, key = "type", value = "Dscore",
                               2:max(ncol(dscores)))
-  mg <- ggplot(scoreslong,
-               aes(y = scoreslong$Dscore, x = scoreslong$type)) +
+  mg <- ggplot(data,
+               aes(y = .data$Dscore, x = .data$type)) +
         geom_violin(trim = FALSE, draw_quantiles = TRUE) +
         stat_summary(fun.data=mean_sdl,
                      geom="pointrange",
                     color="black") + theme_minimal()
-  mg <- mg + theme(axis.title.x = element_blank()) + ylab("D-scores")
+  mg <- mg + labs(x = type, y = "D-scores")
   mulitple_dscores <- list(dscores = dscores,
                            graph = mg)
   return(mulitple_dscores)

@@ -93,22 +93,22 @@ d_plot <- function(data, point_size = 1,
     data$d_cres <- data$participant
     data$d_cres <- as.factor(data$d_cres)
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = .data$d, x = .data$d_cres)) +
                       geom_point(col = col_point,
                       size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = data$participant) +
+                                          labels = .data$participant) +
                                            ylab(x_lab)
     # include statistics
     if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
-      d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
-      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
-                                                    2 * sd(data$d)),
+      d_graph <- d_graph + geom_hline(yintercept = mean(.data$d))
+      d_graph <- d_graph + geom_hline(yintercept = (mean(.data$d) +
+                                                    2 * sd(.data$d)),
                                       linetype = "dotted")
-      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
-                                                    2 * sd(data$d)),
+      d_graph <- d_graph + geom_hline(yintercept = (mean(.data$d) -
+                                                    2 * sd(.data$d)),
                                       linetype = "dotted")
     }
   } else if (order_sbj == "D-increasing") {
@@ -118,10 +118,10 @@ d_plot <- function(data, point_size = 1,
     coordinates_labels <- ifelse(length(unique(data$participant)) < 150,
                                  nrow(data) - 4, nrow(data) - 10 )
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = .data$d, x = .data$d_cres)) +
                geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = data$participant) +
+                                          labels = .data$participant) +
                         ylab(x_lab)
   } else if (order_sbj == "D-decreasing") {
     data <- data[order(data$d, decreasing = T), ]
@@ -131,14 +131,15 @@ d_plot <- function(data, point_size = 1,
                                  (nrow(data) - (nrow(data) - 4)),
                                  (nrow(data) - (nrow(data) - 15)) )
     d_graph <- ggplot(data,
-                      aes(y = data$d, x = data$d_cres)) +
+                      aes(y = .data$d,
+                          x = .data$d_cres)) +
                geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = data$participant) +
+                                          labels = .data$participant) +
       ylab(x_lab)
   }
 
-  d_graph <- d_graph  + theme_classic()
+  d_graph <- d_graph  + theme_minimal()
   d_graph <- d_graph + theme(axis.text.x = element_text(size = 5))
 
   # include statistics

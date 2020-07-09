@@ -80,42 +80,48 @@ multi_dsciat <- function(sciat1, sciat2,
   sc_mean <- aggregate(sciat_all$d_sciat,
                        by = list(sciat_all$sciat),
                        FUN = mean)
+  sc_mean <- aggregate(sciat_all$d_sciat,
+                       by = list(sciat_all$sciat),
+                       FUN = mean)
+  colnames(sc_mean) <- c("sciat", "msc")
+  sciat_all <- merge(sciat_all, sc_mean, by = "sciat")
+  data <- sciat_all
    # plots --------------------------
   if (graph == "density") {
-    d_graph <- ggplot(sciat_all,
-                      aes(x = sciat_all$d_sciat,
-                          color = sciat_all$sciat)) +
+    d_graph <- ggplot(data,
+                      aes(x = .data$d_sciat,
+                          color = .data$sciat)) +
               geom_density(size = 1.1)  +
               theme_minimal() + theme(axis.title.y = element_blank()) +
               xlab(label_y)
     # add statistics
     if (dens_mean == TRUE) {
-      d_graph <- d_graph + geom_vline(data=sc_mean,
-                                      aes(xintercept = sc_mean$x,
-                                          color = sc_mean$Group.1),
+      d_graph <- d_graph + geom_vline(data=data,
+                                      aes(xintercept = .data$msc,
+                                          color = .data$sciat),
                                       linetype = "dashed",
                                       size = 0.9)
     } else {
       d_graph <- d_graph
     }
   } else if (graph == "violin") {
-    d_graph <- ggplot(sciat_all,
-                      aes(y = sciat_all$d_sciat,
-                          x = sciat_all$sciat,
-                          color = sciat_all$sciat)) +
+    d_graph <- ggplot(data,
+                      aes(y = .data$d_sciat,
+                          x = .data$sciat,
+                          color = .data$sciat)) +
                geom_violin(trim = FALSE) +
                stat_summary(fun.data = mean_sdl,
                             geom = "pointrange",
                             color = "black") +
-               theme_minimal() + theme(axis.title.x = element_blank()) +
+               theme_minimal()  +
                ylab(label_y)
   } else if (graph == "point") {
-    d_graph <- ggplot(sciat_all,
-                      aes(x = sciat_all$participant,
-                          y = sciat_all$d_sciat,
-                          group = sciat_all$sciat)) +
-               geom_point(aes(shape = sciat_all$sciat,
-                                color = sciat_all$sciat)) +
+    d_graph <- ggplot(data,
+                      aes(x = .data$participant,
+                          y = .data$d_sciat,
+                          group = .data$sciat)) +
+               geom_point(aes(shape = .data$sciat,
+                                color = .data$sciat)) +
                theme_minimal() + theme(axis.text.x = element_text(size = 5)) +
                scale_shape_discrete(name  = "SC-IAT type") + ylab(label_y) +
       xlab("Participant")
