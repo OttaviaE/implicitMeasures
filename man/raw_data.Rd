@@ -4,7 +4,8 @@
 \name{raw_data}
 \alias{raw_data}
 \title{Dataset with one IAT and two SC-IATs}
-\format{A dataframe with 6 variables, as follows:
+\format{
+A dataframe with 6 variables, as follows:
   \itemize{
    \item Participant. Participants ID.
    \item latency. Latency of the response times in millisecond.
@@ -46,7 +47,8 @@
                       }
    \item response. Character registering the type of response for the
                     demographic .
- }}
+ }
+}
 \usage{
 data(raw_data)
 }
