@@ -49,7 +49,7 @@ tableHTML(iat, rownames = FALSE, widths = c(20, c(rep(310, 3))),
 
 During IAT administration, respondents might be given a feedback. In case a stimulus is sorted into the incorrect category, a red cross appears on the screen and the response must be corrected to proceed with the experiment. If a feedback strategy is not included, the error response is not signaled to participants, and they can go on with the experiment. 
 
-The *IAT effect* is given by the difference in respondents' performance between the two associative conditions, under the assumption that the categorization task is easier (i.e., lower response times and higher response accuracy) in the associative condition consistent with respondents' automatic association. The *D-score* [@Greenwald:2003] is usually employed for expressing the strength and direction of the IAT effect. Six different algorithms are available for the computation of the *D-score* (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same. 
+The *IAT effect* is given by the difference in respondents' performance between the two associative conditions, under the assumption that the categorization task is easier (i.e., faster response times and higher response accuracy) in the associative condition consistent with respondents' automatic association. The *D-score* [@Greenwald:2003] is usually employed for expressing the strength and direction of the IAT effect. Six different algorithms are available for the computation of the *D-score* (Table 2). The differences between the algorithms lie in the strategies used for treating error and fast responses, while the core procedure remains the same. 
 
 ```{r, echo = FALSE}
 data.table(Dscore = paste0(rep("D", 6), 1:6), 
@@ -76,12 +76,12 @@ Once the algorithm has been chosen and the error and fast responses have been tr
 
 ## The Single Category Implicit Association Test
 
-The IAT is particularly suitable when the aim is to obtain a comparative measure of *Object 1* in relation to *Object 2*. However, there are cases in which it is more useful to have an absolute information of the positive or negative evaluation of just one of the target categories.
+The IAT is particularly suitable when the aim is to obtain a comparative measure of the attitudes towards *Object 1* in relation to *Object 2*. However, there are cases in which it is more useful to have an absolute information of the positive or negative evaluation of just one of the target categories.
 The SC-IAT [Table 3; @karp:2006] has been proposed as an alternative to the IAT to provide a measure of the absolute positive or negative evaluation towards just one target. It results from a modification of the IAT procedure, where one of the target categories is dropped. Blocks B1 and B3 are associative practice blocks, usually composed by 24 trials. Blocks B2 and B4 are the actual test blocks, usually composed by 72 trials. 
 The first associative condition is composed of Blocks B1 and B2, where exemplars of the target category *Object 1* share the response key with *Positive* exemplars while *Negative* exemplars are mapped with the other response key. In the opposite condition, exemplars of the target category *Object 1* share the response key with *Negative* exemplars, and *Positive* exemplars are sorted with the opposite response key. 
 
 ```{r, echo = F}
-data.table(Block = paste("B",1:4), 
+data.table(Block = paste0("B",1:4), 
            Function = paste(rep(c("Associative practice", "Associative test"), 2), 
                             rep(c("Mapping A", "Mapping B"), c(2,2))),
            "Left response Key" = c(rep("Object 1 + Positive", 2), rep("Positive", 2)), 
@@ -115,10 +115,10 @@ head(raw_data)
 str(raw_data)
 ```
 
-The data set contains respondents' IDs (`Participant`), response times in milliseconds for each trial (`latency`), response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of eithr the implicit measures or of the demographic information).
+The data set contains respondents' IDs (`Participant`), response times in milliseconds for each trial (`latency`), response accuracy (`correct`, 1 for correct responses and 0 for incorrect responses), trials and blocks labels of the implicit measures (`trialcode` and `blockcode` labels, respectively), and the type of response (`response`, identifying the trials of either the implicit measures or of the demographic information).
 
 ## Importing data from SPSS
 
-If you are importing data from SPSS, no worries. Both `clean_iat()` and `clean_sciat()` functions recognize whether the data set is coming from SPSS and will take care of that. To import the data set from SPSS, you can use either `haven::read_sav("dataset.sav")` or `foreign::read.spss("dataset.sav")`. Please leave all the defaults settings of these functions unaltered.
+If you are importing data from SPSS, no worries. Both `clean_iat()` and `clean_sciat()` functions recognize whether the data set is coming from SPSS and will take care of that. To import the data set from SPSS, you can use either `haven::read_sav("dataset.sav")` or `foreign::read.spss("dataset.sav")`. Please leave all the defaults settings unaltered.
 
 # References

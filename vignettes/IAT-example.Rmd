@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 library(implicitMeasures)
 ```
 
-This vignette illustrates how to use `implicitMeasures` package for computing the IAT *D-score*. The illustration is based on the data set `raw_data` that is provided with the package.
+This vignette illustrates how to use `implicitMeasures` package for computing IAT *D-score*. The illustration is based on the data set `raw_data` that is provided with the package.
 
 ### First thing first: Import and explore data
 Labels containing specification `.iat` in variable `blockcode` identify IAT blocks.
@@ -78,7 +78,7 @@ You can also skip this step and directly pass `iat_cleandata[[1]]` to function `
 
 Once that IAT data have been prepared and cleaned by function `clean_iat()`, it is possible to compute the *D-score* by using function `compute_iat()`.
 
-This function only takes two arguments. The first argument is the data frame with class `iat_clean`, the second argument is a character specifiying the *D-score* algortihm for the computation.  To compute multiple *D-score* algorithms at the same time, use `multi_dscore()` function. 
+This function only takes two arguments. The first argument is the data frame with class `iat_clean`, the second argument is a character specifying the *D-score* algortihm for the computation.  To compute multiple *D-score* algorithms at the same time, use `multi_dscore()` function. 
 
 ```{r}
 dscore <- compute_iat(iat_data, Dscore = "d3")
@@ -89,13 +89,13 @@ Function `compute_iat()` results in a `data.frame` with class `dscore` containin
 
 ### IAT descriptive statistics and reliability
 
-The descriptive statistics of the *D-score*, computed on the practice and test blocks and the actual *D-score*, can be easily obtained with function `descript_d()`: 
+The descriptive statistics of the *D-score*, computed on the practice and test blocks, and the actual *D-score*, can be easily obtained with function `descript_d()`: 
 
 ```{r}
 descript_d(dscore) # Data frame containing IAT D-scores
 ```
 
-By specifying `latex = TRUE`, function `descript_d()` print the results in Latex: 
+By specifying `latex = TRUE`, function `descript_d()` print the results in LaTeX code: 
 
 ```{r}
 descript_d(dscore, # Data frame containing IAT D-scores
@@ -112,7 +112,7 @@ IAT_rel(dscore)
 
 `implicitMeasures` comes with several functions for obtaining nice and clear representations of the results at both individual respondent and sample levels. Additionally, it includes a function for computing and plotting multiple IAT *D-score* algorithms at the same time. 
 
-#### Respondent level
+#### Individual respondent level
 
 Function `d_point()` plots the IAT *D-score* for each respondent. 
 
@@ -142,7 +142,7 @@ d_density(dscore) # dataframe containing IAT Dscores
 ```
 
 The number of bins can be changed with argument `n_bin`. Argument `graph` can be used for changing the graphical representation of the data. 
-It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). Argument `col_fill` can be used to change the color of the points representing each respondent in the violin plot. 
+It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). Argument `col_fill` can be used to change the color of the points representing each respondent's score in the violin plot. 
 Finally, also descriptive statistics (i.e., $M_{\text{D-score}}  \pm 2sd$) can be added to the graph by setting argument `include_stats = TRUE`. 
 
 ```{r sampleSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:sampleSettings}d_density() function with settings change"}
@@ -154,7 +154,7 @@ d_density(dscore, # dataframe containing IAT Dscores
 
 #### Multiple D-scores
 
-Function `multi_dscore()` computes and plot multiple *D-score* algorithms. The multiple *D-score*s that can be computed depend on IAT administration. If the IAT administration included a feedback strategy (i.e., built-in correction), only *D1* and *D2* algorithms should be computed. If the IAT administration did not include a feedback strategy, then algorithms *D3*, *D4*, *D5*, and *D6* should be computed. An exhaustive and detailed illustration of the *D-score* algorithms is provided in the "Implicit Measures" vignette. To specify the algorithms that can be computed, argument `ds` must be set equal to either `"built-in"` (for the computation of *D1* and *D2*) or `error-inflation` (for the computation of all other algorithms). 
+Function `multi_dscore()` computes and plot multiple *D-score* algorithms. The *D-score* algorithms that can be computed depend on IAT administration. If the IAT administration included a feedback strategy (i.e., built-in correction), only *D1* and *D2* algorithms should be computed. If the IAT administration did not include a feedback strategy, then algorithms *D3*, *D4*, *D5*, and *D6* should be computed. An exhaustive and detailed illustration of the *D-score* algorithms is provided in the "Implicit Measures" vignette. To specify the algorithms that can be computed, argument `ds` must be set equal to either `"built-in"` (for the computation of *D1* and *D2*) or `error-inflation` (for the computation of all other algorithms). 
 
 ```{r}
 multi_scores <- multi_dscore(iat_data, # object with class "iat_clean"
@@ -170,7 +170,7 @@ head(multi_d)
 str(multi_d)
 ```
 
-The second object is a `ggplot` graph displaying the distribution of the *D-score* computed with each algorithm in violin plots.
+The second object is a `ggplot` graph displaying the distribution of the *D-score*s computed with each algorithm in violin plots.
 
 ```{r, fig.align='center', fig.width=6, fig.cap="Multiple D-scores representation"}
 multi_scores[[2]]

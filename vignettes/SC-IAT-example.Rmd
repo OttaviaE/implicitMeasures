@@ -128,7 +128,7 @@ descript_d(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
 
-By specifying argument `latex = TRUE`, function `descript_d()` prints the results in a LaTeX compatible format: 
+By specifying argument `latex = TRUE`, function `descript_d()` prints the results in LaTeX code 
 
 ```{r}
 descript_d(d_sciat2, # Data frame containing IAT D-scores
@@ -148,8 +148,8 @@ descript_d(d_sciat2, # Data frame containing IAT D-scores
  d_point(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
-Clearly, in case of large sample size the label identifying each respondent is not easy to read, and it can be eliminated by setting argument `x_values = FALSE`. 
-Respondents can be arranged by increasing or decreasing *D-score*s by setting argument `order_sbj` equal to either `"D-increasing"` or `"D-decreasing"`. Descriptive statistics (i.e., $M_{\text{D-score}}\pm 2sd$) can be added by setting argument `include_stats = TRUE`. 
+Clearly, in case of large sample size the label identifying each respondent is not easy to read, and it can be eliminated by setting  `x_values = FALSE`. 
+Respondents can be arranged by increasing or decreasing *D-score*s by setting argument `order_sbj` equal to either `"D-increasing"` or `"D-decreasing"`. Descriptive statistics (i.e., $M_{\text{D-score}}\pm 2sd$) can be added by setting `include_stats = TRUE`. 
 Finally, the color of the points can be changed by using argument `col_point`. 
 
 ```{r scpointSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:scpointSettings} Function d_point() with settings change"}
@@ -166,15 +166,25 @@ d_point(d_sciat1, # dataframe containing SC-IAT D-scores
 Function `d_density()` plots the distribution of the SC-IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
 
 
-```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_distr() function"}
+```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_density() function"}
 d_density(d_sciat1) # Data frame containing SC-IAT D-scores
+```
+
+The number of bins can be changed with argument `n_bin`. Argument `graph` can be used for changing the graphical representation of the data. 
+It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). Argument `col_fill` can be used to change the color of the points representing each respondent's score in the violin plot. 
+Finally, also descriptive statistics (i.e., $M_{\text{D-score}}  \pm 2sd$) can be added to the graph by setting argument `include_stats = TRUE`. 
+
+```{r sampleSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:sampleSettings}d_density() function with settings change"}
+d_density(d_sciat1, # dataframe containing IAT Dscores
+        graph = "density", # change graphical representation
+        include_stats = TRUE) # include descriptive statistics
 ```
 
 
 #### Multiple SC-IATs
 
-Function `multi_dsciat()` plots the distributions of the *D-score*s obtained from two different SC-IATs. This function takes only two mandatory arguments, which are the data frames containing the results of each SC-IAT obtained by using function `Dsciat()`. 
-The type of graphical representation can be changed by using argument `"graph"`, which is set to `"density" ` by default. Default representation also contains the lines indicating the mean of each distribution. These lines can be taken out of the graph by setting argument `dens_mean = FALSE`. 
+Function `multi_dsciat()` plots the distributions of the *D-score*s obtained from two different SC-IATs. This function takes only two mandatory arguments, which are the data frames containing the results of each SC-IAT obtained by using function `compute_sciat()`. 
+The type of graphical representation can be changed by using argument `"graph"`, which is set to `"density" ` by default. Default representation also contains the lines indicating the mean of each distribution. These lines can be taken out of the graph by setting  `dens_mean = FALSE`. 
  
 
 ```{r fig.align='center', fig.width=6, fig.cap="Default results representation of function multi_dsciat()"}
