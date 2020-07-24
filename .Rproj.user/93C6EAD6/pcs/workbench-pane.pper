@@ -1,6 +1,5 @@
 {
-    "TabSet1" : 2,
-    "TabSet2" : 4,
-    "TabZoom" : {
-    }
+    "TabSet1": 2,
+    "TabSet2": 3,
+    "TabZoom": {}
 }

@@ -1,9 +1,9 @@
 {
-    "path" : "C:/Users/huawei/Dropbox/implicitMeasures/joss",
-    "sortOrder" : [
+    "sortOrder": [
         {
-            "ascending" : false,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
-    ]
+    ],
+    "path": "C:/Users/huawei/Dropbox/implicitMeasures/inst"
 }
