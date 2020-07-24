@@ -97,18 +97,18 @@ d_point <- function(data, point_size = 1,
       geom_point(col = col_point,
                  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = .data$participant) +
+                                          labels = data$participant) +
       ylab(x_lab)
     # include statistics
     if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
-      d_graph <- d_graph + geom_hline(yintercept = mean(.data$d))
-      d_graph <- d_graph + geom_hline(yintercept = (mean(.data$d) +
-                                                      2 * sd(.data$d)),
+      d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
+      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
+                                                      2 * sd(data$d)),
                                       linetype = "dotted")
-      d_graph <- d_graph + geom_hline(yintercept = (mean(.data$d) -
-                                                      2 * sd(.data$d)),
+      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
+                                                      2 * sd(data$d)),
                                       linetype = "dotted")
     }
   } else if (order_sbj == "D-increasing") {
@@ -121,7 +121,7 @@ d_point <- function(data, point_size = 1,
                       aes(y = .data$d, x = .data$d_cres)) +
       geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = .data$participant) +
+                                          labels = data$participant) +
       ylab(x_lab)
   } else if (order_sbj == "D-decreasing") {
     data <- data[order(data$d, decreasing = T), ]
@@ -135,7 +135,7 @@ d_point <- function(data, point_size = 1,
                           x = .data$d_cres)) +
       geom_point(col = col_point,  size = point_size)
     d_graph <- d_graph + scale_x_discrete(name = x_label,
-                                          labels = .data$participant) +
+                                          labels = data$participant) +
       ylab(x_lab)
   }
 
