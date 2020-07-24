@@ -1,7 +1,4 @@
-# implicitMeasures 0.1.3
+# implicitMeasures 0.2.0
 
-* Added a `NEWS.md` file to track changes to the package.
+Some functions names have been changed to make them more consistent between each other. 
 
-The README was updated with a bibliography. 
-
-Vignettes were re-written to make them more understandable.
