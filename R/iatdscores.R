@@ -1,6 +1,6 @@
 #' Data set with IAT D-scores
 #'
-#' A data set cotaining the results for all the possible D-score algorithms for the
+#' A data set containing the results for all the possible D-score algorithms for the
 #' IAT. All the algorithms are identified by their corresponding label (such
 #' as "dscore_d1"). This data set is used for testing the replicability of
 #' the results of the "computeD()" function over time.
