@@ -38,7 +38,7 @@
 #'                           trial_demo = "demo")
 #'   iat_data <- iat_cleandata[[1]]
 #' # calculate D-score
-#'   iat_dscore <- computeD(iat_data,
+#'   iat_dscore <- compute_iat(iat_data,
 #'                        Dscore =  "d2")
 #'   d_point(iat_dscore) # default plot
 #'   d_point(iat_dscore, order_sbj = "D-increasing") # D-score with increasing
@@ -60,7 +60,7 @@
 #'                                              "reminder1"))
 #'
 #'  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
-#'  d_sciat1 <- Dsciat(sciat1,
+#'  d_sciat1 <- compute_sciat(sciat1,
 #'                   mappingA = "test.sc_dark.Darkbad",
 #'                   mappingB = "test.sc_dark.Darkgood",
 #'                   non_response = "alert")

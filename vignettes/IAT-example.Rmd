@@ -61,31 +61,31 @@ Since also the demographic data has been specified, `clean_iat()` results in a l
 str(iat_cleandata)
 ```
 
-`data_keep` is a `data.frame` with class `iat_clean`. It contains the data set to pass to function `computeD()`. 
+`data_keep` is a `data.frame` with class `iat_clean`. It contains the data set to pass to function `compute_iat()`. 
 
 `data_eliminate` is a `data.frame` containing all discarded blocks and trials. `demo` is a `data.frame` containing all the trials identified as `demo` in the `blockcode` variable.
 
-Store the first `data_keep` element in a data frame to pass to function `computeD()`. 
+Store the first `data_keep` element in a data frame to pass to function `compute_iat()`. 
 
 ```{r}
 iat_data <- iat_cleandata[[1]]
 head(iat_data)
 ```
 
-You can also skip this step and directly pass `iat_cleandata[[1]]` to function `compute_D()`.
+You can also skip this step and directly pass `iat_cleandata[[1]]` to function `compute_iat()`.
 
 ### Compute the IAT D-score
 
-Once that IAT data have been prepared and cleaned by function `clean_iat()`, it is possible to compute the *D-score* by using function `computeD()`.
+Once that IAT data have been prepared and cleaned by function `clean_iat()`, it is possible to compute the *D-score* by using function `compute_iat()`.
 
 This function only takes two arguments. The first argument is the data frame with class `iat_clean`, the second argument is a character specifiying the *D-score* algortihm for the computation.  To compute multiple *D-score* algorithms at the same time, use `multi_dscore()` function. 
 
 ```{r}
-dscore <- computeD(iat_data, Dscore = "d3")
+dscore <- compute_iat(iat_data, Dscore = "d3")
 str(dscore)
 ```
 
-Function `computeD()` results in a `data.frame` with class `dscore` containing a number of rows equal to the number of participants, their *D-score*s and a bunch of useful information on their performance (see the documentation of the `computeD()` function for further details on the resulting data frame). Functions `IATrel()`, `descript_d()`, `d_plot()`, and `d_distr()` require the object resulting from function `computeD()`. 
+Function `compute_iat()` results in a `data.frame` with class `dscore` containing a number of rows equal to the number of participants, their *D-score*s and a bunch of useful information on their performance (see the documentation of the `compute_iat()` function for further details on the resulting data frame). Functions `IAT_rel()`, `descript_d()`, `d_point()`, and `d_density()` require the object resulting from function `compute_iat()`. 
 
 ### IAT descriptive statistics and reliability
 
@@ -102,10 +102,10 @@ descript_d(dscore, # Data frame containing IAT D-scores
            latex = TRUE) # obtain the code for latex tables
 ```
 
-Function `IATrel()` computes IAT reliability by correlating the *D-score* obtained from practice blocks with the *D-score* obtained from test blocks [see @gaw2017 for further details]: 
+Function `IAT_rel()` computes IAT reliability by correlating the *D-score* obtained from practice blocks with the *D-score* obtained from test blocks [see @gaw2017 for further details]: 
 
 ```{r}
-IATrel(dscore)
+IAT_rel(dscore)
 ```
 
 ### Plotting the results
@@ -114,16 +114,16 @@ IATrel(dscore)
 
 #### Respondent level
 
-Function `d_plot()` plots the IAT *D-score* for each respondent. 
+Function `d_point()` plots the IAT *D-score* for each respondent. 
 
-```{r, fig.align='center', fig.width=6, fig.cap="d_plot() function with default settings"}
-d_plot(dscore) # Data frame containing IAT D-scores
+```{r, fig.align='center', fig.width=6, fig.cap="d_point() function with default settings"}
+d_point(dscore) # Data frame containing IAT D-scores
 ```
 Clearly, in case of large sample size, the label identifying each respondent is not easy to read, and it can be eliminated by setting argument `x_values = FALSE`. 
 Respondents can be arranged by increasing or decreasing *D-score* by setting argument `order_sbj` equal to either `"D-increasing"`  or `"D-decreasing"`. Descriptive statistics ($M_{\text{D-score}}\pm 2sd$) can be added by setting the argument `include_stats = TRUE`. Finally, the color of the points can be changed by using argument `col_point`. 
 
-```{r, fig.align='center', fig.width=6, fig.cap="d_plot() function with   settings change"}
-d_plot(dscore, # dataframe containing IAT D-scores
+```{r, fig.align='center', fig.width=6, fig.cap="d_point() function with   settings change"}
+d_point(dscore, # dataframe containing IAT D-scores
        order_sbj = "D-decreasing", # change respondents order
        x_values = FALSE, # remove respodents' labels
        include_stats = TRUE, # include descriptive statistics
@@ -134,19 +134,19 @@ d_plot(dscore, # dataframe containing IAT D-scores
 
 #### Sample level 
 
-Function `d_distr()` plots the distribution of the IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
+Function `d_density()` plots the distribution of the IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
 
 
-```{r, fig.align='center', fig.width=6, fig.cap="d_distr() function with default settings"}
-d_distr(dscore) # dataframe containing IAT Dscores
+```{r, fig.align='center', fig.width=6, fig.cap="d_density() function with default settings"}
+d_density(dscore) # dataframe containing IAT Dscores
 ```
 
 The number of bins can be changed with argument `n_bin`. Argument `graph` can be used for changing the graphical representation of the data. 
 It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). Argument `col_fill` can be used to change the color of the points representing each respondent in the violin plot. 
 Finally, also descriptive statistics (i.e., $M_{\text{D-score}}  \pm 2sd$) can be added to the graph by setting argument `include_stats = TRUE`. 
 
-```{r sampleSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:sampleSettings}d_distr() function with settings change"}
-d_distr(dscore, # dataframe containing IAT Dscores
+```{r sampleSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:sampleSettings}d_density() function with settings change"}
+d_density(dscore, # dataframe containing IAT Dscores
         graph = "violin", # change graphical representation
         include_stats = TRUE) # include descriptive statistics
 ```

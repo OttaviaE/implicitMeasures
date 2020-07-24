@@ -37,14 +37,14 @@
 #'                                              "reminder1"))
 #'
 #'  sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
-#'  d_sciat1 <- Dsciat(sciat1,
+#'  d_sciat1 <- compute_sciat(sciat1,
 #'                     mappingA = "test.sc_dark.Darkbad",
 #'                     mappingB = "test.sc_dark.Darkgood",
 #'                     non_response = "alert") # dataframe with the first D
 #'                                             # SC-IAT
 #'
 #'  sciat2 <- sciat_data[[2]] # Compute D for the second SC-IAT
-#'  d_sciat2 <- Dsciat(sciat2,
+#'  d_sciat2 <- compute_sciat(sciat2,
 #'                     mappingA = "test.sc_milk.Milkbad",
 #'                     mappingB = "test.sc_milk.Milkgood",
 #'                     non_response = "alert") # dataframe with the first

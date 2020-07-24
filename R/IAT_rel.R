@@ -30,7 +30,7 @@
 #'                           trial_demo = "demo")
 #'   iat_data <- iat_cleandata[[1]]
 #' # calculate D-score
-#'   iat_dscore <- computeD(iat_data,
+#'   iat_dscore <- compute_iat(iat_data,
 #'                          Dscore =  "d2")
 #'   IAT_rel(iat_dscore)
 IAT_rel <- function(data){

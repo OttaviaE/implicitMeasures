@@ -62,7 +62,7 @@ multi_dscore <- function(data, ds = c("built-in", "error-inflation")){
   # initialize storing object for multiple Ds
   scores <- list()
   for(i in 1:length(label_d)) {
-    scores[[i]] <- computeD(data, Dscore = label_d[i])
+    scores[[i]] <- compute_iat(data, Dscore = label_d[i])
   }
   dscores <- data.frame(participant = scores[[1]]$participant)
   for (i in 1:length(scores)){

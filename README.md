@@ -5,10 +5,8 @@
 
 R package for computing different Implicit Measures scores
 
-<!-- badges: start --> 
-[![Build Status](https://travis-ci.com/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.com/OttaviaE/implicitMeasures)
-<!-- badges: end -->
-
+[![Build
+Status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
 
 ## Aim and Overview
 
@@ -31,15 +29,15 @@ replicability issues (Ellithorpe, Ewoldsen, and Velez 2015).
 
   - `clean_iat()`: Prepare and clean IAT data.
   - `clean_sciat()`: Prepare and clean SC-IAT data.
-  - `computeD()`: Compute IAT *D-score*.
-  - `Dsciat()`: Compute SC-IAT *D-score*.
+  - `compute_iat()`: Compute IAT *D-score*.
+  - `compute_sciat()`: Compute SC-IAT *D-score*.
   - `descript_d()`: Descriptive table of *D-score*s (also in LaTeX
     format).
-  - `d_distr()`: Plot IAT or SC-IAT scores (distribution).
-  - `d_plot()`: Plot IAT or SC-IAT scores (points).
+  - `d_density()`: Plot IAT or SC-IAT scores (distribution).
+  - `d_point()`: Plot IAT or SC-IAT scores (points).
   - `multi_dscore()`: Compute and plot multiple IAT *D-score*s.
   - `multi_dsciat()`: Plot SC-IAT *D-score*s.
-  - `IATrel()`: computes the IAT reliability (Gawronski et al. 2017)
+  - `IAT_rel()`: computes the IAT reliability (Gawronski et al. 2017)
 
 All the functions for graphically representing the results are based on
 `ggplot2` (Wickham 2016), and can be further customized by the users.
@@ -87,7 +85,7 @@ iat_data <- clean_iat(raw_data,
 iat <- iat_data[[1]]
 
 ## Compute the D-score
-dscore <- computeD(iat, D = "d3")
+dscore <- compute_iat(iat, D = "d3")
 ```
 
 `computeD()` results in a data frame with class `dscore`. This data
@@ -139,7 +137,7 @@ maintainer of the package at <otta.epifania@gmail.com>.
 
 ## Contributing to `implicitMeasures`
 
-If you want to contirbute to `implicitMeasures`, please do\! You can
+If you want to contribute to `implicitMeasures`, by all means\! You can
 open a new branch on <https://github.com/OttaviaE/implicitMeasures>,
 modify the code, and submit your pull request for added features.
 

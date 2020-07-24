@@ -13,7 +13,7 @@ test_that("multi_dscore recognizes the correct class of the object",{
                              trial_eliminate = c("reminder", "reminder1"),
                              demo_id = "blockcode",
                              trial_demo = "demo")
-  dscore <- computeD(iat_cleandata[[1]], Dscore = "d1")
+  dscore <- compute_iat(iat_cleandata[[1]], Dscore = "d1")
   expect_error(multi_dscore(dscore))
 })
 
@@ -88,11 +88,11 @@ test_that("multi_dsciat recognizes the class of both the SC-IATs", {
                                                 "reminder1"))
   sciat1 <- sciat_data[[1]]
   sciat2 <- sciat_data[[2]]
-  d_sciat1 <- Dsciat(sciat1,
+  d_sciat1 <- compute_sciat(sciat1,
                      mappingA = "test.sc_dark.Darkbad",
                      mappingB = "test.sc_dark.Darkgood",
                      non_response = "alert")
-  d_sciat2 <- Dsciat(sciat2,
+  d_sciat2 <- compute_sciat(sciat2,
                      mappingA = "test.sc_milk.Milkbad",
                      mappingB = "test.sc_milk.Milkgood",
                      non_response = "alert")
@@ -106,7 +106,7 @@ test_that("multi_dsciat recognizes the class of both the SC-IATs", {
                              accuracy_id = "correct",
                              trial_id = "trialcode",
                              trial_eliminate = c("reminder", "reminder1"))
-  iat_score <- computeD(iat_cleandata[[1]], Dscore = "d3")
+  iat_score <- compute_iat(iat_cleandata[[1]], Dscore = "d3")
   expect_error(multi_dsciat(sciat_data[[1]], sciat_data[[2]]))
   expect_error(multi_dsciat(d_sciat1, iat_score))
   expect_error(multi_dsciat(iat_score, d_sciat1))

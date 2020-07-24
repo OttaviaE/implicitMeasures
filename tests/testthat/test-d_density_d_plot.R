@@ -20,7 +20,7 @@ test_that("d_point produces a ggplot fot the IAT",{
                              trial_demo = "demo")
   iat_data <- iat_cleandata[[1]]
   # calculate D-score
-  iat_dscore <- computeD(iat_data,
+  iat_dscore <- compute_iat(iat_data,
                          Dscore =  "d6")
   expect_equal(class(d_point(iat_dscore))[[1]], "gg")
   expect_equal(class(d_point(iat_dscore))[[2]], "ggplot")
@@ -40,7 +40,7 @@ test_that("d_point produces a ggplot fot the SC-IAT",{
                                                 "reminder1"))
 
   sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
-  d_sciat1 <- Dsciat(sciat1,
+  d_sciat1 <- compute_sciat(sciat1,
                      mappingA = "test.sc_dark.Darkbad",
                      mappingB = "test.sc_dark.Darkgood",
                      non_response = "alert")
@@ -72,7 +72,7 @@ test_that("d_density produces a ggplot fot the IAT",{
                              trial_demo = "demo")
   iat_data <- iat_cleandata[[1]]
   # calculate D-score
-  iat_dscore <- computeD(iat_data,
+  iat_dscore <- compute_iat(iat_data,
                          Dscore =  "d6")
   expect_equal(class(d_density(iat_dscore))[[1]], "gg")
   expect_equal(class(d_density(iat_dscore))[[2]], "ggplot")
@@ -92,7 +92,7 @@ test_that("d_density produces a ggplot fot the SC-IAT",{
                                                 "reminder1"))
 
   sciat1 <- sciat_data[[1]] # compute D for the first SC-IAT
-  d_sciat1 <- Dsciat(sciat1,
+  d_sciat1 <- compute_sciat(sciat1,
                      mappingA = "test.sc_dark.Darkbad",
                      mappingB = "test.sc_dark.Darkgood",
                      non_response = "alert")

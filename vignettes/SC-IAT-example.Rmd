@@ -49,7 +49,7 @@ The labels identifying the demographic information (if any) must be passed to ar
 
 **DON'T USE THE `trial_eliminate` ARGUMENT TO ELIMINATE TRIALS EXCEEDING THE RESPONSE TIME WINDOW (rtw).**
 
-The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the variable identified by `trial_id`, but they have to be specified via argument `non_response` in function `Dsciat()` to actually be deleted.
+The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the variable identified by `trial_id`, but they have to be specified via argument `non_response` in function `compute_sciat()` to actually be deleted.
 
 
 ```{r}
@@ -91,14 +91,14 @@ head(demo_data)
 
 ### Compute the SC-IAT D-score
 
-Once the SC-IAT(s) data have been prepared and cleaned through function `clean_sciat()`, it is possible to compute the *D-score* by using function `Dsciat()`. 
+Once the SC-IAT(s) data have been prepared and cleaned through function `clean_sciat()`, it is possible to compute the *D-score* by using function `compute_sciat()`. 
 
 This function takes three mandatory arguments and one optional argument. The three mandatory arguments are the data set with class `sciat_clean`, and the labels identifying the two critical associative conditions (arguments `mappingA` and `mappingB`). If the SC-IAT administration included a rtw, the label identifying the trials exceeding the threshold must be specified via the (optional) argument `non_response`.
 
 
 ```{r}
 # Compute the D-score for the first SC-IAT
- d_sciat1 <- Dsciat(sciat1,
+ d_sciat1 <- compute_sciat(sciat1,
                   mappingA = "test.sc_dark.Darkbad",
                   mappingB = "test.sc_dark.Darkgood",
                   non_response = "alert")
@@ -107,7 +107,7 @@ This function takes three mandatory arguments and one optional argument. The thr
 str(d_sciat1) 
  
 # Compute D-score for the second SC-IAT
- d_sciat2 <- Dsciat(sciat2,
+ d_sciat2 <- compute_sciat(sciat2,
                   mappingA = "test.sc_milk.Milkbad",
                   mappingB = "test.sc_milk.Milkgood",
                   non_response = "alert")
@@ -117,7 +117,7 @@ str(d_sciat1)
 
 ```
 
-Function `Dsciat()` results in a `data.frame` with class `dsciat` containing a number of rows equal to the number of participants, their *D-score*, and a bunch of useful information on their performance (see the documentation for the `Dsciat()` function for further information on the resulting data frame). Functions `descript_d()`, `d_plot()`, and `d_distr()` require the object resulting from function `Dsciat()` to work. 
+Function `compute_sciat()` results in a `data.frame` with class `dsciat` containing a number of rows equal to the number of participants, their *D-score*, and a bunch of useful information on their performance (see the documentation for the `compute_sciat()` function for further information on the resulting data frame). Functions `descript_d()`, `d_point()`, and `d_density()` require the object resulting from function `compute_sciat()` to work. 
 
 ### Descriptive statistics
 
@@ -141,19 +141,19 @@ descript_d(d_sciat2, # Data frame containing IAT D-scores
 
 #### Individual respondent level 
 
-`d_plot()` plots the SC-IAT *D-score* for each respondent. 
+`d_point()` plots the SC-IAT *D-score* for each respondent. 
 
 
-```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_plot()"}
- d_plot(d_sciat1) # Data frame containing SC-IAT D-scores
+```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_point()"}
+ d_point(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
 Clearly, in case of large sample size the label identifying each respondent is not easy to read, and it can be eliminated by setting argument `x_values = FALSE`. 
 Respondents can be arranged by increasing or decreasing *D-score*s by setting argument `order_sbj` equal to either `"D-increasing"` or `"D-decreasing"`. Descriptive statistics (i.e., $M_{\text{D-score}}\pm 2sd$) can be added by setting argument `include_stats = TRUE`. 
 Finally, the color of the points can be changed by using argument `col_point`. 
 
-```{r scpointSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:scpointSettings} Function d_plot() with settings change"}
-d_plot(d_sciat1, # dataframe containing SC-IAT D-scores
+```{r scpointSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:scpointSettings} Function d_point() with settings change"}
+d_point(d_sciat1, # dataframe containing SC-IAT D-scores
        order_sbj = "D-increasing", # change respondents' order
        x_values = FALSE,  # remove respondents' labels
        include_stats = TRUE, # include descriptive statistics
@@ -163,11 +163,11 @@ d_plot(d_sciat1, # dataframe containing SC-IAT D-scores
 
 #### Sample level
 
-Function `d_distr()` plots the distribution of the SC-IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
+Function `d_density()` plots the distribution of the SC-IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
 
 
 ```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_distr() function"}
-d_distr(d_sciat1) # Data frame containing SC-IAT D-scores
+d_density(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
 
