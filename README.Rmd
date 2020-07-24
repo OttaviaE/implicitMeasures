@@ -52,7 +52,7 @@ install.packages("implicitMeasures")
 and the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
+# install.packages("devtools") # un-comment to install devtools
 devtools::install_github("OttaviaE/implicitMeasures")
 ```
 ## Example
@@ -61,10 +61,10 @@ This is a basic example which shows you how to compute the IAT *D-score*. More d
 
 ```{r example}
 library(implicitMeasures)
-## load the raw_data dataframe
+# load the raw_data dataframe
 data("raw_data")
 
-## prepare the dataset for the computation
+# prepare the dataset for the computation
 iat_data <- clean_iat(raw_data, 
                           sbj_id = "Participant",
                           block_id = "blockcode",
@@ -77,14 +77,14 @@ iat_data <- clean_iat(raw_data,
                           trial_id = "trialcode",
                           trial_eliminate = c("reminder", "reminder1"))
 
-## store the dataset for computing the D-score
+# store the dataset for computing the D-score
 iat <- iat_data[[1]]
 
-## Compute the D-score
+# Compute the D-score
 dscore <- compute_iat(iat, D = "d3")
 ```
 
-`computeD()` results in a data frame with class `dscore`. This data frame can be passed to other functions, for example for plotting the results, either at the individual level: 
+`compute_iat()` results in a data frame with class `dscore`. This data frame can be passed to other functions, for example for plotting the results, either at the individual level: 
 
 ```{r, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=4, fig.width=8, fig.cap="Graphical representation of respondents' individual scores"}
 d_point(dscore, 
