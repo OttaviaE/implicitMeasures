@@ -1,9 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^LICENSE\.md$
 ^\.travis\.yml$
 ^README\.Rmd$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^doc$
 ^Meta$
+^LICENSE\.md$
