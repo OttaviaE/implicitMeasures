@@ -1,10 +1,8 @@
 test_that("SC-IAT D-score replicate", {
   # import data set for SC-IAT dscore 1 computed on 07/09/2020
   data(dsciat1)
-  dsciat1$participant <- as.character(dsciat1$participant)
   # import data set for SC-IAT dscore 2 computed on 07/09/2020
   data(dsciat2)
-  dsciat2$participant <- as.character(dsciat2$participant)
   # import global data set
   data(raw_data)
   # clean data for SC-IAT 1 and SC-IAT 2
@@ -33,8 +31,8 @@ test_that("SC-IAT D-score replicate", {
                     mappingB = "test.sc_milk.Milkgood",
                     non_response = "alert")
   Rsciat2$participant <- as.character(Rsciat2$participant)
-  expect_equal(dsciat1[, c("participant", "d_sciat")],
-               Rsciat1[, c("participant", "d_sciat")])
-  expect_equal(dsciat2[, c("participant", "d_sciat")],
-               Rsciat2[, c("participant", "d_sciat")])
+  expect_equal(dsciat1[, "d_sciat"],
+               Rsciat1[, "d_sciat"])
+  expect_equal(dsciat2[, "d_sciat"],
+               Rsciat2[, "d_sciat"])
 })

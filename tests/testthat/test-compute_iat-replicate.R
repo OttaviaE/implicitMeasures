@@ -23,7 +23,9 @@ test_that("D-score replicated", {
     dscores[, name_col[i]] <- scores[[i]][, name_col[[i]]]
   }
   # upload the iat dscore compute_iat on 07/09/2020
+  data("iatdscores")
   # check that all the columns of the two dataset
-  for (i in 1:ncol(dscores))
+  for (i in 1:ncol(dscores)){
     expect_equal(dscores[, i], iatdscores[, i])
+  }
 })
