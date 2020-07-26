@@ -6,7 +6,7 @@
 \title{Data set with SC-IAT D-scores (Dark)}
 \format{
 A dataframe with 15 variables, as those described in the documentation for the
-"Dsciat()" function.
+\code{compute_sciat()}function.
 }
 \usage{
 data("dsciat1")
@@ -14,6 +14,6 @@ data("dsciat1")
 \description{
 A data set containing the results of the computation of the D-score on the
 Dark SC-IAT data set. This data set is used for testing the replicability of the
-results obtained with the "Dsciat()" functions.
+results obtained with the \code{compute_sciat()} functions.
 }
 \keyword{datasets}
