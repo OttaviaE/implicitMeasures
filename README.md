@@ -17,13 +17,13 @@ Implicit Association Test (SC-IAT; Karpinski and Steinman 2006).
 
 Six different algorithms for the computation of the IAT effect, the
 so-called *D-score*, are available (Greenwald, Nosek, and Banaji 2003).
-The six different algorithms differentiate themselves for the treatment
-of the extreme fast responses and for the strategy used for replacing
-the error responses. Different mistakes can be made during the
-computation of the *D-score*, which can raise replicability issues of
-the results. On top of that, many researchers fail to report the exact
-algorithm they have used for computing the *D-score*, raising again
-replicability issues (Ellithorpe, Ewoldsen, and Velez 2015).
+The six algorithms differentiate themselves for the treatment of the
+extreme fast responses and for the strategy used for replacing the error
+responses. Different mistakes can be made during the computation of the
+*D-score*, which can raise replicability issues of the results. On top
+of that, many researchers fail to report the exact algorithm they have
+used for computing the *D-score*, raising again replicability issues
+(Ellithorpe, Ewoldsen, and Velez 2015).
 
 `implicitMeasures` includes the following functions:
 
@@ -167,7 +167,7 @@ Longitudinal Analysis.” *Personality and Social Psychology Bulletin* 43
 
 Greenwald, Anthony G, Debbie E McGhee, and Jordan L K Schwartz. 1998.
 “Measuring Individual Differences in Implicit Cognition: The Implicit
-Association Test.” *Journal of Personality and Soclal Psychology* 74
+Association Test.” *Journal of Personality and Social Psychology* 74
 (6): 1464–80. <https://doi.org/10.1037/0022-3514.74.6.1464>.
 
 </div>

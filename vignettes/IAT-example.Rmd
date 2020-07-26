@@ -78,7 +78,7 @@ You can also skip this step and directly pass `iat_cleandata[[1]]` to function `
 
 Once that IAT data have been prepared and cleaned by function `clean_iat()`, it is possible to compute the *D-score* by using function `compute_iat()`.
 
-This function only takes two arguments. The first argument is the data frame with class `iat_clean`, the second argument is a character specifying the *D-score* algortihm for the computation.  To compute multiple *D-score* algorithms at the same time, use `multi_dscore()` function. 
+This function only takes two arguments. The first argument is the data frame with class `iat_clean`, the second argument is a character specifying the *D-score* algorithm for the computation.  To compute multiple *D-score* algorithms at the same time, use `multi_dscore()` function. 
 
 ```{r}
 dscore <- compute_iat(iat_data, Dscore = "d3")
