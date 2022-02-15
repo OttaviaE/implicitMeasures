@@ -26,11 +26,11 @@ knitr::opts_chunk$set(
 library(implicitMeasures)
 ```
 
-This vignette illustrates how to use `implicitMeasures` package for computing SC-IAT *D-score*. The illustration is based on the data set provided with the package (i.e., `raw_data`). 
+This vignette illustrates how to use the `implicitMeasures` package for computing the SC-IAT *D* score. The illustration is based on the data set included in the package (i.e., `raw_data`). 
 
 ### First thing first: Import and explore data
 
-Labels containing specification `sc_` in variable `blockcode` identify SC-IAT blocks.
+The labels that contains the specification `sc_` in the`blockcode` variable  identify the SC-IAT blocks.
 
 ```{r}
 data("raw_data")
@@ -43,13 +43,13 @@ levels(raw_data$blockcode)
 
 `raw_data` contains data from two different SC-IATs, one for the implicit assessment of the positive/negative evaluation of Milk chocolate (`sc_milk`), and one for the implicit assessment of the positive/negative evaluation of Dark chocolate (`sc_dark`). 
 
-Once the SC-IATs blocks have been identified, it is possible to prepare and clean the data for computing the *D-score*. 
-Function `clean_sciat` allows for cleaning the data set of either just one SC-IAT or to clean the data sets of two SC-IATs concurrently. The labels identifying the test blocks must be specified as a character vector via argument `block_sciat_1` and argument `block_sciat_2` (only if there is a second SC-IAT). 
-The labels identifying the demographic information (if any) must be passed to argument `trial_demo`, after specifying the column of the data set containing the labels of the demographic information (argument `demo_id`).
+Once the SC-IATs blocks have been identified, it is possible to clean the data for computing the *D* score. 
+Function `clean_sciat` allows for cleaning the data set of either just one SC-IAT or to clean the data sets of two SC-IATs concurrently. The labels identifying the test blocks must be specified as a character vector via argument `block_sciat_1` and argument `block_sciat_2` (use the `block_sciat_2` argument only if there is a second SC-IAT). 
+The labels identifying the demographic information (if any) must be passed to the `trial_demo` argument, after specifying the column of the data set containing the labels of the demographic information (argument `demo_id`).
 
 **DON'T USE THE `trial_eliminate` ARGUMENT TO ELIMINATE TRIALS EXCEEDING THE RESPONSE TIME WINDOW (rtw).**
 
-The labels for identifying the responses beyond the rtw (and that hence have to be eliminated) must be included in the variable identified by `trial_id`, but they have to be specified via argument `non_response` in function `compute_sciat()` to actually be deleted.
+The labels for identifying the responses beyond the rtw (that have to be eliminated) must be included in the variable identified by the`trial_id` label, but they have to be specified via the `non_response` argument in the `compute_sciat()` function to actually be deleted.
 
 
 ```{r}
@@ -91,7 +91,7 @@ head(demo_data)
 
 ### Compute the SC-IAT D-score
 
-Once the SC-IAT(s) data have been prepared and cleaned through function `clean_sciat()`, it is possible to compute the *D-score* by using function `compute_sciat()`. 
+Once the SC-IAT(s) data have been cleaned with the `clean_sciat()` function, it is possible to compute the *D* score by using function `compute_sciat()`. 
 
 This function takes three mandatory arguments and one optional argument. The three mandatory arguments are the data set with class `sciat_clean`, and the labels identifying the two critical associative conditions (arguments `mappingA` and `mappingB`). If the SC-IAT administration included a rtw, the label identifying the trials exceeding the threshold must be specified via the (optional) argument `non_response`.
 
@@ -117,18 +117,18 @@ str(d_sciat1)
 
 ```
 
-Function `compute_sciat()` results in a `data.frame` with class `dsciat` containing a number of rows equal to the number of participants, their *D-score*, and a bunch of useful information on their performance (see the documentation for the `compute_sciat()` function for further information on the resulting data frame). Functions `descript_d()`, `d_point()`, and `d_density()` require the object resulting from function `compute_sciat()` to work. 
+The `compute_sciat()` function results in a `data.frame` with class `dsciat` containing a number of rows equal to the number of participants, their *D* score, and a bunch of useful information on their performance (see the documentation for the `compute_sciat()` function for further information). The `descript_d()`, `d_point()`, and `d_density()` functions require the object resulting from the `compute_sciat()` function to work. 
 
 ### Descriptive statistics
 
-The descriptive statistics of the *D-score* and of the response times in the two critical conditions can be easily obtained with function `descript_d()`: 
+The descriptive statistics of the *D* score and of the response times in the two critical conditions can be easily obtained with the `descript_d()` function: 
 
 ```{r}
 descript_d(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
 
-By specifying argument `latex = TRUE`, function `descript_d()` prints the results in LaTeX code 
+By specifying `latex = TRUE`, the `descript_d()` function prints the results in LaTeX code 
 
 ```{r}
 descript_d(d_sciat2, # Data frame containing IAT D-scores
@@ -137,20 +137,21 @@ descript_d(d_sciat2, # Data frame containing IAT D-scores
 
 ### Plotting the results
 
-`implicitMeasures` comes with several functions for obtaining nice and clear representations of the results at both individual respondent and sample levels. Additionally, it includes functions for plotting SC-IAT *D-score*s resulting from two different SC-IATs. 
+The `implicitMeasures` package comes with several functions for obtaining nice and clear representations of the results at both individual respondent and sample levels. Additionally, it includes functions for plotting SC-IAT *D* scores resulting from two different SC-IATs. 
 
-#### Individual respondent level 
+#### Individual respondent plot 
 
-`d_point()` plots the SC-IAT *D-score* for each respondent. 
+The `d_point()` function plots the SC-IAT *D* score for each respondent. 
 
 
 ```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_point()"}
  d_point(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
-Clearly, in case of large sample size the label identifying each respondent is not easy to read, and it can be eliminated by setting  `x_values = FALSE`. 
-Respondents can be arranged by increasing or decreasing *D-score*s by setting argument `order_sbj` equal to either `"D-increasing"` or `"D-decreasing"`. Descriptive statistics (i.e., $M_{\text{D-score}}\pm 2sd$) can be added by setting `include_stats = TRUE`. 
-Finally, the color of the points can be changed by using argument `col_point`. 
+In case of large sample size the label identifying each respondent is not easy to read, and it can be eliminated by setting  `x_values = FALSE`. 
+Respondents can be arranged by increasing or decreasing *D* scores by setting argument `order_sbj` equal to `"D-increasing"` or `"D-decreasing"`, respectively. 
+Descriptive statistics (i.e., $M_{\text{D-score}}\pm 2sd$) can be added by setting `include_stats = TRUE`. 
+Finally, the color of the points can be changed by using the `col_point` argument. 
 
 ```{r scpointSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:scpointSettings} Function d_point() with settings change"}
 d_point(d_sciat1, # dataframe containing SC-IAT D-scores
@@ -161,17 +162,17 @@ d_point(d_sciat1, # dataframe containing SC-IAT D-scores
 ```
 
 
-#### Sample level
+#### Sample  plot
 
-Function `d_density()` plots the distribution of the SC-IAT *D-score*s. It provides different options for choosing the most appropriate representation. 
+The `d_density()` function plots the distribution of the SC-IAT *D* scores. It provides different options for choosing the most appropriate representation. 
 
 
 ```{r, fig.align='center', fig.width=6, fig.cap="Default use of function d_density() function"}
 d_density(d_sciat1) # Data frame containing SC-IAT D-scores
 ```
 
-The number of bins can be changed with argument `n_bin`. Argument `graph` can be used for changing the graphical representation of the data. 
-It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). Argument `col_fill` can be used to change the color of the points representing each respondent's score in the violin plot. 
+The number of bins can be changed with the `n_bin` argument. The `graph` argument can be used for changing the graphical representation of the data. 
+It is possible to choose an histogram representation (`graph = "histogram"`, default), a representation of the density distribution (`graph = "density"`), or a violin plot (`graph = "violin"`). The `col_fill` argument can be used to change the color of the points representing each respondent's score in the violin plot. 
 Finally, also descriptive statistics (i.e., $M_{\text{D-score}}  \pm 2sd$) can be added to the graph by setting argument `include_stats = TRUE`. 
 
 ```{r sampleSettings, fig.align='center', fig.width=6, fig.cap="\\label{fig:sampleSettings}d_density() function with settings change"}
@@ -183,8 +184,8 @@ d_density(d_sciat1, # dataframe containing IAT Dscores
 
 #### Multiple SC-IATs
 
-Function `multi_dsciat()` plots the distributions of the *D-score*s obtained from two different SC-IATs. This function takes only two mandatory arguments, which are the data frames containing the results of each SC-IAT obtained by using function `compute_sciat()`. 
-The type of graphical representation can be changed by using argument `"graph"`, which is set to `"density" ` by default. Default representation also contains the lines indicating the mean of each distribution. These lines can be taken out of the graph by setting  `dens_mean = FALSE`. 
+The `multi_dsciat()` function plots the distributions of the *D* scores obtained from two different SC-IATs. This function takes only two mandatory arguments, which are the data frames containing the results of each SC-IAT obtained by using function `compute_sciat()`. 
+The type of graphical representation can be changed by using `graph`, which is set to `"density" ` by default. Default representation also contains the lines that indicate the mean of each distribution. These lines can be taken out of the graph by setting  `dens_mean = FALSE`. 
  
 
 ```{r fig.align='center', fig.width=6, fig.cap="Default results representation of function multi_dsciat()"}
@@ -193,9 +194,9 @@ multi_dsciat(d_sciat1, # dataframe containing the results of the first SC-IAT
 
 ```
 
-Argument `graph` can be set equal to `"violin"` (violin plots of the SC-IATs *D-score*s) or `"point"` (point representation of both SC-IATs *D-score*s). 
-The labels identifying each SC-IAT can be set with arguments `label_sc1` and `label_sc2` (defaults are `"SC-IAT 1"` and `"SC-IAT 2"`). The values labels of the x-axis can be removed by setting `x-values = FALSE` (suggested in case of big sample size).
-Argument `gcolors` can be used to change the colors of each SC-IAT (default is `"dark"`). Other colors options are `"greens"`, `"blues"`, and `"pink"`.
+The `graph` argument can be set equal to `"violin"` (violin plots of the SC-IATs *D* scores) or `"point"` (point representation of both SC-IATs *D* scores). 
+The labels identifying each SC-IAT can be set with the `label_sc1` and `label_sc2` arguments (defaults are `"SC-IAT 1"` and `"SC-IAT 2"`). The values labels of the $x$-axis can be removed by setting `x-values = FALSE` (suggested in case of large sample size).
+The `gcolors` argument can be used to change the colors of each SC-IAT (default is `"dark"`). Other colors options are `"greens"`, `"blues"`, and `"pink"`.
 
 
 ```{r fig.align='center', fig.width=6, fig.cap="Results representation of function multi_dsciat() with settings change"}

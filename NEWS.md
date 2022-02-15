@@ -1,4 +1,3 @@
-# implicitMeasures 0.2.0
+# implicitMeasures 0.2.1
 
-Some functions names have been changed to make them more consistent between each other. 
-
+The functions for plotting the results have been updated. Minor mistakes in the vignettes have been corrected
