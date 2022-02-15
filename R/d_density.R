@@ -106,12 +106,12 @@ d_density <- function(data,
     if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
-      d_graph <- d_graph + geom_vline(xintercept = mean(.data$d))
-      d_graph <- d_graph + geom_vline(xintercept = (mean(.data$d) +
-                                                      2 * sd(.data$d)),
+      d_graph <- d_graph + geom_vline(aes(xintercept = mean(.data$d)))
+      d_graph <- d_graph + geom_vline(aes(xintercept = (mean(.data$d) +
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
-      d_graph <- d_graph + geom_vline(xintercept = (mean(.data$d) -
-                                                      2 * sd(.data$d)),
+      d_graph <- d_graph + geom_vline(aes(xintercept = (mean(.data$d) -
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
     }
   } else if (graph == "density") {
@@ -125,12 +125,12 @@ d_density <- function(data,
     if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
-      d_graph <- d_graph + geom_vline(xintercept = mean(data$d))
-      d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) +
-                                                      2 * sd(data$d)),
+      d_graph <- d_graph + geom_vline(aes(xintercept = mean(.data$d)))
+      d_graph <- d_graph + geom_vline(aes(xintercept = (mean(.data$d) +
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
-      d_graph <- d_graph + geom_vline(xintercept = (mean(data$d) -
-                                                      2 * sd(data$d)),
+      d_graph <- d_graph + geom_vline(aes(xintercept = (mean(.data$d) -
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
     }
   } else if (graph == "violin") {

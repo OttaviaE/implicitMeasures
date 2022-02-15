@@ -103,12 +103,12 @@ d_point <- function(data, point_size = 1,
     if (include_stats == FALSE) {
       d_graph <- d_graph
     } else {
-      d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
-      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
-                                                      2 * sd(data$d)),
+      d_graph <- d_graph + geom_hline(aes(yintercept = mean(.data$d)))
+      d_graph <- d_graph + geom_hline(aes(yintercept = (mean(.data$d) +
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
-      d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
-                                                      2 * sd(data$d)),
+      d_graph <- d_graph + geom_hline(aes(yintercept = (mean(data$d) -
+                                                      2 * sd(.data$d))),
                                       linetype = "dotted")
     }
   } else if (order_sbj == "D-increasing") {
@@ -146,12 +146,12 @@ d_point <- function(data, point_size = 1,
   if (include_stats == FALSE) {
     d_graph <- d_graph
   } else {
-    d_graph <- d_graph + geom_hline(yintercept = mean(data$d))
-    d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) +
-                                                    2 * sd(data$d)),
+    d_graph <- d_graph + geom_hline(aes(yintercept = mean(.data$d)))
+    d_graph <- d_graph + geom_hline(aes(yintercept = (mean(.data$d) +
+                                                    2 * sd(.data$d))),
                                     linetype = "dotted")
-    d_graph <- d_graph + geom_hline(yintercept = (mean(data$d) -
-                                                    2 * sd(data$d)),
+    d_graph <- d_graph + geom_hline(aes(yintercept = (mean(.data$d) -
+                                                    2 * sd(.data$d))),
                                     linetype = "dotted")
   }
 
