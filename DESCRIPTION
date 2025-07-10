@@ -2,9 +2,16 @@ Package: implicitMeasures
 Type: Package
 Title: Compute Scores for Different Implicit Measures
 Version: 0.3.0
-Author: Ottavia M. Epifania [aut, cre],
-    Pasquale Anselmi [ctb], 
-    Egidio Robusto [ctb]
+Authors@R: c(person(given = c("Ottavia", "M."),
+           family = "Epifania",
+           role = c("aut", "cre"),
+           email = "otta.epifania@gmail.com"),
+    person(given = "Pasquale",
+           family = "Anselmi",
+           role = "ctb"),
+    person(given = "Egidio",
+           family = "Robusto",
+           role = "ctb"))
 Maintainer: Ottavia M. Epifania <otta.epifania@gmail.com>
 Description: A tool for computing the scores for the Implicit Association Test 
     (IAT; Greenwald, McGhee & Schwartz (1998) <doi:10.1037/0022-3514.74.6.1464>) 
