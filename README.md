@@ -6,7 +6,7 @@
 R package for computing different Implicit Measures scores
 
 [![Build
-Status](https://travis-ci.org/OttaviaE/implicitMeasures.svg?branch=master)](https://travis-ci.org/OttaviaE/implicitMeasures)
+Status](https://app.travis-ci.com/OttaviaE/implicitMeasures)](https://app.travis-ci.com/OttaviaE/implicitMeasures)
 
 ## Aim and Overview
 
@@ -26,16 +26,16 @@ might be compromised (Ellithorpe, Ewoldsen, and Velez 2015).
 
 `implicitMeasures` includes the following functions:
 
--   `clean_iat()`: Prepare and clean the IAT data.
--   `clean_sciat()`: Prepare and clean the SC-IAT data.
--   `compute_iat()`: Compute the IAT *D* score.
--   `compute_sciat()`: Compute the SC-IAT *D* score.
--   `descript_d()`: Descriptive table of the *D* scores (also in LaTeX).
--   `d_density()`: Plot IAT or SC-IAT scores (distribution).
--   `d_point()`: Plot IAT or SC-IAT scores (points).
--   `multi_dscore()`: Compute and plot multiple IAT *D* scores.
--   `multi_dsciat()`: Plot SC-IAT *D* scores.
--   `IAT_rel()`: computes the IAT reliability (Gawronski et al. 2017)
+- `clean_iat()`: Prepare and clean the IAT data.
+- `clean_sciat()`: Prepare and clean the SC-IAT data.
+- `compute_iat()`: Compute the IAT *D* score.
+- `compute_sciat()`: Compute the SC-IAT *D* score.
+- `descript_d()`: Descriptive table of the *D* scores (also in LaTeX).
+- `d_density()`: Plot IAT or SC-IAT scores (distribution).
+- `d_point()`: Plot IAT or SC-IAT scores (points).
+- `multi_dscore()`: Compute and plot multiple IAT *D* scores.
+- `multi_dsciat()`: Plot SC-IAT *D* scores.
+- `IAT_rel()`: computes the IAT reliability (Gawronski et al. 2017)
 
 All the functions for the graphical representation of the results are
 based on `ggplot2` (Wickham 2016), and can be further customized by the
@@ -91,11 +91,27 @@ The `compute_iat()` function results in a data frame with class
 `dscore`. This data frame can be passed to other functions, for example
 for plotting the results, either at the individual level:
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" title="Graphical representation of respondents' individual scores" alt="Graphical representation of respondents' individual scores" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="Graphical representation of respondents' individual scores" width="100%" />
+<p class="caption">
+
+Graphical representation of respondents’ individual scores
+</p>
+
+</div>
 
 or at the sample level:
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" title="Density distribution of sample scores" alt="Density distribution of sample scores" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="Density distribution of sample scores" width="100%" />
+<p class="caption">
+
+Density distribution of sample scores
+</p>
+
+</div>
 
 ## Data import
 
@@ -125,7 +141,8 @@ A special thank to Filippo Gambarota.
 
 # References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-ellithorpe2015" class="csl-entry">
 
@@ -157,10 +174,10 @@ Personality and Social Psychology* 74 (6): 1464–80.
 
 <div id="ref-Greenwald2003" class="csl-entry">
 
-Greenwald, Anthony G, Brian A Nosek, and Mahzarin R Banaji. 2003. “<span
-class="nocase">Understanding and Using the Implicit Association Test: I.
-An Improved Scoring Algorithm</span>.” *Journal of Personality and
-Social Psychology* 85 (2): 197–216.
+Greenwald, Anthony G, Brian A Nosek, and Mahzarin R Banaji. 2003.
+“<span class="nocase">Understanding and Using the Implicit Association
+Test: I. An Improved Scoring Algorithm</span>.” *Journal of Personality
+and Social Psychology* 85 (2): 197–216.
 <https://doi.org/10.1037/0022-3514.85.2.197>.
 
 </div>
