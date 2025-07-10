@@ -1,7 +1,7 @@
 Package: implicitMeasures
 Type: Package
 Title: Compute Scores for Different Implicit Measures
-Version: 0.2.1
+Version: 0.3.0
 Author: Ottavia M. Epifania [aut, cre],
     Pasquale Anselmi [ctb], 
     Egidio Robusto [ctb]
@@ -17,7 +17,7 @@ Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
     stringr,
@@ -29,6 +29,7 @@ Suggests:
     rmarkdown,
     tableHTML,
     data.table,
-    spelling
+    spelling,
+    tidyverse
 VignetteBuilder: knitr
 Language: en-US
